@@ -1,39 +1,35 @@
 const _ = require('underscore');
 const jwt = require('jsonwebtoken');
+const randomstring = require("randomstring");
 const CONFIG = require('../config/config.js');
 const USERQUERY = require('../library/userquery');
 const USERS = require('../model/Users-model');
+const BOOKING = require('../model/Booking-model.js');
+const BEAUTICIANS = require('../model/Beauticians-model.js');
 
-// GET user login - API
-const userLogin = async (request, response, next) => {
+// ADD beautician - API
+const addBeautician = async (request, response, next) => {
     console.log('Request body isss', request.body);
     let result = {};
     let message = '';
     try {
-        const userInput = request.body.userinput;
-        const password = request.body.password;
-        const whereRaw = `(email='${userInput}' OR username='${userInput}') AND password='${password}'`;
-        await USERS.query().select('*').whereRaw(whereRaw).then(async data => {
-            if (!data || data.length == 0) {
-                message = 'Email or Password is not found.';
-                throw message;
-            }
-            const token = jwt.sign({
-                id: data[0].id,
-                email: data[0].email,
-                username: data[0].username,
-                password: data[0].password
-            }, CONFIG.database.securitykey, {
-                algorithm: 'HS256',
-                expiresIn: '1h'
-            });
-            data[0].token = token;
+        const beauticianPayload = {
+            fullname: request.body.fullname,
+            username: request.body.username,
+            email: request.body.email,
+            password: request.body.password,
+            mobile: request.body.mobile.toString(),
+            profile: null,
+            role: 'beautician',
+            status: 1
+        }
+        await USERS.query().insert(beauticianPayload).then(async data => {
             result = {
                 success: true,
                 error: false,
                 statusCode: 200,
-                message: 'User login successful',
-                data: data[0]
+                message: 'Add beautician successful',
+                data: data
             }
         }).catch(getError => {
             throw getError;
@@ -51,28 +47,18 @@ const userLogin = async (request, response, next) => {
     return response.status(200).json(result);
 }
 
-// GET user signup - API
-const userSignup = async (request, response, next) => {
+// ADD beauty parlour - API
+const addBeautyParlour = async (request, response, next) => {
     console.log('Request body isss', request.body);
     let result = {};
     let message = '';
     try {
-        const userPayload = {
-            fullname: request.body.fullname,
-            username: request.body.username,
-            email: request.body.email,
-            password: request.body.password,
-            mobile: request.body.mobile.toString(),
-            profile: null,
-            role: 'user',
-            status: 1
-        }
-        await USERS.query().insert(userPayload).then(async data => {
+        await BEAUTICIANS.query().insert(request.body).then(async data => {
             result = {
                 success: true,
                 error: false,
                 statusCode: 200,
-                message: 'User signup successful',
+                message: 'Add beauty parlour successful',
                 data: data
             }
         }).catch(getError => {
@@ -92,6 +78,6 @@ const userSignup = async (request, response, next) => {
 }
 
 module.exports = {
-    userLogin,
-    userSignup
+    addBeautician,
+    addBeautyParlour
 }

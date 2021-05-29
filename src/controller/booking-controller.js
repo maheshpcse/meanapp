@@ -1,5 +1,6 @@
 const _ = require('underscore');
 const jwt = require('jsonwebtoken');
+const randomstring = require("randomstring");
 const CONFIG = require('../config/config.js');
 const USERQUERY = require('../library/userquery');
 const USERS = require('../model/Users-model');
@@ -203,6 +204,7 @@ const addBooking = async (request, response, next) => {
     let result = {};
     let message = '';
     try {
+        request.body.booking_id = generateBookingId('');
         // ADD data list
         await BOOKING.query()
             .insert(request.body)
@@ -266,6 +268,26 @@ const deleteBooking = async (request, response, next) => {
         }
     }
     return response.status(200).json(result);
+}
+
+function generateBookingId(bookingId) {
+    const word1 = randomstring.generate({
+        length: 5,
+        charset: 'alphanumeric',
+        capitalization: 'uppercase'
+    });
+    const word2 = randomstring.generate({
+        length: 5,
+        charset: 'alphanumeric',
+        capitalization: 'uppercase'
+    });
+    const word3 = randomstring.generate({
+        length: 5,
+        charset: 'alphanumeric',
+        capitalization: 'uppercase'
+    });
+    bookingId = word1 + '-' + word2 + '-' + word3
+    return bookingId;
 }
 
 module.exports = {

@@ -12,6 +12,33 @@ Model.knex(Knexx.knex);
 
 var app = express();
 
+// var arr = [1,1,2,2,3,4,4,5,5,6,7,8,9,9];
+// var obj = {};
+// for(const item of arr) {
+//     if(obj[item]) {
+//         obj[item] = item;
+//     } else {
+//         obj[item] = item;
+//     }
+// }
+// console.log('object isss', obj);
+
+// var count = 0;
+// var dupArr = null;
+// var tempObj = {};
+// for(const item of arr) {
+//     if (obj.hasOwnProperty(item)) {
+//         count += 1;
+//         tempObj[item] = item;
+//     }
+//     if (count > 1) {
+//         dupArr = Object.keys(tempObj);
+//         count = 0;
+//         tempObj = {};
+//     }
+// }
+// console.log('duplicate array iss', dupArr);
+
 // Middleware functions
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
