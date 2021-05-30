@@ -40,6 +40,7 @@ router.post('/update_checkup', reportsCtrl.updateCheckup);
 
 // beauticians API URL's
 router.post('/get_all_beauticians', beauticianCtrl.getAllBeauticians);
+router.get('/get_all_users', beauticianCtrl.getAllUsers);
 
 // admin services API URL's
 router.post('/add_beautician', adminServiceCtrl.addBeautician);

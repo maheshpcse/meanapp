@@ -66,6 +66,43 @@ const getAllBeauticians = async (request, response, next) => {
     return response.status(200).json(result);
 }
 
+// GET all users for dropdrown - API
+const getAllUsers = async (request, response, next) => {
+    console.log('Request body isss', request.body);
+    let result = {};
+    let message = '';
+    try {
+        // GET data list
+        await USERS.query()
+            .select('u.user_id', 'u.fullname', 'u.username', 'u.role', 'u.status')
+            .alias('u')
+            .whereRaw(`u.role='beautician'`)
+            .then(async data => {
+                console.log('Get all users list isss', data);
+                result = {
+                    success: true,
+                    error: false,
+                    statusCode: 200,
+                    message: 'Get all users list successful',
+                    data
+                }
+            }).catch(listError => {
+                throw listError;
+            });
+    } catch (error) {
+        console.log('Error at try catch api result', error);
+        result = {
+            success: false,
+            error: true,
+            statusCode: 500,
+            message: message || 'Error at try catch api result',
+            data: []
+        }
+    }
+    return response.status(200).json(result);
+}
+
 module.exports = {
-    getAllBeauticians
+    getAllBeauticians,
+    getAllUsers
 }

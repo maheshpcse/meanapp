@@ -6,7 +6,7 @@ const USERS = require('../model/Users-model');
 const BOOKING = require('../model/Booking-model.js');
 const BEAUTICIANS = require('../model/Beauticians-model.js');
 const APPOINTMENT = require('../model/Appointment-model.js');
-const REPORTS = require('../controller/report-controller.js');
+const REPORTS = require('../model/Report-model.js');
 const { request, response } = require('express');
 
 // GET report checkup details - API

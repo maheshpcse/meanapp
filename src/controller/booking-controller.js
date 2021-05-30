@@ -15,15 +15,19 @@ const getAllUserBookings = async (request, response, next) => {
     let list = [];
     let count = 0;
     try {
-        let { limit, page, query } = request.body;
+        let { limit, page, query, status, user_id } = request.body;
         page = (Number(page) - 1) * Number(limit);
-        const whereRaw = `bk.booking_id LIKE '%${query}%' OR bk.law_firm_name LIKE '%${query}%' OR bk.date LIKE '%${query}%' OR bk.time LIKE '%${query}%' OR bt.beautician_name LIKE '%${query}%'`;
+        let whereRaw = `(bk.booking_id LIKE '%${query}%' OR bk.law_firm_name LIKE '%${query}%' OR bk.date LIKE '%${query}%' OR bk.time LIKE '%${query}%' OR bt.beautician_name LIKE '%${query}%' OR u.fullname LIKE '%${query}%' OR u.username LIKE '%${query}%')`;
+        if (status === 0 || status === 1) {
+            whereRaw += ` AND (bk.booking_status=${status})`;
+        }
         // GET data list
-        await BOOKING.query()
-            .select('bk.*', 'bt.*')
-            .alias('bk')
-            .innerJoin(`${BEAUTICIANS.tableName} AS bt`, 'bt.beautician_id', 'bk.beautician_id')
-            .whereRaw(whereRaw)
+        await BEAUTICIANS.query()
+            .select('u.user_id', 'u.fullname', 'u.username', 'bt.*', 'bk.*')
+            .alias('bt')
+            .innerJoin(`${BOOKING.tableName} AS bk`, 'bk.beautician_id', 'bt.beautician_id')
+            .innerJoin(`${USERS.tableName} AS u`, 'u.user_id', 'bk.user_id')
+            .whereRaw(whereRaw + ` AND (bt.owner_id=${user_id})`)
             .limit(limit)
             .offset(page)
             .then(async data => {
@@ -33,11 +37,12 @@ const getAllUserBookings = async (request, response, next) => {
                 throw listError;
             });
         // GET data list count
-        await BOOKING.query()
+        await BEAUTICIANS.query()
             .count('* as totalBookings')
-            .alias('bk')
-            .innerJoin(`${BEAUTICIANS.tableName} AS bt`, 'bt.beautician_id', 'bk.beautician_id')
-            .whereRaw(whereRaw)
+            .alias('bt')
+            .innerJoin(`${BOOKING.tableName} AS bk`, 'bk.beautician_id', 'bt.beautician_id')
+            .innerJoin(`${USERS.tableName} AS u`, 'u.user_id', 'bk.user_id')
+            .whereRaw(whereRaw + ` AND (bt.owner_id=${user_id}) AND (bk.booking_status!=2)`)
             .then(async data => {
                 console.log('Get all user bookings data count isss', data);
                 count = data.length ? data[0].totalBookings : 0;
@@ -172,7 +177,7 @@ const updateBookingStatusById = async (request, response, next) => {
         await BOOKING.query()
             .update({booking_status: Number(booking_status)})
             .alias('bk')
-            .whereRaw(`bk.booking_id='${booking_id}'`)
+            .whereRaw(`bk.book_id=${booking_id}`)
             .then(async data => {
                 console.log('Update booking status by Id isss', data);
                 result = {
@@ -269,6 +274,9 @@ const deleteBooking = async (request, response, next) => {
     }
     return response.status(200).json(result);
 }
+
+// GET all users by beautician - API
+
 
 function generateBookingId(bookingId) {
     const word1 = randomstring.generate({
