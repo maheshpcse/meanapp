@@ -22,6 +22,7 @@ router.post('/signup', userAuthCtrl.userSignup);
 
 // user bookings API URL's
 router.post('/get_all_user_bookings', bookingCtrl.getAllUserBookings);
+router.post('/get_all_user_appointments', bookingCtrl.getAllUserAppointments);
 router.post('/get_bookings_by_beautician', bookingCtrl.getBookingsByBeautician);
 router.post('/get_booking_by_id', bookingCtrl.getBookingById);
 router.post('/update_booking_status_by_id', bookingCtrl.updateBookingStatusById);

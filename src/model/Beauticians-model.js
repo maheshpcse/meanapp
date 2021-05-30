@@ -18,6 +18,8 @@ class Beauticians extends Model {
                 beautician_name: { type: ['string', null] },
                 experience: { type: ['integer', 'number', null] },
                 parlour_name: { type: ['string', 'date', null] },
+                law_firm_name: { type: ['string', null] },
+                services: { type: ['string', null] },
                 place: { type: ['string', null] },
                 rating: { type: ['integer', 'number', null] },
                 status: { type: ['integer', 'number', null] },

@@ -14,7 +14,8 @@ class Report extends Model {
             type: 'object',
             properties: {
                 report_id  : { type: ['integer', null] },
-                appointment_id: { type: ['string', null] },
+                appointment_id: { type: ['integer', 'number', null] },
+                user_id: { type: ['integer', 'number', null] },
                 date: { type: ['string', 'date', null] },
                 amount: { type: ['string', null] },
                 report: { type: ['string', null] },
