@@ -5,7 +5,7 @@ const bookingCtrl = require('../controller/booking-controller.js');
 const appointmentCtrl = require('../controller/appointment-controller.js');
 const reportsCtrl = require('../controller/report-controller.js');
 const beauticianCtrl = require('../controller/beautician-controller.js');
-const adminServiceCtrl = require('../controller/admin-services-controller.js');
+const adminServiceCtrl = require('../controller/admin_services-controller.js');
 
 router.get('/server', (req, res, next) => {
     console.log("API works!");
@@ -46,5 +46,6 @@ router.get('/get_all_users', beauticianCtrl.getAllUsers);
 // admin services API URL's
 router.post('/add_beautician', adminServiceCtrl.addBeautician);
 router.post('/add_beauty_parlour', adminServiceCtrl.addBeautyParlour);
+router.get('/get_all_beauty_services', adminServiceCtrl.getAllBeautyServices);
 
 module.exports = router;

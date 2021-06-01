@@ -6,15 +6,15 @@ class Beauticians extends Model {
     }
 
     static get idColumn() {
-        return 'beautician_id  ';
+        return 'beautician_id';
     }
 
     static get jsonSchema() {
         return {
             type: 'object',
             properties: {
-                beautician_id  : { type: ['integer', null] },
-                owner_id  : { type: ['string', null] },
+                beautician_id: { type: ['integer', null] },
+                owner_id: { type: ['string', null] },
                 beautician_name: { type: ['string', null] },
                 experience: { type: ['integer', 'number', null] },
                 parlour_name: { type: ['string', 'date', null] },

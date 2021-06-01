@@ -6,14 +6,14 @@ class Appointment extends Model {
     }
 
     static get idColumn() {
-        return 'app_id ';
+        return 'app_id';
     }
 
     static get jsonSchema() {
         return {
             type: 'object',
             properties: {
-                app_id : { type: ['integer', null] },
+                app_id: { type: ['integer', null] },
                 appointment_id: { type: ['string', null] },
                 user_id: { type: ['integer', 'number', null] },
                 date: { type: ['string', 'date', null] },

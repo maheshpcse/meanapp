@@ -6,14 +6,14 @@ class Booking extends Model {
     }
 
     static get idColumn() {
-        return 'book_id  ';
+        return 'book_id';
     }
 
     static get jsonSchema() {
         return {
             type: 'object',
             properties: {
-                book_id  : { type: ['integer', null] },
+                book_id: { type: ['integer', null] },
                 booking_id: { type: ['string', null] },
                 user_id: { type: ['integer', null] },
                 beautician_id: { type: ['integer', null] },
