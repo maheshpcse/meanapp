@@ -5,7 +5,7 @@ const CONFIG = require('../config/config.js');
 const USERQUERY = require('../library/userquery');
 const USERS = require('../model/Users-model');
 const BOOKING = require('../model/Booking-model.js');
-const BEAUTICIANS = require('../model/Beauticians-model.js');
+const BEAUTY_PARLOURS = require('../model/Beauty-parlours-model.js');
 const APPOINTMENT = require('../model/Appointment-model.js');
 const { resolve, reject } = require('bluebird');
 const moment = require('moment');
@@ -25,7 +25,7 @@ const getAllUserBookings = async (request, response, next) => {
             whereRaw += ` AND (bk.booking_status=${status})`;
         }
         // GET data list
-        await BEAUTICIANS.query()
+        await BEAUTY_PARLOURS.query()
             .select('u.user_id', 'u.fullname', 'u.username', 'bt.*', 'bk.*')
             .alias('bt')
             .innerJoin(`${BOOKING.tableName} AS bk`, 'bk.beautician_id', 'bt.beautician_id')
@@ -41,7 +41,7 @@ const getAllUserBookings = async (request, response, next) => {
                 throw listError;
             });
         // GET data list count
-        await BEAUTICIANS.query()
+        await BEAUTY_PARLOURS.query()
             .count('* as totalBookings')
             .alias('bt')
             .innerJoin(`${BOOKING.tableName} AS bk`, 'bk.beautician_id', 'bt.beautician_id')
@@ -89,14 +89,16 @@ const getAllUserAppointments = async (request, response, next) => {
         if (status === 0 || status === 1) {
             whereRaw += ` AND (bk.booking_status=${status})`;
         }
+        const dateTimeWhere = ` AND (bk.date='${moment().format('YYYY-MM-DD')}' AND (bk.time='${moment().format('HH:MM:ss')}' OR '${moment().format('HH:MM:ss')}'>bk.time))`;
+        console.log('date time where isss', dateTimeWhere);
         // GET data list
-        await BEAUTICIANS.query()
+        await BEAUTY_PARLOURS.query()
             .select('u.user_id', 'u.fullname', 'u.username', 'bt.*', 'bk.*', 'ap.*')
             .alias('bt')
             .innerJoin(`${BOOKING.tableName} AS bk`, 'bk.beautician_id', 'bt.beautician_id')
             .innerJoin(`${APPOINTMENT.tableName} AS ap`, 'ap.user_id', 'bk.user_id')
             .innerJoin(`${USERS.tableName} AS u`, 'u.user_id', 'ap.user_id')
-            .whereRaw(whereRaw + ` AND (bt.owner_id=${user_id})`)
+            .whereRaw(whereRaw + ` AND (bt.owner_id=${user_id})` + dateTimeWhere)
             .limit(limit)
             .offset(page)
             .then(async data => {
@@ -106,13 +108,13 @@ const getAllUserAppointments = async (request, response, next) => {
                 throw listError;
             });
         // GET data list count
-        await BEAUTICIANS.query()
+        await BEAUTY_PARLOURS.query()
             .count('* as totalBookings')
             .alias('bt')
             .innerJoin(`${BOOKING.tableName} AS bk`, 'bk.beautician_id', 'bt.beautician_id')
             .innerJoin(`${APPOINTMENT.tableName} AS ap`, 'ap.user_id', 'bk.user_id')
             .innerJoin(`${USERS.tableName} AS u`, 'u.user_id', 'ap.user_id')
-            .whereRaw(whereRaw + ` AND (bt.owner_id=${user_id}) AND (bk.booking_status!=2)`)
+            .whereRaw(whereRaw + ` AND (bt.owner_id=${user_id}) AND (bk.booking_status!=2)` + dateTimeWhere)
             .then(async data => {
                 console.log('Get all user bookings data count isss', data);
                 count = data.length ? data[0].totalBookings : 0;
@@ -242,7 +244,7 @@ const updateBookingStatusById = async (request, response, next) => {
     let result = {};
     let message = '';
     try {
-        let { booking_id, booking_status, user_id, date, issued_by } = request.body;
+        let { booking_id, booking_status, user_id, date, description, issued_by } = request.body;
         // UPDATE data list
         await BOOKING.transaction(async trx => {
             await BOOKING.query()
@@ -252,23 +254,25 @@ const updateBookingStatusById = async (request, response, next) => {
             .whereRaw(`bk.book_id=${booking_id}`)
             .then(async data => {
                 console.log('Update booking status by Id isss', data);
-                const appointmentPayload = {
-                    appointment_id: `#${moment().format('YYYYMMDDHHMMss')}`,
-                    user_id: Number(user_id),
-                    date: moment().format('YYYY-MM-DD'),
-                    description: null,
-                    issued_by: issued_by,
-                    status: 1
+                if (booking_status == 1) {
+                    const appointmentPayload = {
+                        appointment_id: `#${moment().format('YYYYMMDDHHMMss')}`,
+                        user_id: Number(user_id),
+                        date: moment().format('YYYY-MM-DD'),
+                        description: description,
+                        issued_by: issued_by,
+                        status: 1
+                    }
+                    // ADD data list
+                    await APPOINTMENT.query()
+                        .transacting(trx)
+                        .insert(appointmentPayload)
+                        .then(async data=> {
+                            console.log('Add appointment data isss', data);
+                        }).catch(addError => {
+                            throw addError;
+                        });
                 }
-                // ADD data list
-                await APPOINTMENT.query()
-                    .transacting(trx)
-                    .insert(appointmentPayload)
-                    .then(async data=> {
-                        console.log('Add appointment data isss', data);
-                    }).catch(addError => {
-                        throw addError;
-                    });
                 result = {
                     success: true,
                     error: false,

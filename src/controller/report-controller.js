@@ -4,7 +4,7 @@ const CONFIG = require('../config/config.js');
 const USERQUERY = require('../library/userquery');
 const USERS = require('../model/Users-model');
 const BOOKING = require('../model/Booking-model.js');
-const BEAUTICIANS = require('../model/Beauticians-model.js');
+const BEAUTY_PARLOURS = require('../model/Beauty-parlours-model.js');
 const APPOINTMENT = require('../model/Appointment-model.js');
 const REPORTS = require('../model/Report-model.js');
 const { request, response } = require('express');
@@ -20,6 +20,16 @@ const addReport = async (request, response, next) => {
     let result = {};
     let message = '';
     try {
+        // checking duplicate add user report
+        await checkDuplicateAddUserReport(request).then(async duplicates => {
+            console.log('Get dupllicates data isss', duplicates);
+            if (duplicates.length !== 0) {
+                message = 'Duplicate reports found';
+                throw message;
+            }
+        }).catch(getError => {
+            throw getError;
+        });
         // ADD data list
         await REPORTS.query()
             .insert(request.body)
@@ -82,6 +92,28 @@ const updateCheckup = async (request, response, next) => {
         }
     }
     return response.status(200).json(result);
+}
+
+// check duplicate add user report
+function checkDuplicateAddUserReport(request) {
+    return new Promise(async(resolve, reject) => {
+        try {
+            const { appointment_id, user_id, date } = request.body;
+            const whereRaw = `rp.appointment_id=${appointment_id} AND rp.user_id=${user_id} AND rp.date='${date}'`;
+            await REPORTS.query()
+                .select('rp.*')
+                .alias('rp')
+                .whereRaw(whereRaw)
+                .then(async data => {
+                    console.log('duplicate date isss', data);
+                    resolve(data);
+                }).catch(getError => {
+                    throw getError;
+                });
+        } catch (error) {
+            throw error;
+        }
+    });
 }
 
 module.exports = {

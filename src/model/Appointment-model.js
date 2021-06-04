@@ -17,7 +17,7 @@ class Appointment extends Model {
                 appointment_id: { type: ['string', null] },
                 user_id: { type: ['integer', 'number', null] },
                 date: { type: ['string', 'date', null] },
-                description: { type: ['string', null] },
+                description: { type: ['string', 'text', null] },
                 issued_by: { type: ['string', null] },
                 status: { type: ['integer', 'number', null] },
                 created_at: { type: 'datetime' },

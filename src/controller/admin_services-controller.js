@@ -5,7 +5,7 @@ const CONFIG = require('../config/config.js');
 const USERQUERY = require('../library/userquery');
 const USERS = require('../model/Users-model');
 const BOOKING = require('../model/Booking-model.js');
-const BEAUTICIANS = require('../model/Beauticians-model.js');
+const BEAUTY_PARLOURS = require('../model/Beauty-parlours-model.js');
 const BEAUTY_SERVICES = require('../model/Beauty_services-model.js');
 const BEAUTY_SUB_SERVICES = require('../model/Beauty_sub_services-model.js');
 
@@ -102,7 +102,7 @@ const addBeautyParlour = async (request, response, next) => {
     let result = {};
     let message = '';
     try {
-        await BEAUTICIANS.query().insert(request.body).then(async data => {
+        await BEAUTY_PARLOURS.query().insert(request.body).then(async data => {
             result = {
                 success: true,
                 error: false,

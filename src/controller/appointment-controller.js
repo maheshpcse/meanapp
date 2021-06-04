@@ -4,7 +4,7 @@ const CONFIG = require('../config/config.js');
 const USERQUERY = require('../library/userquery');
 const USERS = require('../model/Users-model');
 const BOOKING = require('../model/Booking-model.js');
-const BEAUTICIANS = require('../model/Beauticians-model.js');
+const BEAUTY_PARLOURS = require('../model/Beauty-parlours-model.js');
 const APPOINTMENT = require('../model/Appointment-model.js');
 
 // ADD appointment - API
