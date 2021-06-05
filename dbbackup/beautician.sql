@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `services` text DEFAULT NULL,
   `date` date DEFAULT NULL,
   `time` time DEFAULT NULL,
-  `booking_status` tinyint(1) DEFAULT 1 COMMENT '0-Reject, 1-Accept, 2-Pending',
+  `booking_status` tinyint(1) DEFAULT 1 COMMENT '0-Reject, 1-Accept, 2-Pending, 3-Completed',
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`book_id`)

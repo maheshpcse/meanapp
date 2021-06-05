@@ -36,6 +36,7 @@ router.post('/delete_appointment', appointmentCtrl.deleteAppointment);
 
 // user reports API URL's
 router.post('/get_checkup_details', reportsCtrl.getCheckupDetails);
+router.post('/get_all_user_reports_by_id', reportsCtrl.getAllUserReportsById);
 router.post('/add_report', reportsCtrl.addReport);
 router.post('/update_checkup', reportsCtrl.updateCheckup);
 

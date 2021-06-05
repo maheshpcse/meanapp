@@ -5,6 +5,8 @@ const USERQUERY = require('../library/userquery');
 const USERS = require('../model/Users-model');
 const BOOKING = require('../model/Booking-model.js');
 const BEAUTY_PARLOURS = require('../model/Beauty-parlours-model.js');
+const BEAUTY_SERVICES = require('../model/Beauty_services-model.js');
+const BEAUTY_SUB_SERVICES = require('../model/Beauty_sub_services-model.js');
 const APPOINTMENT = require('../model/Appointment-model.js');
 const REPORTS = require('../model/Report-model.js');
 const { request, response } = require('express');
@@ -12,6 +14,79 @@ const { request, response } = require('express');
 // GET report checkup details - API
 const getCheckupDetails = async (request, response, next) => {
     
+}
+
+// GET all user reports
+const getAllUserReportsById = async (request, response, next) => {
+    console.log('Request body isss', request.body);
+    let result = {};
+    let message = '';
+    let list = [];
+    let count = 0;
+    let mainData = [];
+    try {
+        let {
+            limit,
+            page,
+            query,
+            status,
+            user_id
+        } = request.body;
+        page = (Number(page) - 1) * Number(limit);
+        let whereRaw = `(bk.booking_id LIKE '%${query}%' OR bk.date LIKE '%${query}%' OR bk.time LIKE '%${query}%' OR bk.services LIKE '%${query}%' OR bp.beautician_name LIKE '%${query}%' OR bp.experience LIKE '%${query}%' OR bp.parlour_name LIKE '%${query}%' OR bp.law_firm_name LIKE '%${query}%' OR bp.place LIKE '%${query}%')`;
+        if (status === 1 || status === 0) {
+            whereRaw += ` AND (bk.booking_status=${Number(status)})`;
+        }
+        console.log('where condition isss', whereRaw);
+        // GET data list
+        await BOOKING.query()
+            .select('bk.*', 'bp.beautician_id', 'bp.beautician_name', 'bp.experience', 'bp.parlour_name', 'bp.law_firm_name', 'bp.place', 'bp.rating', 're.*')
+            .alias('bk')
+            .innerJoin(`${BEAUTY_PARLOURS.tableName} as bp`, 'bp.beautician_id', 'bk.beautician_id')
+            .innerJoin(`${REPORTS.tableName} as re`, 're.user_id', 'bk.user_id')
+            .innerJoin(`${USERS.tableName} as u`, 'u.user_id', 're.user_id')
+            .whereRaw(`bk.user_id=${user_id} AND ${whereRaw}`)
+            .limit(limit)
+            .offset(page)
+            .then(async data => {
+                console.log('Get all user reports data isss', data);
+                list = data;
+            }).catch(listError => {
+                throw listError;
+            });
+        // GET data list count
+        await BOOKING.query()
+            .count('* as totalReports')
+            .alias('bk')
+            .innerJoin(`${BEAUTY_PARLOURS.tableName} as bp`, 'bp.beautician_id', 'bk.beautician_id')
+            .innerJoin(`${REPORTS.tableName} as re`, 're.user_id', 'bk.user_id')
+            .innerJoin(`${USERS.tableName} as u`, 'u.user_id', 're.user_id')
+            .whereRaw(`bk.user_id=${user_id} AND ${whereRaw}`)
+            .then(async data => {
+                console.log('Get all user reports data count isss', data);
+                count = data.length ? data[0].totalReports : 0;
+            }).catch(countError => {
+                throw countError;
+            });
+        result = {
+            success: true,
+            error: false,
+            statusCode: 200,
+            message: 'Get all user reports successful',
+            data: list,
+            count: count
+        }
+    } catch (error) {
+        console.log('Error at try catch api result', error);
+        result = {
+            success: false,
+            error: true,
+            statusCode: 500,
+            message: message || 'Error at try catch api result',
+            data: []
+        }
+    }
+    return response.status(200).json(result);
 }
 
 // ADD report - API
@@ -118,6 +193,7 @@ function checkDuplicateAddUserReport(request) {
 
 module.exports = {
     getCheckupDetails,
+    getAllUserReportsById,
     addReport,
     updateCheckup
 }
