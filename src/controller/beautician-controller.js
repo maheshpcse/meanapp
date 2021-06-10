@@ -8,8 +8,8 @@ const BEAUTY_PARLOURS = require('../model/Beauty-parlours-model.js');
 const BEAUTY_SERVICES = require('../model/Beauty_services-model.js');
 const BEAUTY_SUB_SERVICES = require('../model/Beauty_sub_services-model.js');
 
-// GET all beauticians - API
-const getAllBeauticians = async (request, response, next) => {
+// GET all beauty parlours - API
+const getAllBeautyParlours = async (request, response, next) => {
     console.log('Request body isss', request.body);
     let result = {};
     let message = '';
@@ -159,6 +159,6 @@ const getAllUsers = async (request, response, next) => {
 }
 
 module.exports = {
-    getAllBeauticians,
+    getAllBeautyParlours,
     getAllUsers
 }

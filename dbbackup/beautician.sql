@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `beauty_services` (
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`main_service_id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 6 DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 DEFAULT CHARSET = utf8mb4;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: beauty_sub_services
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `beauty_sub_services` (
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`sub_service_id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 25 DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB AUTO_INCREMENT = 28 DEFAULT CHARSET = utf8mb4;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: booking
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`user_id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 15 DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 DEFAULT CHARSET = utf8mb4;
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: appointment
@@ -729,6 +729,38 @@ VALUES
     '2021-05-31 14:41:27',
     '2021-05-31 14:41:27'
   );
+INSERT INTO
+  `beauty_services` (
+    `main_service_id`,
+    `service_name`,
+    `status`,
+    `created_at`,
+    `updated_at`
+  )
+VALUES
+  (
+    7,
+    'test care',
+    1,
+    '2021-06-09 14:50:19',
+    '2021-06-09 14:50:19'
+  );
+INSERT INTO
+  `beauty_services` (
+    `main_service_id`,
+    `service_name`,
+    `status`,
+    `created_at`,
+    `updated_at`
+  )
+VALUES
+  (
+    8,
+    'test care1',
+    1,
+    '2021-06-09 14:52:31',
+    '2021-06-09 14:52:31'
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: beauty_sub_services
@@ -1213,6 +1245,66 @@ VALUES
     1,
     '2021-05-31 14:52:45',
     '2021-05-31 14:52:45'
+  );
+INSERT INTO
+  `beauty_sub_services` (
+    `sub_service_id`,
+    `main_service_id`,
+    `sub_service_name`,
+    `service_amount`,
+    `status`,
+    `created_at`,
+    `updated_at`
+  )
+VALUES
+  (
+    25,
+    7,
+    'test sub one',
+    '1200',
+    1,
+    '2021-06-09 14:50:19',
+    '2021-06-09 14:50:19'
+  );
+INSERT INTO
+  `beauty_sub_services` (
+    `sub_service_id`,
+    `main_service_id`,
+    `sub_service_name`,
+    `service_amount`,
+    `status`,
+    `created_at`,
+    `updated_at`
+  )
+VALUES
+  (
+    26,
+    7,
+    'test sub two',
+    '1560',
+    1,
+    '2021-06-09 14:50:19',
+    '2021-06-09 14:50:19'
+  );
+INSERT INTO
+  `beauty_sub_services` (
+    `sub_service_id`,
+    `main_service_id`,
+    `sub_service_name`,
+    `service_amount`,
+    `status`,
+    `created_at`,
+    `updated_at`
+  )
+VALUES
+  (
+    27,
+    8,
+    'sub care1',
+    '450',
+    1,
+    '2021-06-09 14:52:31',
+    '2021-06-09 14:52:31'
   );
 
 # ------------------------------------------------------------
@@ -1882,6 +1974,62 @@ VALUES
     1,
     '2021-05-29 16:36:51',
     '2021-05-29 16:42:26'
+  );
+INSERT INTO
+  `users` (
+    `user_id`,
+    `fullname`,
+    `username`,
+    `email`,
+    `password`,
+    `mobile`,
+    `profile`,
+    `role`,
+    `status`,
+    `created_at`,
+    `updated_at`
+  )
+VALUES
+  (
+    15,
+    'Test Thirteen',
+    'test013',
+    'testthirteen013@gmail.com',
+    '20210610150623',
+    '2596317801',
+    NULL,
+    'beautician',
+    1,
+    '2021-06-10 15:30:50',
+    '2021-06-10 15:30:50'
+  );
+INSERT INTO
+  `users` (
+    `user_id`,
+    `fullname`,
+    `username`,
+    `email`,
+    `password`,
+    `mobile`,
+    `profile`,
+    `role`,
+    `status`,
+    `created_at`,
+    `updated_at`
+  )
+VALUES
+  (
+    16,
+    'Test Fourteen',
+    'test014',
+    'testfourteen014@gmail.com',
+    '20210610210624',
+    '2222233333',
+    NULL,
+    'beautician',
+    1,
+    '2021-06-10 20:48:32',
+    '2021-06-10 21:09:45'
   );
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

@@ -41,12 +41,15 @@ router.post('/add_report', reportsCtrl.addReport);
 router.post('/update_checkup', reportsCtrl.updateCheckup);
 
 // beauticians API URL's
-router.post('/get_all_beauticians', beauticianCtrl.getAllBeauticians);
+router.post('/get_all_beauty_parlours', beauticianCtrl.getAllBeautyParlours);
 router.get('/get_all_users', beauticianCtrl.getAllUsers);
 
 // admin services API URL's
-router.post('/add_beautician', adminServiceCtrl.addBeautician);
-router.post('/add_beauty_parlour', adminServiceCtrl.addBeautyParlour);
+router.post('/get_all_beauticians', adminServiceCtrl.getAllBeauticians);
 router.get('/get_all_beauty_services', adminServiceCtrl.getAllBeautyServices);
+router.post('/add_beautician', adminServiceCtrl.addUpdateBeautician);
+router.post('/delete_restore_beautician', adminServiceCtrl.deleteRestoreBeautician);
+router.post('/add_beauty_parlour', adminServiceCtrl.addUpdateBeautyParlour);
+router.post('/add_beauty_services', adminServiceCtrl.addUpdateBeautyServices);
 
 module.exports = router;
