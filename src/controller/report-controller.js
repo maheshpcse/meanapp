@@ -39,13 +39,14 @@ const getAllUserReportsById = async (request, response, next) => {
         }
         console.log('where condition isss', whereRaw);
         // GET data list
-        await BOOKING.query()
+        await REPORTS.query()
             .select('bk.*', 'bp.beautician_id', 'bp.beautician_name', 'bp.experience', 'bp.parlour_name', 'bp.law_firm_name', 'bp.place', 'bp.rating', 're.*')
-            .alias('bk')
+            .alias('re')
+            .innerJoin(`${APPOINTMENT.tableName} as ap`, 'ap.app_id', 're.appointment_id')
+            .innerJoin(`${BOOKING.tableName} as bk`, 'bk.book_id', 'ap.book_id')
             .innerJoin(`${BEAUTY_PARLOURS.tableName} as bp`, 'bp.beautician_id', 'bk.beautician_id')
-            .innerJoin(`${REPORTS.tableName} as re`, 're.user_id', 'bk.user_id')
             .innerJoin(`${USERS.tableName} as u`, 'u.user_id', 're.user_id')
-            .whereRaw(`bk.user_id=${user_id} AND ${whereRaw}`)
+            .whereRaw(`re.user_id=${user_id} AND ${whereRaw}`)
             .limit(limit)
             .offset(page)
             .then(async data => {
@@ -55,13 +56,14 @@ const getAllUserReportsById = async (request, response, next) => {
                 throw listError;
             });
         // GET data list count
-        await BOOKING.query()
+        await REPORTS.query()
             .count('* as totalReports')
-            .alias('bk')
+            .alias('re')
+            .innerJoin(`${APPOINTMENT.tableName} as ap`, 'ap.app_id', 're.appointment_id')
+            .innerJoin(`${BOOKING.tableName} as bk`, 'bk.book_id', 'ap.book_id')
             .innerJoin(`${BEAUTY_PARLOURS.tableName} as bp`, 'bp.beautician_id', 'bk.beautician_id')
-            .innerJoin(`${REPORTS.tableName} as re`, 're.user_id', 'bk.user_id')
             .innerJoin(`${USERS.tableName} as u`, 'u.user_id', 're.user_id')
-            .whereRaw(`bk.user_id=${user_id} AND ${whereRaw}`)
+            .whereRaw(`re.user_id=${user_id} AND ${whereRaw}`)
             .then(async data => {
                 console.log('Get all user reports data count isss', data);
                 count = data.length ? data[0].totalReports : 0;

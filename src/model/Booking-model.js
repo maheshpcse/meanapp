@@ -19,6 +19,7 @@ class Booking extends Model {
                 beautician_id: { type: ['integer', null] },
                 law_firm_name: { type: ['string', null] },
                 services: { type: ['string', 'text', null] },
+                amounts: { type: ['string', 'text', null] },
                 date: { type: ['string', 'date', null] },
                 time: { type: ['string', 'time', null] },
                 booking_status: { type: ['integer', 'number', null] },

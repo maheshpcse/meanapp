@@ -1,6 +1,7 @@
 const _ = require('underscore');
 const jwt = require('jsonwebtoken');
 const randomstring = require("randomstring");
+const multer = require('multer');
 const CONFIG = require('../config/config.js');
 const USERQUERY = require('../library/userquery');
 const USERS = require('../model/Users-model');
@@ -8,6 +9,19 @@ const BOOKING = require('../model/Booking-model.js');
 const BEAUTY_PARLOURS = require('../model/Beauty-parlours-model.js');
 const BEAUTY_SERVICES = require('../model/Beauty_services-model.js');
 const BEAUTY_SUB_SERVICES = require('../model/Beauty_sub_services-model.js');
+const BEAUTY_SERVICE_WORKERS = require('../model/Beauty_service_workers-model.js');
+
+// FILE UPLOAD with multer configuration
+var DIR = './src/uploads/';
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, DIR)
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + "-" + Date.now() + "-" + file.originalname)
+    }
+});
+var upload = multer({ storage: storage }).single('file');
 
 // GET beauty parlour services - API
 const getAllBeautyServices = async (request, response, next) => {
@@ -36,13 +50,13 @@ const getAllBeautyServices = async (request, response, next) => {
             }).catch(listError => {
                 throw listError;
             });
-            result = {
-                success: true,
-                error: false,
-                statusCode: 200,
-                message: 'Get all beauty services list successful',
-                data: mainData
-            }
+        result = {
+            success: true,
+            error: false,
+            statusCode: 200,
+            message: 'Get all beauty services list successful',
+            data: mainData
+        }
     } catch (error) {
         console.log('Error at try catch api result', error);
         result = {
@@ -63,6 +77,7 @@ const getAllBeauticians = async (request, response, next) => {
     let message = '';
     let list = [];
     let count = 0;
+    let services = [];
     try {
         let {
             limit,
@@ -77,14 +92,49 @@ const getAllBeauticians = async (request, response, next) => {
         }
         // GET data list
         await USERS.query()
-            .select('u.*')
+            .select('u.*', 'bsw.*')
             .alias('u')
+            .innerJoin(`${BEAUTY_SERVICE_WORKERS.tableName} AS bsw`, 'bsw.owner_id', 'u.user_id')
             .whereRaw(`${whereRaw} AND u.role='beautician'`)
             .limit(limit)
             .offset(page)
             .then(async data => {
                 console.log('Get all beauticians data isss', data);
                 list = data;
+                await BEAUTY_SUB_SERVICES.query()
+                    .select('bss.*', 'bss.sub_service_id as id', 'bss.sub_service_name as itemName')
+                    .alias('bss')
+                    .then(async data1 => {
+                        console.log('Get all sub services data isss', data1);
+                        services = data1;
+                    }).catch(getError => {
+                        throw getError;
+                    });
+                const groupByServices = _.groupBy(services, 'main_service_id');
+                let index = 0;
+                for (let item of list) {
+                    item.subservices = [];
+                    for (const item of Object.keys(groupByServices)) {
+                        list[index].subservices.push([]);
+                    }
+                    index += 1;
+                }
+                let id = 0;
+                for (let item of list) {
+                    const arr = _.sortBy(item.services.split(','));
+                    const tempArr = _.pluck(services, 'sub_service_id');
+                    for (const num of arr) {
+                        var pos = tempArr.indexOf(Number(num));
+                        for (const data of Object.values(groupByServices)) {
+                            const values = _.pluck(data, 'sub_service_id');
+                            if (values.includes(Number(num))) {
+                                var place = Object.values(groupByServices).indexOf(data);
+                                list[id].subservices[place].push(services[pos]);
+                            }
+                        }
+                    }
+                    id += 1;
+                }
             }).catch(listError => {
                 throw listError;
             });
@@ -92,6 +142,7 @@ const getAllBeauticians = async (request, response, next) => {
         await USERS.query()
             .count('* as totalBeauticians')
             .alias('u')
+            .innerJoin(`${BEAUTY_SERVICE_WORKERS.tableName} AS bsw`, 'bsw.owner_id', 'u.user_id')
             .whereRaw(`${whereRaw} AND u.role='beautician'`)
             .then(async data => {
                 console.log('Get all beauticians data count isss', data);
@@ -126,33 +177,56 @@ const addUpdateBeautician = async (request, response, next) => {
     let result = {};
     let message = '';
     try {
-        const beauticianPayload = {
-            user_id: request.body.user_id,
-            fullname: request.body.fullname,
-            username: request.body.username,
-            email: request.body.email,
-            password: request.body.password,
-            mobile: request.body.mobile.toString(),
-            profile: null,
-            role: 'beautician',
-            status: 1
-        }
+        let { users, workers } = request.body;
         let usersQuery = ``;
-        if (!beauticianPayload.user_id) {
-            usersQuery = USERS.query().insert(beauticianPayload);
-        } else {
-            usersQuery = USERS.query().update(beauticianPayload).whereRaw(`user_id=${beauticianPayload.user_id}`);
-        }
-        await usersQuery.then(async data => {
-            result = {
-                success: true,
-                error: false,
-                statusCode: 200,
-                message: !beauticianPayload.user_id ? 'Add beautician successful' : 'Update beautician successful',
-                data: data
+        // start transaction to insert/update beautician data
+        await USERS.transaction(async trx => {
+            // // UPLOAD A USER PROFILE HERE
+            // await upload(request, response, async (err, data) => {
+            //     console.log('file extension is:', request.file);
+            //     // console.log('file extension is:', request.file.originalname.split('.')[1]);
+            //     if (!request.file) {
+            //         message = 'No file received';
+            //     }
+            //     else if (err) {
+            //         message = 'Error while uploading a file';
+            //     } else {
+                      // var profileName = request.file.filename;
+                      // var profilePath = `http://${CONFIG.server.host}:${CONFIG.server.port}` + request.file.path;
+                      // users.profile = profilePath;
+            //     }
+            // });
+            if (!users.user_id) {
+                usersQuery = USERS.query().transacting(trx).insert(users);
+            } else {
+                usersQuery = USERS.query().transacting(trx).update(users).whereRaw(`user_id=${users.user_id}`);
             }
-        }).catch(getError => {
-            throw getError;
+            await usersQuery.then(async data => {
+                workers.owner_id = data['user_id'];
+                if (!workers.worker_id) {
+                    workersQuery = BEAUTY_SERVICE_WORKERS.query().transacting(trx).insert(workers);
+                } else {
+                    workersQuery = BEAUTY_SERVICE_WORKERS.query().transacting(trx).update(workers).whereRaw(`worker_id=${workers.worker_id}`);
+                }
+                await workersQuery.then(async data1 => {
+                    result = {
+                        success: true,
+                        error: false,
+                        statusCode: 200,
+                        message: !users.user_id ? 'Add beautician successful' : 'Update beautician successful',
+                        data: {
+                            data,
+                            data1
+                        }
+                    }
+                }).catch(insertError => {
+                    throw insertError;
+                });
+            }).catch(insertError1 => {
+                throw insertError1;
+            });
+        }).catch(trxError => {
+            throw trxError;
         });
     } catch (error) {
         console.log('Error at try catch api result', error);
@@ -188,9 +262,9 @@ const deleteRestoreBeautician = async (request, response, next) => {
                     message: beauticianPayload.status === 0 ? 'Delete beautician successful' : 'Restore beautician successful',
                     data: data
                 }
-        }).catch(getError => {
-            throw getError;
-        });
+            }).catch(getError => {
+                throw getError;
+            });
     } catch (error) {
         console.log('Error at try catch api result', error);
         result = {

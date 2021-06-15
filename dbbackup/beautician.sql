@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS `appointment` (
   `user_id` int(11) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `description` text DEFAULT NULL,
+  `service_amounts` text DEFAULT NULL,
   `issued_by` varchar(50) DEFAULT NULL,
   `status` tinyint(1) DEFAULT 1,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
@@ -45,6 +46,25 @@ CREATE TABLE IF NOT EXISTS `beauty_parlours` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`beautician_id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 11 DEFAULT CHARSET = utf8mb4;
+
+# ------------------------------------------------------------
+# SCHEMA DUMP FOR TABLE: beauty_service_workers
+# ------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `beauty_service_workers` (
+  `worker_id` int(11) NOT NULL AUTO_INCREMENT,
+  `owner_id` int(11) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `experience` int(11) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `mobile` varchar(100) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT 1,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`worker_id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: beauty_services
@@ -86,6 +106,7 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `owner_id` int(11) DEFAULT NULL,
   `law_firm_name` varchar(50) DEFAULT NULL,
   `services` text DEFAULT NULL,
+  `amounts` text DEFAULT NULL,
   `date` date DEFAULT NULL,
   `time` time DEFAULT NULL,
   `booking_status` tinyint(1) DEFAULT 1 COMMENT '0-Reject, 1-Accept, 2-Pending, 3-Completed',
@@ -123,13 +144,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
   `mobile` varchar(20) DEFAULT NULL,
-  `profile` varchar(255) DEFAULT NULL,
+  `profile` text DEFAULT NULL,
   `role` varchar(20) DEFAULT 'user',
   `status` tinyint(1) DEFAULT 1,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`user_id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 17 DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB AUTO_INCREMENT = 43 DEFAULT CHARSET = utf8mb4;
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: appointment
@@ -142,6 +163,7 @@ INSERT INTO
     `user_id`,
     `date`,
     `description`,
+    `service_amounts`,
     `issued_by`,
     `status`,
     `created_at`,
@@ -154,10 +176,11 @@ VALUES
     9,
     '2021-05-27',
     'Lakme Youth Infinity Sculpting Facial,Tangy Cleanup,Marine Body Glow with Body Masque,Back Massage - Detoxifying',
+    '3100,1000,4650,700',
     'test001',
     1,
     '2021-05-24 21:27:50',
-    '2021-06-02 19:17:43'
+    '2021-06-13 21:17:14'
   );
 INSERT INTO
   `appointment` (
@@ -166,6 +189,7 @@ INSERT INTO
     `user_id`,
     `date`,
     `description`,
+    `service_amounts`,
     `issued_by`,
     `status`,
     `created_at`,
@@ -178,10 +202,11 @@ VALUES
     10,
     '2021-05-28',
     'Tangy Cleanup,Marine Body Glow with Body Masque,Back Massage - Stress Relief,TressPlex Spa Therapy- Men',
+    '1000,4650,700,1850',
     'test001',
     1,
     '2021-05-24 21:27:50',
-    '2021-06-02 19:17:59'
+    '2021-06-13 21:17:25'
   );
 INSERT INTO
   `appointment` (
@@ -190,6 +215,7 @@ INSERT INTO
     `user_id`,
     `date`,
     `description`,
+    `service_amounts`,
     `issued_by`,
     `status`,
     `created_at`,
@@ -202,10 +228,11 @@ VALUES
     12,
     '2021-06-02',
     'Lakme Gloss Intense Hydrating Ritual,Back Massage - Stress Relief',
+    '2100,700',
     'test002',
     1,
     '2021-05-24 21:30:47',
-    '2021-06-02 19:18:15'
+    '2021-06-13 21:17:37'
   );
 INSERT INTO
   `appointment` (
@@ -214,6 +241,7 @@ INSERT INTO
     `user_id`,
     `date`,
     `description`,
+    `service_amounts`,
     `issued_by`,
     `status`,
     `created_at`,
@@ -226,10 +254,11 @@ VALUES
     13,
     '2021-06-02',
     'Marine Body Glow with Body Masque,Back Massage - Detoxifying,MESMER-EYES - Sn. Artist, Bridal Expert',
+    '4650,700,1700',
     'test002',
     1,
     '2021-05-24 21:30:47',
-    '2021-06-02 19:19:17'
+    '2021-06-13 21:17:47'
   );
 INSERT INTO
   `appointment` (
@@ -238,6 +267,7 @@ INSERT INTO
     `user_id`,
     `date`,
     `description`,
+    `service_amounts`,
     `issued_by`,
     `status`,
     `created_at`,
@@ -250,10 +280,11 @@ VALUES
     14,
     '2021-05-30',
     'TressPlex Spa Therapy- Men,Insta Care Spa- Men,Bridal occasion Ultimate Airbrush Make-Up- Bridal Expert,YOUNG FOREVER - Artist',
+    '1850,700,15500,4500',
     'test002',
     1,
     '2021-05-30 21:49:30',
-    '2021-06-02 19:19:29'
+    '2021-06-13 21:17:57'
   );
 INSERT INTO
   `appointment` (
@@ -262,6 +293,7 @@ INSERT INTO
     `user_id`,
     `date`,
     `description`,
+    `service_amounts`,
     `issued_by`,
     `status`,
     `created_at`,
@@ -274,10 +306,11 @@ VALUES
     11,
     '2021-06-02',
     'Tangy Cleanup,Marine Body Glow with Body Masque,TressPlex Spa Therapy- Men',
+    '1000,4650,1850',
     'test001',
     1,
     '2021-06-02 19:40:30',
-    '2021-06-02 19:40:30'
+    '2021-06-13 21:18:23'
   );
 
 # ------------------------------------------------------------
@@ -644,6 +677,11 @@ VALUES
     '2021-06-02 20:54:03',
     '2021-06-03 20:43:15'
   );
+
+# ------------------------------------------------------------
+# DATA DUMP FOR TABLE: beauty_service_workers
+# ------------------------------------------------------------
+
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: beauty_services
@@ -1320,6 +1358,7 @@ INSERT INTO
     `owner_id`,
     `law_firm_name`,
     `services`,
+    `amounts`,
     `date`,
     `time`,
     `booking_status`,
@@ -1335,11 +1374,12 @@ VALUES
     3,
     'Above The Bar',
     'Lakme Youth Infinity Sculpting Facial,Tangy Cleanup,Marine Body Glow with Body Masque,Back Massage - Detoxifying',
+    '3100,1000,4650,700',
     '2021-06-01',
     '09:00:00',
     1,
     '2021-05-24 21:12:36',
-    '2021-06-02 21:38:42'
+    '2021-06-13 21:04:58'
   );
 INSERT INTO
   `booking` (
@@ -1350,6 +1390,7 @@ INSERT INTO
     `owner_id`,
     `law_firm_name`,
     `services`,
+    `amounts`,
     `date`,
     `time`,
     `booking_status`,
@@ -1365,11 +1406,12 @@ VALUES
     3,
     'Justice Served',
     'Tangy Cleanup,Marine Body Glow with Body Masque,Back Massage - Stress Relief,TressPlex Spa Therapy- Men',
+    '1000,4650,700,1850',
     '2021-05-27',
     '11:30:00',
     1,
     '2021-05-24 21:12:36',
-    '2021-06-02 19:11:45'
+    '2021-06-13 21:08:06'
   );
 INSERT INTO
   `booking` (
@@ -1380,6 +1422,7 @@ INSERT INTO
     `owner_id`,
     `law_firm_name`,
     `services`,
+    `amounts`,
     `date`,
     `time`,
     `booking_status`,
@@ -1395,11 +1438,12 @@ VALUES
     3,
     'Just Justice',
     'Tangy Cleanup,Marine Body Glow with Body Masque,TressPlex Spa Therapy- Men',
+    '1000,4650,1850',
     '2021-05-29',
     '03:00:00',
     1,
     '2021-05-24 21:14:28',
-    '2021-06-02 19:40:30'
+    '2021-06-13 21:10:40'
   );
 INSERT INTO
   `booking` (
@@ -1410,6 +1454,7 @@ INSERT INTO
     `owner_id`,
     `law_firm_name`,
     `services`,
+    `amounts`,
     `date`,
     `time`,
     `booking_status`,
@@ -1425,11 +1470,12 @@ VALUES
     4,
     'Actionable Attorneys',
     'Lakme Gloss Intense Hydrating Ritual,Back Massage - Stress Relief',
+    '2100,700',
     '2021-06-01',
     '04:30:00',
     1,
     '2021-05-24 21:14:28',
-    '2021-06-02 19:14:51'
+    '2021-06-13 21:12:00'
   );
 INSERT INTO
   `booking` (
@@ -1440,6 +1486,7 @@ INSERT INTO
     `owner_id`,
     `law_firm_name`,
     `services`,
+    `amounts`,
     `date`,
     `time`,
     `booking_status`,
@@ -1455,11 +1502,12 @@ VALUES
     4,
     'Attorney Alliance',
     'Marine Body Glow with Body Masque,Back Massage - Detoxifying,MESMER-EYES - Sn. Artist, Bridal Expert',
+    '4650,700,1700',
     '2021-06-02',
     '08:00:00',
     1,
     '2021-05-24 21:15:03',
-    '2021-06-02 19:15:33'
+    '2021-06-13 21:12:58'
   );
 INSERT INTO
   `booking` (
@@ -1470,6 +1518,7 @@ INSERT INTO
     `owner_id`,
     `law_firm_name`,
     `services`,
+    `amounts`,
     `date`,
     `time`,
     `booking_status`,
@@ -1485,11 +1534,12 @@ VALUES
     4,
     'Above The Bar',
     'TressPlex Spa Therapy- Men,Insta Care Spa- Men,Bridal occasion Ultimate Airbrush Make-Up- Bridal Expert,YOUNG FOREVER - Artist',
+    '1850,700,15500,4500',
     '2021-05-26',
     '22:05:45',
     1,
     '2021-05-25 22:01:50',
-    '2021-06-02 19:16:14'
+    '2021-06-13 21:14:30'
   );
 INSERT INTO
   `booking` (
@@ -1500,6 +1550,7 @@ INSERT INTO
     `owner_id`,
     `law_firm_name`,
     `services`,
+    `amounts`,
     `date`,
     `time`,
     `booking_status`,
@@ -1515,11 +1566,12 @@ VALUES
     5,
     'Just Justice',
     'Tangy Cleanup,Fruit Facial,Back Massage - Detoxifying',
+    '1000,1600,700',
     '2021-06-03',
     '10:06:59',
     2,
     '2021-06-02 19:24:35',
-    '2021-06-02 19:28:10'
+    '2021-06-13 21:16:32'
   );
 
 # ------------------------------------------------------------
@@ -1571,12 +1623,12 @@ VALUES
     1,
     9,
     '2021-06-02',
-    '17500',
+    '9450',
     'sample report',
     'test001',
     1,
     '2021-06-02 21:28:49',
-    '2021-06-02 21:28:49'
+    '2021-06-13 21:26:45'
   );
 
 # ------------------------------------------------------------
@@ -2029,7 +2081,7 @@ VALUES
     'beautician',
     1,
     '2021-06-10 20:48:32',
-    '2021-06-11 21:24:28'
+    '2021-06-13 10:29:24'
   );
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

@@ -272,6 +272,8 @@ const updateBookingStatusById = async (request, response, next) => {
             user_id,
             date,
             description,
+            services,
+            amounts,
             issued_by
         } = request.body;
         // UPDATE data list
@@ -291,6 +293,8 @@ const updateBookingStatusById = async (request, response, next) => {
                             user_id: Number(user_id),
                             date: moment().format('YYYY-MM-DD'),
                             description: description,
+                            services: services,
+                            amounts: amounts,
                             issued_by: issued_by,
                             status: 1
                         }
