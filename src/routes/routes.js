@@ -45,6 +45,7 @@ router.post('/get_all_beauty_parlours', beauticianCtrl.getAllBeautyParlours);
 router.get('/get_all_users', beauticianCtrl.getAllUsers);
 
 // admin services API URL's
+router.get('/get_all_dashboard_counts', adminServiceCtrl.getAllDashboardCounts);
 router.post('/get_all_beauticians', adminServiceCtrl.getAllBeauticians);
 router.get('/get_all_beauty_services', adminServiceCtrl.getAllBeautyServices);
 router.post('/add_beautician', adminServiceCtrl.addUpdateBeautician);

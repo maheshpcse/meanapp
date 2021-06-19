@@ -23,6 +23,75 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage }).single('file');
 
+// GET all users, beauticians, beauty parlours and beauty services count - API
+const getAllDashboardCounts = async (request, response, next) => {
+    console.log('Request body isss', request.body);
+    let result = {};
+    let message = '';
+    let mainData = [];
+    try {
+        // GET data list
+        await USERS.query()
+            .count('* as totalUsers')
+            .alias('u')
+            .whereRaw(`u.role='user'`)
+            .then(async data => {
+                console.log('Get all users count isss', data);
+                mainData[0] = data.length ? data[0].totalUsers : 0;
+            }).catch(listError => {
+                throw listError;
+            });
+        // GET data list
+        await USERS.query()
+            .count('* as totalBeauticians')
+            .alias('u')
+            .whereRaw(`u.role='beautician'`)
+            .then(async data1 => {
+                console.log('Get all beauticians count isss', data1);
+                mainData[1] = data1.length ? data1[0].totalBeauticians : 0;
+            }).catch(listError1 => {
+                throw listError1;
+            });
+        // GET data list
+        await BEAUTY_PARLOURS.query()
+            .count('* as totalParlours')
+            .alias('bp')
+            .then(async data2 => {
+                console.log('Get all beauty parlours count isss', data2);
+                mainData[2] = data2.length ? data2[0].totalParlours : 0;
+            }).catch(listError2 => {
+                throw listError2;
+            });
+        // GET data list
+        await BEAUTY_SERVICES.query()
+            .count('* as totalServices')
+            .alias('bs')
+            .then(async data3 => {
+                console.log('Get all beauty services count isss', data3);
+                mainData[3] = data3.length ? data3[0].totalServices : 0;
+            }).catch(listError3 => {
+                throw listError3;
+            });
+        result = {
+            success: true,
+            error: false,
+            statusCode: 200,
+            message: 'Get all dashboard counts successful',
+            data: mainData
+        }
+    } catch (error) {
+        console.log('Error at try catch api result', error);
+        result = {
+            success: false,
+            error: true,
+            statusCode: 500,
+            message: message || 'Error at try catch api result',
+            data: []
+        }
+    }
+    return response.status(200).json(result);
+}
+
 // GET beauty parlour services - API
 const getAllBeautyServices = async (request, response, next) => {
     console.log('Request body isss', request.body);
@@ -191,9 +260,9 @@ const addUpdateBeautician = async (request, response, next) => {
             //     else if (err) {
             //         message = 'Error while uploading a file';
             //     } else {
-                      // var profileName = request.file.filename;
-                      // var profilePath = `http://${CONFIG.server.host}:${CONFIG.server.port}` + request.file.path;
-                      // users.profile = profilePath;
+            // var profileName = request.file.filename;
+            // var profilePath = `http://${CONFIG.server.host}:${CONFIG.server.port}` + request.file.path;
+            // users.profile = profilePath;
             //     }
             // });
             if (!users.user_id) {
@@ -251,20 +320,39 @@ const deleteRestoreBeautician = async (request, response, next) => {
             user_id: request.body.user_id,
             status: request.body.status
         }
-        await USERS.query()
-            .update(beauticianPayload)
-            .whereRaw(`user_id=${beauticianPayload.user_id}`)
-            .then(async data => {
-                result = {
-                    success: true,
-                    error: false,
-                    statusCode: 200,
-                    message: beauticianPayload.status === 0 ? 'Delete beautician successful' : 'Restore beautician successful',
-                    data: data
-                }
-            }).catch(getError => {
-                throw getError;
-            });
+        await USERS.transaction(async trx => {
+            await USERS.query().transacting(trx)
+                .update(beauticianPayload)
+                .whereRaw(`user_id=${beauticianPayload.user_id}`)
+                .then(async data => {
+                    const workerPayload = {
+                        worker_id: request.body.worker_id,
+                        owner_id: request.body.user_id,
+                        status: request.body.status
+                    }
+                    await BEAUTY_SERVICE_WORKERS.query().transacting(trx)
+                        .update(workerPayload)
+                        .whereRaw(`worker_id=${workerPayload.worker_id} AND owner_id=${workerPayload.owner_id}`)
+                        .then(async data1 => {
+                            result = {
+                                success: true,
+                                error: false,
+                                statusCode: 200,
+                                message: beauticianPayload.status === 0 ? 'Delete beautician successful' : 'Restore beautician successful',
+                                data: {
+                                    data,
+                                    data1
+                                }
+                            }
+                        }).catch(updateError => {
+                            throw updateError;
+                        });
+                }).catch(updateError1 => {
+                    throw updateError1;
+                });
+        }).catch(trxError => {
+            throw trxError;
+        });
     } catch (error) {
         console.log('Error at try catch api result', error);
         result = {
@@ -351,6 +439,7 @@ const addUpdateBeautyServices = async (request, response, next) => {
 }
 
 module.exports = {
+    getAllDashboardCounts,
     getAllBeautyServices,
     getAllBeauticians,
     addUpdateBeautician,

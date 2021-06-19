@@ -12,17 +12,19 @@
 
 CREATE TABLE IF NOT EXISTS `appointment` (
   `app_id` int(11) NOT NULL AUTO_INCREMENT,
+  `book_id` int(11) DEFAULT NULL,
   `appointment_id` varchar(50) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `description` text DEFAULT NULL,
-  `service_amounts` text DEFAULT NULL,
+  `services` text DEFAULT NULL,
+  `amounts` text DEFAULT NULL,
   `issued_by` varchar(50) DEFAULT NULL,
   `status` tinyint(1) DEFAULT 1,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`app_id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 9 DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: beauty_parlours
@@ -54,17 +56,17 @@ CREATE TABLE IF NOT EXISTS `beauty_parlours` (
 CREATE TABLE IF NOT EXISTS `beauty_service_workers` (
   `worker_id` int(11) NOT NULL AUTO_INCREMENT,
   `owner_id` int(11) DEFAULT NULL,
+  `beautician_id` int(11) DEFAULT NULL,
   `name` varchar(100) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
   `experience` int(11) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `password` varchar(100) DEFAULT NULL,
-  `mobile` varchar(100) DEFAULT NULL,
+  `services` text DEFAULT NULL,
+  `rating` int(11) DEFAULT NULL,
   `status` tinyint(1) DEFAULT 1,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`worker_id`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 DEFAULT CHARSET = utf8mb4;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: beauty_services
@@ -113,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`book_id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 8 DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: report
@@ -131,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `report` (
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`report_id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 3 DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: users
@@ -150,168 +152,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`user_id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 43 DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 DEFAULT CHARSET = utf8mb4;
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: appointment
 # ------------------------------------------------------------
 
-INSERT INTO
-  `appointment` (
-    `app_id`,
-    `appointment_id`,
-    `user_id`,
-    `date`,
-    `description`,
-    `service_amounts`,
-    `issued_by`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    1,
-    '#20210527080011',
-    9,
-    '2021-05-27',
-    'Lakme Youth Infinity Sculpting Facial,Tangy Cleanup,Marine Body Glow with Body Masque,Back Massage - Detoxifying',
-    '3100,1000,4650,700',
-    'test001',
-    1,
-    '2021-05-24 21:27:50',
-    '2021-06-13 21:17:14'
-  );
-INSERT INTO
-  `appointment` (
-    `app_id`,
-    `appointment_id`,
-    `user_id`,
-    `date`,
-    `description`,
-    `service_amounts`,
-    `issued_by`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    2,
-    '#20210528090015',
-    10,
-    '2021-05-28',
-    'Tangy Cleanup,Marine Body Glow with Body Masque,Back Massage - Stress Relief,TressPlex Spa Therapy- Men',
-    '1000,4650,700,1850',
-    'test001',
-    1,
-    '2021-05-24 21:27:50',
-    '2021-06-13 21:17:25'
-  );
-INSERT INTO
-  `appointment` (
-    `app_id`,
-    `appointment_id`,
-    `user_id`,
-    `date`,
-    `description`,
-    `service_amounts`,
-    `issued_by`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    4,
-    '#20210602120010',
-    12,
-    '2021-06-02',
-    'Lakme Gloss Intense Hydrating Ritual,Back Massage - Stress Relief',
-    '2100,700',
-    'test002',
-    1,
-    '2021-05-24 21:30:47',
-    '2021-06-13 21:17:37'
-  );
-INSERT INTO
-  `appointment` (
-    `app_id`,
-    `appointment_id`,
-    `user_id`,
-    `date`,
-    `description`,
-    `service_amounts`,
-    `issued_by`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    5,
-    '#20210602120011',
-    13,
-    '2021-06-02',
-    'Marine Body Glow with Body Masque,Back Massage - Detoxifying,MESMER-EYES - Sn. Artist, Bridal Expert',
-    '4650,700,1700',
-    'test002',
-    1,
-    '2021-05-24 21:30:47',
-    '2021-06-13 21:17:47'
-  );
-INSERT INTO
-  `appointment` (
-    `app_id`,
-    `appointment_id`,
-    `user_id`,
-    `date`,
-    `description`,
-    `service_amounts`,
-    `issued_by`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    7,
-    '#20210530210530',
-    14,
-    '2021-05-30',
-    'TressPlex Spa Therapy- Men,Insta Care Spa- Men,Bridal occasion Ultimate Airbrush Make-Up- Bridal Expert,YOUNG FOREVER - Artist',
-    '1850,700,15500,4500',
-    'test002',
-    1,
-    '2021-05-30 21:49:30',
-    '2021-06-13 21:17:57'
-  );
-INSERT INTO
-  `appointment` (
-    `app_id`,
-    `appointment_id`,
-    `user_id`,
-    `date`,
-    `description`,
-    `service_amounts`,
-    `issued_by`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    8,
-    '#20210602190630',
-    11,
-    '2021-06-02',
-    'Tangy Cleanup,Marine Body Glow with Body Masque,TressPlex Spa Therapy- Men',
-    '1000,4650,1850',
-    'test001',
-    1,
-    '2021-06-02 19:40:30',
-    '2021-06-13 21:18:23'
-  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: beauty_parlours
@@ -682,6 +528,62 @@ VALUES
 # DATA DUMP FOR TABLE: beauty_service_workers
 # ------------------------------------------------------------
 
+INSERT INTO
+  `beauty_service_workers` (
+    `worker_id`,
+    `owner_id`,
+    `beautician_id`,
+    `name`,
+    `age`,
+    `experience`,
+    `services`,
+    `rating`,
+    `status`,
+    `created_at`,
+    `updated_at`
+  )
+VALUES
+  (
+    1,
+    3,
+    NULL,
+    'test one',
+    26,
+    2,
+    '1,3,4,5,2,10,9,8,7',
+    4,
+    1,
+    '2021-06-14 21:35:37',
+    '2021-06-15 15:47:22'
+  );
+INSERT INTO
+  `beauty_service_workers` (
+    `worker_id`,
+    `owner_id`,
+    `beautician_id`,
+    `name`,
+    `age`,
+    `experience`,
+    `services`,
+    `rating`,
+    `status`,
+    `created_at`,
+    `updated_at`
+  )
+VALUES
+  (
+    2,
+    4,
+    NULL,
+    'test two',
+    27,
+    2,
+    '1,2,3,10,9,8,11,12,13',
+    3,
+    1,
+    '2021-06-14 21:38:02',
+    '2021-06-16 10:59:13'
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: beauty_services
@@ -766,38 +668,6 @@ VALUES
     1,
     '2021-05-31 14:41:27',
     '2021-05-31 14:41:27'
-  );
-INSERT INTO
-  `beauty_services` (
-    `main_service_id`,
-    `service_name`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    7,
-    'test care',
-    1,
-    '2021-06-09 14:50:19',
-    '2021-06-09 14:50:19'
-  );
-INSERT INTO
-  `beauty_services` (
-    `main_service_id`,
-    `service_name`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    8,
-    'test care1',
-    1,
-    '2021-06-09 14:52:31',
-    '2021-06-09 14:52:31'
   );
 
 # ------------------------------------------------------------
@@ -1058,11 +928,11 @@ VALUES
   (
     13,
     3,
-    'TressPlex Spa Therapy- Men',
+    'TressPlex Spa Therapy - Men',
     '1850',
     1,
     '2021-05-31 14:49:25',
-    '2021-05-31 14:49:25'
+    '2021-06-14 19:27:05'
   );
 INSERT INTO
   `beauty_sub_services` (
@@ -1078,11 +948,11 @@ VALUES
   (
     14,
     3,
-    'Insta Care Spa- Men',
+    'Insta Care Spa - Men',
     '700',
     1,
     '2021-05-31 14:49:25',
-    '2021-05-31 14:49:25'
+    '2021-06-14 19:27:01'
   );
 INSERT INTO
   `beauty_sub_services` (
@@ -1098,11 +968,11 @@ VALUES
   (
     15,
     4,
-    'MESMER-EYES - Sn. Artist, Bridal Expert',
+    'MESMER-EYES - Sn. Artist Bridal Expert',
     '1700',
     1,
     '2021-05-31 14:50:35',
-    '2021-05-31 14:50:35'
+    '2021-06-14 19:26:12'
   );
 INSERT INTO
   `beauty_sub_services` (
@@ -1138,11 +1008,11 @@ VALUES
   (
     17,
     4,
-    'Bridal occasion Ultimate Airbrush Make-Up- Bridal Expert',
+    'Bridal occasion Ultimate Airbrush Make -Up - Bridal Expert',
     '15500',
     1,
     '2021-05-31 14:51:08',
-    '2021-05-31 14:51:08'
+    '2021-06-14 19:27:28'
   );
 INSERT INTO
   `beauty_sub_services` (
@@ -1284,352 +1154,16 @@ VALUES
     '2021-05-31 14:52:45',
     '2021-05-31 14:52:45'
   );
-INSERT INTO
-  `beauty_sub_services` (
-    `sub_service_id`,
-    `main_service_id`,
-    `sub_service_name`,
-    `service_amount`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    25,
-    7,
-    'test sub one',
-    '1200',
-    1,
-    '2021-06-09 14:50:19',
-    '2021-06-09 14:50:19'
-  );
-INSERT INTO
-  `beauty_sub_services` (
-    `sub_service_id`,
-    `main_service_id`,
-    `sub_service_name`,
-    `service_amount`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    26,
-    7,
-    'test sub two',
-    '1560',
-    1,
-    '2021-06-09 14:50:19',
-    '2021-06-09 14:50:19'
-  );
-INSERT INTO
-  `beauty_sub_services` (
-    `sub_service_id`,
-    `main_service_id`,
-    `sub_service_name`,
-    `service_amount`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    27,
-    8,
-    'sub care1',
-    '450',
-    1,
-    '2021-06-09 14:52:31',
-    '2021-06-09 14:52:31'
-  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: booking
 # ------------------------------------------------------------
 
-INSERT INTO
-  `booking` (
-    `book_id`,
-    `booking_id`,
-    `user_id`,
-    `beautician_id`,
-    `owner_id`,
-    `law_firm_name`,
-    `services`,
-    `amounts`,
-    `date`,
-    `time`,
-    `booking_status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    1,
-    'W269N-WFGWX-YVC9B',
-    9,
-    1,
-    3,
-    'Above The Bar',
-    'Lakme Youth Infinity Sculpting Facial,Tangy Cleanup,Marine Body Glow with Body Masque,Back Massage - Detoxifying',
-    '3100,1000,4650,700',
-    '2021-06-01',
-    '09:00:00',
-    1,
-    '2021-05-24 21:12:36',
-    '2021-06-13 21:04:58'
-  );
-INSERT INTO
-  `booking` (
-    `book_id`,
-    `booking_id`,
-    `user_id`,
-    `beautician_id`,
-    `owner_id`,
-    `law_firm_name`,
-    `services`,
-    `amounts`,
-    `date`,
-    `time`,
-    `booking_status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    2,
-    'MH37W-N47XK-V7XM9',
-    10,
-    1,
-    3,
-    'Justice Served',
-    'Tangy Cleanup,Marine Body Glow with Body Masque,Back Massage - Stress Relief,TressPlex Spa Therapy- Men',
-    '1000,4650,700,1850',
-    '2021-05-27',
-    '11:30:00',
-    1,
-    '2021-05-24 21:12:36',
-    '2021-06-13 21:08:06'
-  );
-INSERT INTO
-  `booking` (
-    `book_id`,
-    `booking_id`,
-    `user_id`,
-    `beautician_id`,
-    `owner_id`,
-    `law_firm_name`,
-    `services`,
-    `amounts`,
-    `date`,
-    `time`,
-    `booking_status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    3,
-    'F34E-RST1-OPQS',
-    11,
-    1,
-    3,
-    'Just Justice',
-    'Tangy Cleanup,Marine Body Glow with Body Masque,TressPlex Spa Therapy- Men',
-    '1000,4650,1850',
-    '2021-05-29',
-    '03:00:00',
-    1,
-    '2021-05-24 21:14:28',
-    '2021-06-13 21:10:40'
-  );
-INSERT INTO
-  `booking` (
-    `book_id`,
-    `booking_id`,
-    `user_id`,
-    `beautician_id`,
-    `owner_id`,
-    `law_firm_name`,
-    `services`,
-    `amounts`,
-    `date`,
-    `time`,
-    `booking_status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    4,
-    'NPPR9-FWDCX-D2C8J',
-    12,
-    2,
-    4,
-    'Actionable Attorneys',
-    'Lakme Gloss Intense Hydrating Ritual,Back Massage - Stress Relief',
-    '2100,700',
-    '2021-06-01',
-    '04:30:00',
-    1,
-    '2021-05-24 21:14:28',
-    '2021-06-13 21:12:00'
-  );
-INSERT INTO
-  `booking` (
-    `book_id`,
-    `booking_id`,
-    `user_id`,
-    `beautician_id`,
-    `owner_id`,
-    `law_firm_name`,
-    `services`,
-    `amounts`,
-    `date`,
-    `time`,
-    `booking_status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    5,
-    'DPH2V-TTNVB-4X9Q3',
-    13,
-    2,
-    4,
-    'Attorney Alliance',
-    'Marine Body Glow with Body Masque,Back Massage - Detoxifying,MESMER-EYES - Sn. Artist, Bridal Expert',
-    '4650,700,1700',
-    '2021-06-02',
-    '08:00:00',
-    1,
-    '2021-05-24 21:15:03',
-    '2021-06-13 21:12:58'
-  );
-INSERT INTO
-  `booking` (
-    `book_id`,
-    `booking_id`,
-    `user_id`,
-    `beautician_id`,
-    `owner_id`,
-    `law_firm_name`,
-    `services`,
-    `amounts`,
-    `date`,
-    `time`,
-    `booking_status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    6,
-    'EX511-H24EF-NLQ6V',
-    14,
-    2,
-    4,
-    'Above The Bar',
-    'TressPlex Spa Therapy- Men,Insta Care Spa- Men,Bridal occasion Ultimate Airbrush Make-Up- Bridal Expert,YOUNG FOREVER - Artist',
-    '1850,700,15500,4500',
-    '2021-05-26',
-    '22:05:45',
-    1,
-    '2021-05-25 22:01:50',
-    '2021-06-13 21:14:30'
-  );
-INSERT INTO
-  `booking` (
-    `book_id`,
-    `booking_id`,
-    `user_id`,
-    `beautician_id`,
-    `owner_id`,
-    `law_firm_name`,
-    `services`,
-    `amounts`,
-    `date`,
-    `time`,
-    `booking_status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    7,
-    '4PM4I-5LO2E-4LQ8N',
-    9,
-    3,
-    5,
-    'Just Justice',
-    'Tangy Cleanup,Fruit Facial,Back Massage - Detoxifying',
-    '1000,1600,700',
-    '2021-06-03',
-    '10:06:59',
-    2,
-    '2021-06-02 19:24:35',
-    '2021-06-13 21:16:32'
-  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: report
 # ------------------------------------------------------------
 
-INSERT INTO
-  `report` (
-    `report_id`,
-    `appointment_id`,
-    `user_id`,
-    `date`,
-    `amount`,
-    `report`,
-    `issued_by`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    1,
-    4,
-    12,
-    '2021-05-30',
-    '15000',
-    'test bill',
-    'test002',
-    1,
-    '2021-05-30 21:58:10',
-    '2021-05-30 21:58:10'
-  );
-INSERT INTO
-  `report` (
-    `report_id`,
-    `appointment_id`,
-    `user_id`,
-    `date`,
-    `amount`,
-    `report`,
-    `issued_by`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    2,
-    1,
-    9,
-    '2021-06-02',
-    '9450',
-    'sample report',
-    'test001',
-    1,
-    '2021-06-02 21:28:49',
-    '2021-06-13 21:26:45'
-  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: users
@@ -1653,15 +1187,15 @@ VALUES
   (
     1,
     'Pachapalam Mahesh',
-    'MaheshCse',
+    'master',
     'maheshpm1599@gmail.com',
     '1234',
     '8886197968',
     NULL,
     'admin',
     1,
-    '2021-05-20 00:53:59',
-    '2021-06-03 16:53:44'
+    '2021-06-14 19:29:20',
+    '2021-06-14 19:29:30'
   );
 INSERT INTO
   `users` (
@@ -1681,15 +1215,15 @@ VALUES
   (
     2,
     'Vella Venu Kalyan',
-    'VenuArun',
+    'admin',
     'venuarun6@gmail.com',
     '1234',
     '9603707383',
     NULL,
     'admin',
     1,
-    '2021-05-23 22:29:28',
-    '2021-05-29 16:24:44'
+    '2021-06-14 19:30:40',
+    '2021-06-16 18:57:32'
   );
 INSERT INTO
   `users` (
@@ -1708,16 +1242,16 @@ INSERT INTO
 VALUES
   (
     3,
-    'Test Master',
+    'test one',
     'test001',
-    'testmaster123@gmail.com',
-    '1234',
-    '1234567890',
+    'testone001@gmail.com',
+    '20210615150639',
+    '9876543210',
     NULL,
     'beautician',
     1,
-    '2021-05-24 18:43:52',
-    '2021-05-29 16:25:03'
+    '2021-06-14 21:35:37',
+    '2021-06-15 15:46:41'
   );
 INSERT INTO
   `users` (
@@ -1736,16 +1270,16 @@ INSERT INTO
 VALUES
   (
     4,
-    'Test Hero',
+    'test two',
     'test002',
-    'testhero420@gmail.com',
-    '1234',
-    '9876543210',
+    'testtwo002@gmail.com',
+    '20210614210620',
+    '1234567890',
     NULL,
     'beautician',
     1,
-    '2021-05-24 21:32:28',
-    '2021-05-29 16:25:05'
+    '2021-06-14 21:38:02',
+    '2021-06-16 10:59:13'
   );
 INSERT INTO
   `users` (
@@ -1764,324 +1298,16 @@ INSERT INTO
 VALUES
   (
     5,
-    'Test Villian',
+    'test three',
     'test003',
-    'testvillian143@gmail.com',
-    '20210527200537',
-    '7894561230',
-    NULL,
-    'beautician',
-    1,
-    '2021-05-27 20:14:54',
-    '2021-05-27 20:15:33'
-  );
-INSERT INTO
-  `users` (
-    `user_id`,
-    `fullname`,
-    `username`,
-    `email`,
-    `password`,
-    `mobile`,
-    `profile`,
-    `role`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    6,
-    'Test Four',
-    'test004',
-    'testfour004@gmail.com',
-    '20210529150513',
-    '1478523690',
-    NULL,
-    'beautician',
-    1,
-    '2021-05-29 15:44:31',
-    '2021-05-29 15:44:31'
-  );
-INSERT INTO
-  `users` (
-    `user_id`,
-    `fullname`,
-    `username`,
-    `email`,
-    `password`,
-    `mobile`,
-    `profile`,
-    `role`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    7,
-    'Test Five',
-    'test005',
-    'testfive005@gmail.com',
-    '20210529150554',
-    '3698521470',
-    NULL,
-    'beautician',
-    1,
-    '2021-05-29 15:45:04',
-    '2021-05-29 15:45:04'
-  );
-INSERT INTO
-  `users` (
-    `user_id`,
-    `fullname`,
-    `username`,
-    `email`,
-    `password`,
-    `mobile`,
-    `profile`,
-    `role`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    8,
-    'Test Six',
-    'test006',
-    'testsix006@gmail.com',
-    '20210529150511',
-    '1598745630',
-    NULL,
-    'beautician',
-    1,
-    '2021-05-29 15:47:24',
-    '2021-05-29 15:47:24'
-  );
-INSERT INTO
-  `users` (
-    `user_id`,
-    `fullname`,
-    `username`,
-    `email`,
-    `password`,
-    `mobile`,
-    `profile`,
-    `role`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    9,
-    'Test Seven',
-    'test007',
-    'testseven007@gmail.com',
+    'testthree003@gmail.com',
     '1234',
-    '2587419630',
+    '3216549870',
     NULL,
     'user',
     1,
-    '2021-05-29 16:36:51',
-    '2021-05-29 16:39:10'
-  );
-INSERT INTO
-  `users` (
-    `user_id`,
-    `fullname`,
-    `username`,
-    `email`,
-    `password`,
-    `mobile`,
-    `profile`,
-    `role`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    10,
-    'Test Eight',
-    'test008',
-    'testeight008@gmail.com',
-    '1234',
-    '7894561230',
-    NULL,
-    'user',
-    1,
-    '2021-05-29 16:36:51',
-    '2021-05-29 16:40:10'
-  );
-INSERT INTO
-  `users` (
-    `user_id`,
-    `fullname`,
-    `username`,
-    `email`,
-    `password`,
-    `mobile`,
-    `profile`,
-    `role`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    11,
-    'Test Nine',
-    'test009',
-    'testnine009@gmail.com',
-    '1234',
-    '1234567890',
-    NULL,
-    'user',
-    1,
-    '2021-05-29 16:36:51',
-    '2021-05-29 16:37:20'
-  );
-INSERT INTO
-  `users` (
-    `user_id`,
-    `fullname`,
-    `username`,
-    `email`,
-    `password`,
-    `mobile`,
-    `profile`,
-    `role`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    12,
-    'Test Ten',
-    'test010',
-    'testten010@gmail.com',
-    '1234',
-    '3698521470',
-    NULL,
-    'user',
-    1,
-    '2021-05-29 16:36:51',
-    '2021-05-29 16:37:20'
-  );
-INSERT INTO
-  `users` (
-    `user_id`,
-    `fullname`,
-    `username`,
-    `email`,
-    `password`,
-    `mobile`,
-    `profile`,
-    `role`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    13,
-    'Test Eleven',
-    'test011',
-    'testeleven011@gmail.com',
-    '1234',
-    '7661876696',
-    NULL,
-    'user',
-    1,
-    '2021-05-29 16:36:51',
-    '2021-05-29 16:37:20'
-  );
-INSERT INTO
-  `users` (
-    `user_id`,
-    `fullname`,
-    `username`,
-    `email`,
-    `password`,
-    `mobile`,
-    `profile`,
-    `role`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    14,
-    'Test Twelve',
-    'test012',
-    'testtwelve012@gmail.com',
-    '1234',
-    '9949393483',
-    NULL,
-    'user',
-    1,
-    '2021-05-29 16:36:51',
-    '2021-05-29 16:42:26'
-  );
-INSERT INTO
-  `users` (
-    `user_id`,
-    `fullname`,
-    `username`,
-    `email`,
-    `password`,
-    `mobile`,
-    `profile`,
-    `role`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    15,
-    'Test Thirteen',
-    'test013',
-    'testthirteen013@gmail.com',
-    '20210610150623',
-    '2596317801',
-    NULL,
-    'beautician',
-    1,
-    '2021-06-10 15:30:50',
-    '2021-06-10 15:30:50'
-  );
-INSERT INTO
-  `users` (
-    `user_id`,
-    `fullname`,
-    `username`,
-    `email`,
-    `password`,
-    `mobile`,
-    `profile`,
-    `role`,
-    `status`,
-    `created_at`,
-    `updated_at`
-  )
-VALUES
-  (
-    16,
-    'Test Fourteen',
-    'test014',
-    'testfourteen014@gmail.com',
-    '20210610210624',
-    '2222233333',
-    NULL,
-    'beautician',
-    1,
-    '2021-06-10 20:48:32',
-    '2021-06-13 10:29:24'
+    '2021-06-16 18:58:58',
+    '2021-06-16 18:58:58'
   );
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
