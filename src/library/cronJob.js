@@ -13,6 +13,7 @@ async function backupDatabaseProcess() {
             await MySqlDBDump({
                 connection: {
                     host: CONFIG.database.host,
+                    port: CONFIG.database.port,
                     user: CONFIG.database.username,
                     password: CONFIG.database.password,
                     database: CONFIG.database.db,
