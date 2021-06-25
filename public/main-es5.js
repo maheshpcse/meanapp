@@ -1997,7 +1997,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           this.spinner = true;
           var source = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["timer"])(1000, 60000);
-          var subscribe = source.subscribe(function (val) {
+          this.subscription = source.subscribe(function (val) {
             _this3.spinner = true;
             setTimeout(function () {
               _this3.getDashboardCountsData();
@@ -2026,6 +2026,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
             _this4.spinner = false;
           });
+        }
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          console.log('Admin dashbaord component destroyed');
+          this.subscription.unsubscribe();
         }
       }]);
 

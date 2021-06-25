@@ -1239,7 +1239,7 @@ let AdminDashboardComponent = class AdminDashboardComponent {
     ngOnInit() {
         this.spinner = true;
         const source = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["timer"])(1000, 60000);
-        const subscribe = source.subscribe(val => {
+        this.subscription = source.subscribe(val => {
             this.spinner = true;
             setTimeout(() => {
                 this.getDashboardCountsData();
@@ -1262,6 +1262,10 @@ let AdminDashboardComponent = class AdminDashboardComponent {
             this.toastr.errorToastr("Network failed, Please try again.");
             this.spinner = false;
         });
+    }
+    ngOnDestroy() {
+        console.log('Admin dashbaord component destroyed');
+        this.subscription.unsubscribe();
     }
 };
 AdminDashboardComponent.ctorParameters = () => [
