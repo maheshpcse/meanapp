@@ -14,7 +14,7 @@ Model.knex(Knexx.knex);
 var app = express();
 
 // Middleware functions
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -26,6 +26,39 @@ app.use(function (req, res, next) {
     res.setHeader("Access-Control-Allow-Headers", "Origin, Authorization, x-access-token, Content-Length, X-Requested-With,Content-Type,Accept");
     res.setHeader("Access-Control-Allow-Credentials", "true");
     next();
+});
+
+app.get('*', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../public/index.html'));
+});
+
+app.get('/connect', (req, res) => {
+    var connection = mysql.createConnection({
+        host: config.database.host,
+        port: config.database.port,
+        user: config.database.username,
+        password: config.database.password,
+        database: config.database.db
+    });
+    connection.connect((err, data) => {
+        if (err) {
+            console.log('Error while db connection', err);
+            res.status(200).json({
+                success: false,
+                error: true,
+                message: 'Error while db connection',
+                data: err
+            });
+        } else {
+            console.log('Database connection success');
+            res.status(200).json({
+                success: true,
+                error: false,
+                message: 'Database connection success',
+                data: null
+            });
+        }
+    });
 });
 
 // Routes
