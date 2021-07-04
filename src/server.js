@@ -1,10 +1,11 @@
 'use strict';
 
-require('./library/cronJob.js');
+// require('./library/cronJob.js');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const mysql = require('mysql');
 var config = require('./config/config.js');
 var routes = require('./routes/routes.js');
 var Knexx = require('./config/knex.js');
@@ -28,9 +29,9 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.get('*', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '../public/index.html'));
-});
+// app.get('*', (req, res, next) => {
+//     res.sendFile(path.join(__dirname, '../public/index.html'));
+// });
 
 app.get('/connect', (req, res) => {
     var connection = mysql.createConnection({
@@ -65,7 +66,7 @@ app.get('/connect', (req, res) => {
 app.use('/api', routes);
 
 app.listen(config.server.port, (req, res) => {
-    console.log(`Mean app is listening on http://${config.server.host}:${config.server.port}`);
+    console.log(`Beautician server is listening on http://${config.server.host}:${config.server.port}`);
 });
 
 module.exports = app;

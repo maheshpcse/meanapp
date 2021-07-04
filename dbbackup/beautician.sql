@@ -16,15 +16,15 @@ CREATE TABLE IF NOT EXISTS `appointment` (
   `appointment_id` varchar(50) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `date` date DEFAULT NULL,
-  `description` text DEFAULT NULL,
-  `services` text DEFAULT NULL,
-  `amounts` text DEFAULT NULL,
+  `description` text,
+  `services` text,
+  `amounts` text,
   `issued_by` varchar(50) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT 1,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` tinyint(1) DEFAULT '1',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`app_id`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: beauty_parlours
@@ -37,17 +37,17 @@ CREATE TABLE IF NOT EXISTS `beauty_parlours` (
   `experience` int(10) DEFAULT NULL,
   `parlour_name` varchar(50) DEFAULT NULL,
   `law_firm_name` varchar(100) DEFAULT NULL,
-  `services` text DEFAULT NULL,
+  `services` text,
   `start_time` time DEFAULT NULL,
   `end_time` time DEFAULT NULL,
   `users_limit` int(11) DEFAULT NULL,
   `place` varchar(50) DEFAULT NULL,
   `rating` int(10) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT 1,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` tinyint(1) DEFAULT '1',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`beautician_id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 11 DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: beauty_service_workers
@@ -60,13 +60,13 @@ CREATE TABLE IF NOT EXISTS `beauty_service_workers` (
   `name` varchar(100) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
   `experience` int(11) DEFAULT NULL,
-  `services` text DEFAULT NULL,
+  `services` text,
   `rating` int(11) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT 1,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` tinyint(1) DEFAULT '1',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`worker_id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 3 DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: beauty_services
@@ -75,11 +75,11 @@ CREATE TABLE IF NOT EXISTS `beauty_service_workers` (
 CREATE TABLE IF NOT EXISTS `beauty_services` (
   `main_service_id` int(11) NOT NULL AUTO_INCREMENT,
   `service_name` varchar(100) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT 1,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` tinyint(1) DEFAULT '1',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`main_service_id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 9 DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: beauty_sub_services
@@ -90,11 +90,11 @@ CREATE TABLE IF NOT EXISTS `beauty_sub_services` (
   `main_service_id` int(11) NOT NULL,
   `sub_service_name` varchar(255) DEFAULT NULL,
   `service_amount` varchar(100) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT 1,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` tinyint(1) DEFAULT '1',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`sub_service_id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 28 DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB AUTO_INCREMENT = 28 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: booking
@@ -107,15 +107,15 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `beautician_id` int(11) DEFAULT NULL,
   `owner_id` int(11) DEFAULT NULL,
   `law_firm_name` varchar(50) DEFAULT NULL,
-  `services` text DEFAULT NULL,
-  `amounts` text DEFAULT NULL,
+  `services` text,
+  `amounts` text,
   `date` date DEFAULT NULL,
   `time` time DEFAULT NULL,
-  `booking_status` tinyint(1) DEFAULT 1 COMMENT '0-Reject, 1-Accept, 2-Pending, 3-Completed',
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `booking_status` tinyint(1) DEFAULT '1' COMMENT '0-Reject, 1-Accept, 2-Pending, 3-Completed',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`book_id`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: report
@@ -129,11 +129,11 @@ CREATE TABLE IF NOT EXISTS `report` (
   `amount` varchar(50) DEFAULT NULL,
   `report` varchar(50) DEFAULT NULL,
   `issued_by` varchar(20) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT 1,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` tinyint(1) DEFAULT '1',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`report_id`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: users
@@ -146,13 +146,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
   `mobile` varchar(20) DEFAULT NULL,
-  `profile` text DEFAULT NULL,
+  `profile` text,
   `role` varchar(20) DEFAULT 'user',
-  `status` tinyint(1) DEFAULT 1,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` tinyint(1) DEFAULT '1',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 6 DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: appointment
@@ -582,7 +582,7 @@ VALUES
     3,
     1,
     '2021-06-14 21:38:02',
-    '2021-06-20 19:14:24'
+    '2021-06-26 22:22:59'
   );
 
 # ------------------------------------------------------------
@@ -1279,7 +1279,7 @@ VALUES
     'beautician',
     1,
     '2021-06-14 21:38:02',
-    '2021-06-20 19:14:24'
+    '2021-06-26 22:22:59'
   );
 INSERT INTO
   `users` (

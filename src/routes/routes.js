@@ -19,6 +19,8 @@ router.get('/server', (req, res, next) => {
 // user authentication & authorization API URLS's
 router.post('/login', userAuthCtrl.userLogin);
 router.post('/signup', userAuthCtrl.userSignup);
+router.post('/reSignIn', userAuthCtrl.userReSignIn);
+router.post('/add_new_user', userAuthCtrl.userProfileUpload);
 
 // user bookings API URL's
 router.post('/get_all_user_bookings', bookingCtrl.getAllUserBookings);
