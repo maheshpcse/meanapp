@@ -520,6 +520,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/common-pages/games-list/games-list.component.html":
+/*!*********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/common-pages/games-list/games-list.component.html ***!
+  \*********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container-fluid\" *ngIf=\"viewPage === 'table'\">\r\n    <div class=\"row mt-3\">\r\n        <div class=\"col-md-12\">\r\n            <div class=\"table-titles\">\r\n                <div class=\"table-names\">\r\n                    <span class=\"span1\">PC Games List</span>\r\n                    <span class=\"ml-3\"><i class=\"fa fa-angle-right\" aria-hidden=\"false\"></i></span>\r\n                    <span class=\"span3 ml-3\">View New Games</span>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <button class=\"btn btn-action-add\" (click)=\"onSelectPageView('form')\">\r\n                        <i class=\"fa fa-plus\" aria-hidden=\"false\"></i><span class=\"ml-2\">Add New Game</span>\r\n                    </button>\r\n                </div>\r\n            </div>\r\n            <hr style=\"margin: 0 !important;\">\r\n            <div class=\"table-actions mt-3\">\r\n                <span>\r\n                    <div class=\"form-group input-group search-input\">\r\n                        <button class=\"btn btn-action-filter\" data-toggle=\"dropdown\">\r\n                            Filter<span class=\"ml-2\"><i class=\"fa fa-filter\" aria-hidden=\"false\"></i></span>\r\n                        </button>\r\n                        <div class=\"dropdown-menu dropdown-menu-right\">\r\n                            <a class=\"dropdown-item\" href=\"#\">Link 1</a>\r\n                            <a class=\"dropdown-item\" href=\"#\">Link 2</a>\r\n                            <a class=\"dropdown-item\" href=\"#\">Link 3</a>\r\n                        </div>\r\n                        <input type=\"text\" class=\"form-control\" name=\"searchName\" id=\"searchId\"\r\n                            placeholder=\"Quick search\" [(ngModel)]=\"searchQuery\">\r\n                        <button class=\"btn btn-action-search\" [disabled]=\"!searchQuery || searchQuery == ''\">\r\n                            <i class=\"fa fa-search\" aria-hidden=\"false\"></i><span class=\"ml-2\">Search</span>\r\n                        </button>\r\n                    </div>\r\n                </span>\r\n                <span>\r\n                    <div class=\"form-group input-group\">\r\n                        <button class=\"btn btn-action-one\" [ngClass]=\"{'isAll': filterList === 'all'}\"\r\n                            (click)=\"onSelectFilterList('all')\">\r\n                            <i class=\"fa fa-server\" aria-hidden=\"false\"></i><span class=\"ml-2\">All</span>\r\n                        </button>\r\n                        <button class=\"btn btn-action-two\" [ngClass]=\"{'isPending': filterList === 'pending'}\"\r\n                            (click)=\"onSelectFilterList('pending')\">\r\n                            <i class=\"fa fa-clone\" aria-hidden=\"false\"></i><span class=\"ml-2\">Pending</span>\r\n                        </button>\r\n                        <button class=\"btn btn-action-three\" [ngClass]=\"{'isComplete': filterList === 'complete'}\"\r\n                            (click)=\"onSelectFilterList('complete')\">\r\n                            <i class=\"fa fa-square-o\" aria-hidden=\"false\"></i><span class=\"ml-2\">Completed</span>\r\n                        </button>\r\n                        <button class=\"btn btn-action-four\" [ngClass]=\"{'isNotStart': filterList === 'not-start'}\"\r\n                            (click)=\"onSelectFilterList('not-start')\">\r\n                            <i class=\"fa fa-square\" aria-hidden=\"false\"></i><span class=\"ml-2\">Not started</span>\r\n                        </button>\r\n                    </div>\r\n                </span>\r\n                <!-- <span>\r\n                    <div class=\"form-group\">\r\n                        <button class=\"btn btn-action-add\" (click)=\"onSelectPageView('form')\">\r\n                            <i class=\"fa fa-plus\" aria-hidden=\"false\"></i><span class=\"ml-2\">Add New Game</span>\r\n                        </button>\r\n                    </div>\r\n                </span> -->\r\n            </div>\r\n            <div class=\"table-data\">\r\n                <table class=\"table table-borderless table-hover main-table\" style=\"width: 100%;\">\r\n                    <thead>\r\n                        <tr>\r\n                            <th>\r\n                                <input type=\"checkbox\" name=\"gameNames\" id=\"gameIds\" [checked]=\"false\">\r\n                            </th>\r\n                            <th>Index</th>\r\n                            <th>Title of Game</th>\r\n                            <th>Subtitle of Game</th>\r\n                            <th>Size of Game</th>\r\n                            <th>Available Website</th>\r\n                            <th>Download URL</th>\r\n                            <th>Download Progress</th>\r\n                            <th>Status</th>\r\n                            <th class=\"text-center\">Action Center</th>\r\n                        </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        <tr *ngFor=\"let item of gamesList; let i=index;\"\r\n                            [ngClass]=\"{'isHighlight': i === currentIndex}\">\r\n                            <td>\r\n                                <input type=\"checkbox\" name=\"gameName-{{ i }}\" id=\"gameId-{{ i }}\"\r\n                                    [checked]=\"item.selected\">\r\n                            </td>\r\n                            <td>{{ i+1 }}</td>\r\n                            <td>{{ item.title }}</td>\r\n                            <td>\r\n                                <button (click)=\"myFunction('demo', i)\"\r\n                                    class=\"btn btn-action-open w3-btn w3-block w3-left-align\"\r\n                                    [ngClass]=\"{'isActive': i === currentIndex}\">\r\n                                    <i class=\"fa fa-table\" aria-hidden=\"false\"></i><span class=\"ml-2\">View Sub\r\n                                        Games</span>\r\n                                </button>\r\n                                <div id=\"demo-{{ i }}\" class=\"w3-hide\" style=\"width: 100px;\">\r\n                                    <table class=\"table table-borderless table-hover sub-table mt-3\"\r\n                                        style=\"width: 90.5em;\">\r\n                                        <thead>\r\n                                            <tr>\r\n                                                <th>Index</th>\r\n                                                <th>Name</th>\r\n                                                <th>Actual Size</th>\r\n                                                <th>Webiste</th>\r\n                                                <th>Download URL</th>\r\n                                                <th>Actual Progress</th>\r\n                                                <th>Status</th>\r\n                                                <th class=\"text-center\">Action Center</th>\r\n                                            </tr>\r\n                                        </thead>\r\n                                        <tbody>\r\n                                            <tr *ngFor=\"let data of item.sub_title; let j=index;\">\r\n                                                <td>{{ i+1 }}.{{ j+1 }}</td>\r\n                                                <td>{{ data.name }}</td>\r\n                                                <td>{{ data.actual_size }}</td>\r\n                                                <td>{{ data.website }}</td>\r\n                                                <td>{{ data.url_download }}</td>\r\n                                                <td>{{ data.download_progress }}</td>\r\n                                                <td>{{ data.status === 0 ? 'Active' : 'Inactive' }}</td>\r\n                                                <td class=\"text-center\">\r\n                                                    <div class=\"action-td\">\r\n                                                        <span><i class=\"fa fa-eye span1\" aria-hidden=\"false\"></i></span>\r\n                                                        <span><i class=\"fa fa-edit ml-2 span2\"\r\n                                                                aria-hidden=\"false\"></i></span>\r\n                                                        <span><i class=\"fa fa-trash ml-2 span3\"\r\n                                                                aria-hidden=\"false\"></i></span>\r\n                                                    </div>\r\n                                                </td>\r\n                                            </tr>\r\n                                        </tbody>\r\n                                    </table>\r\n                                </div>\r\n                            </td>\r\n                            <td>{{ item.total_size }}</td>\r\n                            <td>{{ item.websites[0] + ',...' }}</td>\r\n                            <td>{{ item.download_urls[0] + ',...' }}</td>\r\n                            <td>\r\n                                <div class=\"c100 p{{ item.total_progress }} small\" style=\"font-size: 50px !important;\">\r\n                                    <span>{{ item.total_progress }}%</span>\r\n                                    <div class=\"slice\">\r\n                                        <div class=\"bar\"></div>\r\n                                        <div class=\"fill\"></div>\r\n                                    </div>\r\n                                </div>\r\n                            </td>\r\n                            <td>{{ item.status === 1 ? 'Active' : 'Inactive' }}</td>\r\n                            <td class=\"text-center\">\r\n                                <div class=\"action-td\">\r\n                                    <span><i class=\"fa fa-eye span1\" aria-hidden=\"false\"></i></span>\r\n                                    <span><i class=\"fa fa-edit span2\" aria-hidden=\"false\"></i></span>\r\n                                    <span><i class=\"fa fa-trash span3\" aria-hidden=\"false\"></i></span>\r\n                                </div>\r\n                            </td>\r\n                        </tr>\r\n                    </tbody>\r\n                </table>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div class=\"container-fluid\" *ngIf=\"viewPage === 'form'\">\r\n    <div class=\"row mt-3\">\r\n        <div class=\"col-md-12\">\r\n            <div class=\"form-titles\">\r\n                <div class=\"form-names\">\r\n                    <span class=\"span1\">PC Games List</span>\r\n                    <span class=\"ml-3\"><i class=\"fa fa-angle-right\" aria-hidden=\"false\"></i></span>\r\n                    <span class=\"span3 ml-3\">Add New Game</span>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <button class=\"btn btn-action-back\" (click)=\"onSelectPageView('table')\">\r\n                        <i class=\"fa fa-angle-left\" aria-hidden=\"false\"></i><span class=\"ml-2\">Back To Games</span>\r\n                    </button>\r\n                </div>\r\n            </div>\r\n            <hr style=\"margin: 0 !important;\">\r\n            <div class=\"form-actions mt-3\">\r\n                <div class=\"form-group col-md-4\">\r\n                    <label for=\"configName\" class=\"field-required\">Select Game Config</label>\r\n                    <div class=\"config-box mt-3\">\r\n                        <p class=\"p1\" [ngClass]=\"{'isConfig': viewForm === 'single'}\" (click)=\"onSelectConfig('single')\"><i class=\"fa fa-gear\" aria-hidden=\"false\"></i> <span class=\"ml-2\">Single\r\n                                Game</span></p>\r\n                        <p class=\"p2\" [ngClass]=\"{'isConfig': viewForm === 'multiple'}\" (click)=\"onSelectConfig('multiple')\"><i class=\"fa fa-gears\" aria-hidden=\"false\"></i> <span class=\"ml-2\">Multiple\r\n                                Game</span></p>\r\n                    </div>\r\n                </div>\r\n                <hr>\r\n                <form #singleGameForm=\"ngForm\" *ngIf=\"viewForm === 'single'\">\r\n                    <div class=\"form-group input-group\">\r\n                        <div class=\"form-group col-md-4\">\r\n                            <label for=\"gameName\" class=\"field-required\">Add Game Name</label>\r\n                            <input type=\"text\" class=\"form-control mt-3\" name=\"gameName\" id=\"gameId\"\r\n                                placeholder=\"Enter game name\" [(ngModel)]=\"gameName\" required>\r\n                        </div>\r\n                        <div class=\"form-group col-md-4\">\r\n                            <label for=\"gameSize\" class=\"field-required\">Add Game Size</label>\r\n                            <div class=\"form-group input-group\">\r\n                                <select class=\"form-control mt-3\" name=\"sizeConfigName\" id=\"sizeConfigNameId\"\r\n                                    [(ngModel)]=\"sizeConfigName\">\r\n                                    <option value=\"null\" selected disabled>Select Size Config :</option>\r\n                                    <option value=\"kb\">Bytes - (1024 Bits)</option>\r\n                                    <option value=\"kb\">KiloBytes - (1024 Bytes)</option>\r\n                                    <option value=\"mb\">MegaBytes - (1024 KB)</option>\r\n                                    <option value=\"gb\">GigaBytes - (1024 MB)</option>\r\n                                </select>\r\n                                <input type=\"number\" class=\"form-control mt-3\" name=\"gameSizeName\" id=\"gameSizeId\"\r\n                                    placeholder=\"Enter game size\" [(ngModel)]=\"gameSize\" required>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"form-group col-md-4\">\r\n                            <label for=\"gameProgress\" class=\"field-required\">Add Game Progress</label>\r\n                            <input type=\"range\" class=\"form-control mt-3\" name=\"gameProgressName\" id=\"gameProgressId\"\r\n                                [(ngModel)]=\"gameProgress\" required>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group input-group\">\r\n                        <div class=\"form-group col-md-4\">\r\n                            <label for=\"gameSite\" class=\"field-required\">Add Game Website</label>\r\n                        </div>\r\n                        <div class=\"form-group col-md-4\">\r\n                            <label for=\"gameUrl\" class=\"field-required\">Add Game Download Url</label>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group col-md-12\">\r\n                        <form [formGroup]=\"siteUrlForm\" enctype=\"multipart/form-data\" method=\"POST\">\r\n                            <div formArrayName=\"siteUrlArr\">\r\n                                <div class=\"row\"\r\n                                    *ngFor=\"let item of siteUrlForm['controls']['siteUrlArr']['controls']; let i=index\"\r\n                                    [formGroupName]=\"i\">\r\n                                    <div class=\"form-group col-md-4\">\r\n                                        <input type=\"text\" class=\"form-control\" name=\"gameSiteName\" id=\"gameSiteId\"\r\n                                            placeholder=\"Enter game website\" formControlName=\"siteName\" required>\r\n                                    </div>\r\n                                    <div class=\"form-group col-md-4\">\r\n                                        <input type=\"text\" class=\"form-control\" name=\"gameUrlName\" id=\"gameUrlId\"\r\n                                            placeholder=\"Enter game download url\" formControlName=\"downloadUrl\"\r\n                                            required>\r\n                                    </div>\r\n                                    <div class=\"form-group input-group col-md-4\">\r\n                                        <button class=\"btn btn-action-addnew\"\r\n                                            *ngIf=\"siteUrlForm['controls']['siteUrlArr']['controls'].length <= i+1\"\r\n                                            (click)=\"addForm(i, 'single')\">\r\n                                            <i class=\"fa fa-plus\" aria-hidden=\"false\"></i><span class=\"ml-2\">Add Site\r\n                                                Url</span>\r\n                                        </button>\r\n                                        <button class=\"btn btn-action-delete\"\r\n                                            *ngIf=\"siteUrlForm['controls']['siteUrlArr']['controls'].length > 1\"\r\n                                            (click)=\"removeForm(i, 'single')\"\r\n                                            [ngClass]=\"{'ml-2': i === formIndex || i > 0}\">\r\n                                            <i class=\"fa fa-minus\" aria-hidden=\"false\"></i><span class=\"ml-2\">Delete\r\n                                                Site Url</span>\r\n                                        </button>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </form>\r\n                    </div>\r\n                    <div class=\"form-group input-group mt-5\">\r\n                        <button class=\"btn btn-action-cancel col-md-2\" (click)=\"onSelectPageView('table')\">\r\n                            <i class=\"fa fa-times\" aria-hidden=\"false\"></i><span class=\"ml-2\">Cancel Game</span>\r\n                        </button>\r\n                        <button class=\"btn btn-action-save ml-2 col-md-2\" [disabled]=\"singleGameForm.invalid || siteUrlForm.invalid\" (click)=\"saveGameDetails('single')\">\r\n                            <i class=\"fa fa-save\" aria-hidden=\"false\"></i><span class=\"ml-2\">Save Game</span>\r\n                        </button>\r\n                    </div>\r\n                </form>\r\n                <form #multipleGameForm=\"ngForm\" *ngIf=\"viewForm === 'multiple'\">\r\n                    <div class=\"form-group input-group\">\r\n                        <div class=\"form-group col-md-4\">\r\n                            <label for=\"subGameTitle\" class=\"field-required\">Add Game Name</label>\r\n                            <input type=\"text\" class=\"form-control mt-3\" name=\"subGameTitle\" id=\"subGameTitleId\"\r\n                                placeholder=\"Enter sub game name\" [(ngModel)]=\"subGameName\" required>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"form-group col-md-12\">\r\n                        <form [formGroup]=\"seriesGameForm\" enctype=\"multipart/form-data\" method=\"POST\">\r\n                            <div formArrayName=\"seriesGameArr\">\r\n                                <div class=\"row\"\r\n                                    *ngFor=\"let item of seriesGameForm['controls']['seriesGameArr']['controls']; let i=index\"\r\n                                    [formGroupName]=\"i\">\r\n                                    <div class=\"form-group col-md-4\">\r\n                                        <label for=\"subGameName\" class=\"field-required\">Add Sub Game Name</label>\r\n                                        <input type=\"text\" class=\"form-control mt-3\" name=\"subGameName\" id=\"subGameId\"\r\n                                            placeholder=\"Enter sub game name\" formControlName=\"subSeriesName\" required>\r\n                                    </div>\r\n                                    <div class=\"form-group col-md-4\">\r\n                                        <label for=\"subGameSizeConfig\" class=\"field-required\">Add Sub Game Size</label>\r\n                                        <div class=\"form-group input-group\">\r\n                                            <select class=\"form-control mt-3\" name=\"subGameSizeConfigName\"\r\n                                                id=\"subGameSizeConfigId\" formControlName=\"subGameSizeConfig\">\r\n                                                <option value=\"null\" selected disabled>Select Size Config :</option>\r\n                                                <option value=\"kb\">Bytes - (1024 Bits)</option>\r\n                                                <option value=\"kb\">KiloBytes - (1024 Bytes)</option>\r\n                                                <option value=\"mb\">MegaBytes - (1024 KB)</option>\r\n                                                <option value=\"gb\">GigaBytes - (1024 MB)</option>\r\n                                            </select>\r\n                                            <input type=\"number\" class=\"form-control mt-3\" name=\"subGameSizeName\"\r\n                                                id=\"subGameSizeId\" placeholder=\"Enter sub game size\" formControlName=\"subGameSize\"\r\n                                                required>\r\n                                        </div>\r\n                                    </div>\r\n                                    <div class=\"form-group col-md-4\">\r\n                                        <label for=\"subGameProgress\" class=\"field-required\">Add Sub Game Progress</label>\r\n                                        <input type=\"range\" class=\"form-control mt-3\" name=\"subGameProgressName\"\r\n                                            id=\"subGameProgressId\" formControlName=\"subGameProgress\" required>\r\n                                    </div>\r\n                                    <div class=\"form-group col-md-4\">\r\n                                        <label for=\"subGameSite\" class=\"field-required\">Add Game Website</label>\r\n                                        <input type=\"text\" class=\"form-control mt-3\" name=\"subGameSiteName\" id=\"subGameSiteId\"\r\n                                            placeholder=\"Enter sub game website\" formControlName=\"webSiteName\" required>\r\n                                    </div>\r\n                                    <div class=\"form-group col-md-4\">\r\n                                        <label for=\"subGameUrl\" class=\"field-required\">Add Game Download Url</label>\r\n                                        <input type=\"text\" class=\"form-control mt-3\" name=\"subGameUrlName\" id=\"subGameUrlId\"\r\n                                        placeholder=\"Enter sub game download url\" formControlName=\"urlDownload\"\r\n                                        required>\r\n                                    </div>\r\n                                    <div class=\"form-group input-group col-md-4\" style=\"margin-top: 65px !important;\">\r\n                                        <button class=\"btn btn-action-addnew\"\r\n                                            *ngIf=\"seriesGameForm['controls']['seriesGameArr']['controls'].length <= i+1\"\r\n                                            (click)=\"addForm(i, 'multiple')\">\r\n                                            <i class=\"fa fa-plus\" aria-hidden=\"false\"></i><span class=\"ml-2\">Add\r\n                                                Series</span>\r\n                                        </button>\r\n                                        <button class=\"btn btn-action-delete\"\r\n                                            *ngIf=\"seriesGameForm['controls']['seriesGameArr']['controls'].length > 1\"\r\n                                            (click)=\"removeForm(i, 'multiple')\"\r\n                                            [ngClass]=\"{'ml-2': i === formIndex || i > 0}\">\r\n                                            <i class=\"fa fa-minus\" aria-hidden=\"false\"></i><span class=\"ml-2\">Delete\r\n                                                Series</span>\r\n                                        </button>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </form>\r\n                    </div>\r\n                    <div class=\"form-group input-group mt-5\">\r\n                        <button class=\"btn btn-action-cancel col-md-2\">\r\n                            <i class=\"fa fa-times\" aria-hidden=\"false\"></i><span class=\"ml-2\">Cancel Game</span>\r\n                        </button>\r\n                        <button class=\"btn btn-action-save ml-2 col-md-2\" [disabled]=\"multipleGameForm.invalid\">\r\n                            <i class=\"fa fa-save\" aria-hidden=\"false\"></i><span class=\"ml-2\">Save Game</span>\r\n                        </button>\r\n                    </div>\r\n                </form>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/footer/footer.component.html":
 /*!************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/footer/footer.component.html ***!
@@ -542,7 +555,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!-- Grey with black text -->\r\n<nav class=\"navbar navbar-expand-sm sticky-top bg-light navbar-light justify-content-between\">\r\n    <span class=\"navbar-brand mb-0\">Beautician System</span>\r\n    <ul class=\"navbar-nav\">\r\n        <!-- <li class=\"nav-item active\" *ngFor=\"let item of navItems; let i=index;\">\r\n            <a class=\"nav-link\" *ngIf=\"!authUserService.isLoggedIn()\" [routerLink]=\"[item.path]\">{{item.name}}</a>\r\n            <a class=\"nav-link\" *ngIf=\"authUserService.isLoggedIn()\" [routerLink]=\"[item.path]\">{{item.name}}</a>\r\n        </li> -->\r\n        <li class=\"nav-item\" [ngClass]=\"{'is-active': href === 'user-dashboard'}\"\r\n            *ngIf=\"authUserService.isLoggedIn() && role == 'user'\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/user-dashboard']\">Home</a>\r\n        </li>\r\n        <li class=\"nav-item\" [ngClass]=\"{'is-active': href === 'beauticians'}\"\r\n            *ngIf=\"authUserService.isLoggedIn() && role == 'user'\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/beauticians']\">Beauticians</a>\r\n        </li>\r\n        <li class=\"nav-item\" [ngClass]=\"{'is-active': href === 'reports'}\"\r\n            *ngIf=\"authUserService.isLoggedIn() && role == 'user'\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/reports']\">Reports</a>\r\n        </li>\r\n        <li class=\"nav-item\" [ngClass]=\"{'is-active': href === 'admin-dashboard'}\"\r\n            *ngIf=\"authUserService.isLoggedIn() && role == 'admin'\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/admin-dashboard']\">Home</a>\r\n        </li>\r\n        <li class=\"nav-item\"\r\n            [ngClass]=\"{'is-active': href === 'services' || href === 'add-beautician' || href === 'add-beauty-parlour' || href === 'add-beauty-services'}\"\r\n            *ngIf=\"authUserService.isLoggedIn() && role == 'admin'\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/services']\">Services</a>\r\n        </li>\r\n        <li class=\"nav-item\" [ngClass]=\"{'is-active': href === 'beautician-dashboard'}\"\r\n            *ngIf=\"authUserService.isLoggedIn() && role == 'beautician'\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/beautician-dashboard']\">Home</a>\r\n        </li>\r\n        <li class=\"nav-item\" [ngClass]=\"{'is-active': href === 'beautician-users'}\"\r\n            *ngIf=\"authUserService.isLoggedIn() && role == 'beautician'\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/beautician-users']\">Appointments</a>\r\n        </li>\r\n        <li class=\"nav-item\" [ngClass]=\"{'is-active': href === 'beautician-reports'}\"\r\n            *ngIf=\"authUserService.isLoggedIn() && role == 'beautician'\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/beautician-reports']\">Reports</a>\r\n        </li>\r\n        <li class=\"nav-item\" [ngClass]=\"{'is-active': href === 'login'}\" *ngIf=\"!authUserService.isLoggedIn()\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/login']\">Login</a>\r\n        </li>\r\n        <li class=\"nav-item\" [ngClass]=\"{'is-active': href === 'signup'}\" *ngIf=\"!authUserService.isLoggedIn()\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/signup']\">Signup</a>\r\n        </li>\r\n        <!-- <li class=\"nav-item logout-link\" *ngIf=\"authUserService.isLoggedIn()\">\r\n            <a class=\"nav-link\" (click)=\"userLogout()\">Logout</a>\r\n        </li> -->\r\n        <li class=\"nav-item\" *ngIf=\"authUserService.isLoggedIn()\">\r\n            <a class=\"nav-link\">\r\n                <div class=\"dropdown\">\r\n                    <!-- <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                      Dropdown button\r\n                    </button> -->\r\n                    <img src=\"../../assets/images/admin-avatar.png\" alt=\"_profile\" class=\"img-responsive rounded-image dropdown-toggle\" type=\"button\"\r\n                        id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\"\r\n                        width=\"30\" height=\"30\">\r\n                    <div class=\"dropdown-menu dropdown-menu-right p-0\" aria-labelledby=\"dropdownMenuButton\">\r\n                        <a class=\"dropdown-item\">\r\n                            <div class=\"div1\">\r\n                                <img src=\"../../assets/images/admin-avatar.png\" alt=\"_pic\" class=\"img-responsive rounded-image\" width=\"60\" height=\"60\">\r\n                                <div class=\"div2 ml-2\">\r\n                                    <p class=\"p1 mt-3\">{{fullName}}</p>\r\n                                    <p class=\"p2\">{{userName}}</p>\r\n                                </div>\r\n                            </div>\r\n                        </a>\r\n                        <a class=\"dropdown-item link\" (click)=\"onClickView('profile')\">\r\n                            <i class=\"fa fa-user-o\" aria-hidden=\"false\"></i><span class=\"ml-2\">My Profile</span>\r\n                        </a>\r\n                        <a class=\"dropdown-item\" (click)=\"onClickView('settings')\" *ngIf=\"authUserService.isLoggedIn() && role == 'admin'\">\r\n                            <i class=\"fa fa-gear\" aria-hidden=\"false\"></i><span class=\"ml-2\">Settings</span>\r\n                        </a>\r\n                        <a class=\"dropdown-item\" (click)=\"userLogout()\">\r\n                            <i class=\"fa fa-sign-out\" aria-hidden=\"false\"></i><span class=\"ml-2\">Logout</span>\r\n                        </a>\r\n                    </div>\r\n                </div>\r\n            </a>\r\n        </li>\r\n    </ul>\r\n</nav>");
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- Grey with black text -->\r\n<nav class=\"navbar navbar-expand-sm sticky-top bg-light navbar-light justify-content-between\">\r\n    <span class=\"navbar-brand mb-0\">Beautician System</span>\r\n    <ul class=\"navbar-nav\">\r\n        <!-- <li class=\"nav-item active\" *ngFor=\"let item of navItems; let i=index;\">\r\n            <a class=\"nav-link\" *ngIf=\"!authUserService.isLoggedIn()\" [routerLink]=\"[item.path]\">{{item.name}}</a>\r\n            <a class=\"nav-link\" *ngIf=\"authUserService.isLoggedIn()\" [routerLink]=\"[item.path]\">{{item.name}}</a>\r\n        </li> -->\r\n        <li class=\"nav-item\" [ngClass]=\"{'is-active': href === 'user-dashboard'}\"\r\n            *ngIf=\"authUserService.isLoggedIn() && role == 'user'\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/user-dashboard']\">Home</a>\r\n        </li>\r\n        <li class=\"nav-item\" [ngClass]=\"{'is-active': href === 'beauticians'}\"\r\n            *ngIf=\"authUserService.isLoggedIn() && role == 'user'\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/beauticians']\">Beauticians</a>\r\n        </li>\r\n        <li class=\"nav-item\" [ngClass]=\"{'is-active': href === 'reports'}\"\r\n            *ngIf=\"authUserService.isLoggedIn() && role == 'user'\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/reports']\">Reports</a>\r\n        </li>\r\n        <li class=\"nav-item\" [ngClass]=\"{'is-active': href === 'admin-dashboard'}\"\r\n            *ngIf=\"authUserService.isLoggedIn() && role == 'admin'\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/admin-dashboard']\">Home</a>\r\n        </li>\r\n        <li class=\"nav-item\"\r\n            [ngClass]=\"{'is-active': href === 'services' || href === 'add-beautician' || href === 'add-beauty-parlour' || href === 'add-beauty-services'}\"\r\n            *ngIf=\"authUserService.isLoggedIn() && role == 'admin'\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/services']\">Services</a>\r\n        </li>\r\n        <li class=\"nav-item\" [ngClass]=\"{'is-active': href === 'beautician-dashboard'}\"\r\n            *ngIf=\"authUserService.isLoggedIn() && role == 'beautician'\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/beautician-dashboard']\">Home</a>\r\n        </li>\r\n        <li class=\"nav-item\" [ngClass]=\"{'is-active': href === 'beautician-users'}\"\r\n            *ngIf=\"authUserService.isLoggedIn() && role == 'beautician'\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/beautician-users']\">Appointments</a>\r\n        </li>\r\n        <li class=\"nav-item\" [ngClass]=\"{'is-active': href === 'beautician-reports'}\"\r\n            *ngIf=\"authUserService.isLoggedIn() && role == 'beautician'\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/beautician-reports']\">Reports</a>\r\n        </li>\r\n        <li class=\"nav-item\" [ngClass]=\"{'is-active': href === 'login'}\" *ngIf=\"!authUserService.isLoggedIn()\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/login']\">Login</a>\r\n        </li>\r\n        <li class=\"nav-item\" [ngClass]=\"{'is-active': href === 'signup'}\" *ngIf=\"!authUserService.isLoggedIn()\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/signup']\">Signup</a>\r\n        </li>\r\n        <!-- <li class=\"nav-item logout-link\" *ngIf=\"authUserService.isLoggedIn()\">\r\n            <a class=\"nav-link\" (click)=\"userLogout()\">Logout</a>\r\n        </li> -->\r\n        <li class=\"nav-item\" *ngIf=\"authUserService.isLoggedIn()\">\r\n            <a class=\"nav-link\">\r\n                <div class=\"dropdown\">\r\n                    <!-- <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                      Dropdown button\r\n                    </button> -->\r\n                    <img src=\"../../assets/images/admin-avatar.png\" alt=\"_profile\" class=\"img-responsive rounded-image dropdown-toggle\" type=\"button\"\r\n                        id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\"\r\n                        width=\"30\" height=\"30\">\r\n                    <div class=\"dropdown-menu dropdown-menu-right p-0\" aria-labelledby=\"dropdownMenuButton\">\r\n                        <a class=\"dropdown-item\">\r\n                            <div class=\"div1\">\r\n                                <img src=\"../../assets/images/admin-avatar.png\" alt=\"_pic\" class=\"img-responsive rounded-image\" width=\"60\" height=\"60\">\r\n                                <div class=\"div2 ml-2\">\r\n                                    <p class=\"p1 mt-3\">{{fullName}}</p>\r\n                                    <p class=\"p2\">{{userName}}</p>\r\n                                </div>\r\n                            </div>\r\n                        </a>\r\n                        <a class=\"dropdown-item link\" (click)=\"onClickView('profile')\" [ngClass]=\"{'is-active1': href === 'admin-profile' || href === 'user-profile' || href === 'beautician-profile'}\">\r\n                            <i class=\"fa fa-user-o\" aria-hidden=\"false\"></i><span class=\"ml-2\">My Profile</span>\r\n                        </a>\r\n                        <a class=\"dropdown-item\" (click)=\"onClickView('settings')\" *ngIf=\"authUserService.isLoggedIn() && role == 'admin'\" [ngClass]=\"{'is-active1': href === 'admin-settings'}\">\r\n                            <i class=\"fa fa-gear\" aria-hidden=\"false\"></i><span class=\"ml-2\">Settings</span>\r\n                        </a>\r\n                        <a class=\"dropdown-item\" (click)=\"userLogout()\">\r\n                            <i class=\"fa fa-sign-out\" aria-hidden=\"false\"></i><span class=\"ml-2\">Logout</span>\r\n                        </a>\r\n                    </div>\r\n                </div>\r\n            </a>\r\n        </li>\r\n    </ul>\r\n</nav>\r\n\r\n<ng-container *ngIf=\"authUserService.isLoggedIn()\">\r\n    <div class=\"modal fade logout-modal\" id=\"autoLogoutModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"autoLogoutModalLabel\"\r\n        aria-hidden=\"true\">\r\n        <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\r\n            <div class=\"modal-content\">\r\n                <div class=\"modal-header\">\r\n                    <h6 class=\"modal-title\" id=\"autoLogoutModalLabel\">Profile Logout or Stay confirmation ?</h6>\r\n                    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"userLogout()\">\r\n                        <span aria-hidden=\"true\">&times;</span>\r\n                    </button>\r\n                </div>\r\n                <div class=\"modal-body\">\r\n                    <p class=\"text-center\">Your profile session become to ends in</p>\r\n                    <p class=\"text-center\" [ngClass]=\"{'isSuccess': (seconds <= 60 && seconds >= 30), 'isPrimary': (seconds <= 30 && seconds >= 20), 'isDanger': (seconds <= 20 && seconds >= 00)}\">{{ showTime }}</p>\r\n                    <div class=\"form-group input-group justify-content-center\">\r\n                        <button type=\"button\" class=\"btn btn-action-in\" (click)=\"userReLogIn()\">Stay</button>\r\n                        <button type=\"button\" class=\"btn btn-action-out ml-2\" (click)=\"userLogout()\">Logout</button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</ng-container>");
 
 /***/ }),
 
@@ -568,7 +581,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>not-found works!</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header></app-header>\n<div class=\"container\">\n    <div class=\"row mt-5\">\n        <div class=\"col-md-12\">\n            <form #dateForm=\"ngForm\">\n                <div class=\"form-group input-group\">\n                    <input type=\"number\" class=\"form-control\" name=\"yearName\" id=\"yearId\" [(ngModel)]=\"selectYear\" placeholder=\"Type year\" required>\n                    <input type=\"number\" class=\"form-control ml-2\" name=\"monthName\" id=\"monthId\" [(ngModel)]=\"selectMonth\" placeholder=\"Type month\" required>\n                    <input type=\"number\" class=\"form-control ml-2\" name=\"dateName\" id=\"dateId\" [(ngModel)]=\"selectDate\" placeholder=\"Type date\" required>\n                    <button class=\"btn btn-action-search ml-2\" type=\"submit\" [disabled]=\"dateForm.invalid\" (click)=\"onSearchFullDate()\">Search</button>\n                </div>\n            </form>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-md-12\">\n            <div class=\"title\">\n                <span class=\"span1 text-center\" (click)=\"getAllDates('prev')\"><i class=\"fa fa-angle-left\"></i></span>\n                <span class=\"span2\">\n                    <p class=\"p1\">{{currentFullMonth}}</p>\n                    <p class=\"p2 ml-3\">{{currentDate}},</p>\n                    <p class=\"p3 ml-3\">{{currentYear}}</p>\n                </span>\n                <span class=\"span3 text-center\" (click)=\"getAllDates('next')\"><i class=\"fa fa-angle-right\"></i></span>\n            </div>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-md-12 week-col\">\n            <div class=\"days text-center\" *ngFor=\"let item of days; let i=index;\">\n                {{item}}\n            </div>\n        </div>\n        <div class=\"col-md-12 dates-col\" *ngFor=\"let date of dates; let i=index;\">\n            <div class=\"nums\" *ngFor=\"let num of date; let j=index\" [ngClass]=\"{'isDisable': setDisableDates(num, i), 'isCurrent': setCurrentDateColour(num, i)}\">\n                <div class=\"text-center\" [ngClass]=\"{'isSunday': setSundayColour(num, j)}\">{{ num }}</div>\n            </div>\n        </div>\n        <div class=\"col-md-12\">\n            <br>\n        </div>\n    </div>\n</div>");
 
 /***/ }),
 
@@ -595,6 +608,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<app-header></app-header>\r\n<div class=\"container\">\r\n    <div class=\"row mt-3\">\r\n        <div class=\"col-md-12\">\r\n            <p class=\"titles\">Hi <b>{{fullName}}</b>, Welcome To <span class=\"sub-titles\">Online Beautician Booking System</span></p>\r\n            <hr>\r\n        </div>\r\n    </div>\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/user-form/user-form.component.html":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/user-form/user-form.component.html ***!
+  \******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header></app-header>\n<div class=\"container\">\n    <div class=\"row mt-5\">\n        <div class=\"col-md-12\">\n            <p>User Registration Form :</p>\n            <hr>\n            <form #userForm=\"ngForm\">\n                <div class=\"container-fluid\">\n                    <div class=\"row mt-3\">\n                        <div class=\"form-group col-md-4\">\n                            <input type=\"text\" class=\"form-control\" name=\"firstname\" id=\"firstnameId\"\n                                placeholder=\"Enter first name\" [(ngModel)]=\"firstName\" #firstname=\"ngModel\" required>\n                            <span class=\"error-note\"\n                                *ngIf=\"firstname.invalid && (firstname.dirty || firstname.touched)\">\n                                <span *ngIf=\"firstname?.errors.required\">First name is required.</span>\n                            </span>\n                        </div>\n                        <div class=\"form-group col-md-4\">\n                            <input type=\"text\" class=\"form-control\" name=\"lastname\" id=\"lastnameId\"\n                                placeholder=\"Enter last name\" [(ngModel)]=\"lastName\" #lastname=\"ngModel\" required>\n                            <span class=\"error-note\" *ngIf=\"lastname.invalid && (lastname.dirty || lastname.touched)\">\n                                <span *ngIf=\"lastname?.errors.required\">Last name is required.</span>\n                            </span>\n                        </div>\n                        <div class=\"form-group col-md-4\">\n                            <input type=\"number\" class=\"form-control\" name=\"rollName\" id=\"rollId\"\n                                placeholder=\"Enter roll number\" [(ngModel)]=\"rollNumber\" #rollName=\"ngModel\" required>\n                            <span class=\"error-note\" *ngIf=\"rollName.invalid && (rollName.dirty || rollName.touched)\">\n                                <span *ngIf=\"rollName?.errors.required\">Roll number is required.</span>\n                            </span>\n                        </div>\n                    </div>\n                    <div class=\"row mt-3\">\n                        <div class=\"form-group col-md-4\">\n                            <select name=\"branchname\" id=\"branchnameId\" class=\"form-control\" [(ngModel)]=\"branchName\"\n                                #branchname=\"ngModel\" required>\n                                <option value=\"null\" selected disabled>Select Branch Name :</option>\n                                <option>ECE</option>\n                                <option>CSE</option>\n                                <option>MME</option>\n                                <option>CE</option>\n                                <option>CIVIL</option>\n                                <option>MECHANICAL</option>\n                                <option>EEE</option>\n                                <option>IT</option>\n                            </select>\n                            <span class=\"error-note\"\n                                *ngIf=\"branchname.invalid && (branchname.dirty || branchname.touched)\">\n                                <span *ngIf=\"branchname?.errors.required\">Branch name is required.</span>\n                            </span>\n                        </div>\n                        <div class=\"form-group col-md-4\">\n                            <select name=\"sectionname\" id=\"sectionnameId\" class=\"form-control\" [(ngModel)]=\"sectionName\"\n                                #sectionname=\"ngModel\" required>\n                                <option value=\"null\" selected disabled>Select Section Name :</option>\n                                <option>A</option>\n                                <option>B</option>\n                                <option>C</option>\n                                <option>D</option>\n                            </select>\n                            <span class=\"error-note\"\n                                *ngIf=\"sectionname.invalid && (sectionname.dirty || sectionname.touched)\">\n                                <span *ngIf=\"sectionname?.errors.required\">Section name is required.</span>\n                            </span>\n                        </div>\n                        <div class=\"form-group col-md-2 mt-2\">\n                            <div class=\"input-group radio-1\">\n                                <input type=\"radio\" class=\"form-control\" name=\"nametype\" id=\"studentId\" value=\"0\"\n                                    [(ngModel)]=\"personType\" required>\n                                <label for=\"studentId\">Student</label>\n                            </div>\n                        </div>\n                        <div class=\"form-group col-md-2 mt-2\">\n                            <div class=\"input-group radio-2\">\n                                <input type=\"radio\" class=\"form-control\" name=\"nametype\" id=\"teacherId\" value=\"1\"\n                                    [(ngModel)]=\"personType\" required>\n                                <label for=\"teacherId\">Teacher</label>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"row mt-3\">\n                        <div class=\"form-group col-md-4\">\n                            <input type=\"number\" class=\"form-control\" name=\"phoneName\" id=\"phoneId\"\n                                placeholder=\"Enter mobile number\" [(ngModel)]=\"mobile\" #phoneName=\"ngModel\" required>\n                            <span class=\"error-note\"\n                                *ngIf=\"phoneName.invalid && (phoneName.dirty || phoneName.touched)\">\n                                <span *ngIf=\"phoneName?.errors.required\">Mobile number is required.</span>\n                            </span>\n                        </div>\n                        <div class=\"form-group col-md-4\">\n                            <input type=\"text\" class=\"form-control\" name=\"addressName\" id=\"addressId\"\n                                placeholder=\"Enter home address\" [(ngModel)]=\"address\" #addressName=\"ngModel\" required>\n                            <span class=\"error-note\"\n                                *ngIf=\"addressName.invalid && (addressName.dirty || addressName.touched)\">\n                                <span *ngIf=\"addressName?.errors.required\">Address is required.</span>\n                            </span>\n                        </div>\n                        <div class=\"form-group col-md-4\">\n                            <input type=\"file\" class=\"form-control\" name=\"profileName\" id=\"profileId\" accept=\"*\"\n                                (change)=\"onSelectFile($event)\" #fileInput required>\n                        </div>\n                    </div>\n                    <div class=\"row mt-3\">\n                        <div class=\"form-group input-group col-md-4\">\n                            <button class=\"btn btn-action-cancel\" type=\"reset\" (click)=\"resetForm()\">Reset</button>\n                            <button class=\"btn btn-action-save ml-2\" type=\"submit\" [disabled]=\"userForm.invalid || !profile\"\n                                (click)=\"saveUserDetails()\">Save</button>\n                        </div>\n                    </div>\n                </div>\n            </form>\n        </div>\n    </div>\n</div>");
 
 /***/ }),
 
@@ -1259,13 +1285,16 @@ let AdminDashboardComponent = class AdminDashboardComponent {
             clearTimeout();
             this.spinner = false;
         }, (error) => {
+            console.log('Error while getting dashboard counts', error);
             this.toastr.errorToastr("Network failed, Please try again.");
             this.spinner = false;
         });
     }
     ngOnDestroy() {
         console.log('Admin dashbaord component destroyed');
-        this.subscription.unsubscribe();
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+        }
     }
 };
 AdminDashboardComponent.ctorParameters = () => [
@@ -1339,7 +1368,7 @@ AdminProfileComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("/* main accrodian css styles */\r\n.accordion {\r\n\tborder-right: 3px solid #aab5c0;\r\n}\r\n.accordion .card {\r\n  background: none;\r\n  border: none;\r\n}\r\n.accordion .card .card-header {\r\n  background: none;\r\n  border: none;\r\n  padding: 0.4rem 1rem;\r\n  font-family: \"Roboto\", sans-serif;\r\n}\r\n.accordion .card-header h2 span {\r\n  float: left;\r\n  margin-top: 10px;\r\n}\r\n.accordion .card-header .btn {\r\n  color: #aab5c0;\r\n  font-size: 1.04rem;\r\n  text-align: left;\r\n  position: relative;\r\n  font-weight: 500;\r\n  padding-left: 2rem;\r\n}\r\n.accordion .card-header i {\r\n  font-size: 1.2rem;\r\n  font-weight: bold;\r\n  position: absolute;\r\n  left: 0;\r\n  top: 9px;\r\n}\r\n.accordion .card-header .btn:hover {\r\n  color: #ff8300;\r\n}\r\n.accordion .card-body {\r\n  color: #324353;\r\n  padding: 0.5rem 3rem;\r\n}\r\n.page-title {\r\n  color: #324353;\r\n  font-size: 1.2em;\r\n  margin: 3rem 0 3rem 1rem;\r\n  font-family: \"Roboto\", sans-serif;\r\n  position: relative;\r\n}\r\n.page-title::after {\r\n  content: \"\";\r\n  width: 80px;\r\n  position: absolute;\r\n  height: 3px;\r\n  border-radius: 1px;\r\n  background: #73bb2b;\r\n  left: 0;\r\n  bottom: -15px;\r\n}\r\n.accordion .highlight .btn {\r\n  color: #74bd30;\r\n}\r\n.accordion .highlight i {\r\n  transform: rotate(180deg);\r\n}\r\n/* end main accrodian css styles */\r\n/* form css styles */\r\ninput[type=\"text\"],\r\ninput[type=\"email\"],\r\ninput[type=\"number\"],\r\ninput[type=\"file\"],\r\ninput[type=\"password\"] {\r\n  height: 50px;\r\n  padding: 10px;\r\n  font-size: 1em;\r\n  color: gray;\r\n}\r\n.btn-action-upload {\r\n  color: white;\r\n  background-color: #6495ed;\r\n}\r\n.btn-action-upload:hover {\r\n  color: white;\r\n  background-color: #1667af;\r\n}\r\n.btn-action-update {\r\n  color: white;\r\n  background-color: #1667af;\r\n}\r\n.btn-action-update:hover {\r\n  color: white;\r\n  background-color: #1668af;\r\n}\r\n.btn-action-cancel {\r\n  background-color: #bfcbd6;\r\n}\r\n.btn-action-cancel:hover {\r\n  background-color: #aab5c0;\r\n}\r\n/* end form css styles */\r\n/* alerts && notifications css styles */\r\nul.timeline {\r\n  list-style-type: none;\r\n  position: relative;\r\n}\r\nul.timeline:before {\r\n  content: ' ';\r\n  background: #d4d9df;\r\n  display: inline-block;\r\n  position: absolute;\r\n  left: 29px;\r\n  width: 2px;\r\n  height: 100%;\r\n  z-index: 400;\r\n}\r\nul.timeline > li {\r\n  margin: 20px 0;\r\n  padding-left: 20px;\r\n}\r\nul.timeline > li:before {\r\n  content: ' ';\r\n  background: white;\r\n  display: inline-block;\r\n  position: absolute;\r\n  border-radius: 50%;\r\n  border: 3px solid #6495ed;\r\n  left: 20px;\r\n  width: 20px;\r\n  height: 20px;\r\n  z-index: 400;\r\n}\r\n.timeline li a {\r\n  cursor: pointer;\r\n  text-decoration: none;\r\n  color: #6495ed !important;\r\n}\r\n.timeline .btn-action-read {\r\n  color: white;\r\n  background-color: #aab5c0;\r\n}\r\n.timeline .btn-action-read:hover {\r\n  color: white;\r\n  background-color: #6495ed;\r\n}\r\n.btn-action-view {\r\n  color: white;\r\n  background-color: #aab5c0;\r\n}\r\n.btn-action-view:hover {\r\n  color: white;\r\n  background-color: #6495ed;\r\n}\r\n.div1 {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  margin: 3rem 0 0 1rem;\r\n}\r\n.div1 p {\r\n  color: lightslategray;\r\n  font-size: 1em;\r\n  text-decoration: underline;\r\n}\r\n/* end alerts && notifications css styles */\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWRtaW4vYWRtaW4tc2V0dGluZ3MvYWRtaW4tc2V0dGluZ3MuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSw4QkFBOEI7QUFDOUI7Q0FDQywrQkFBK0I7QUFDaEM7QUFDQTtFQUNFLGdCQUFnQjtFQUNoQixZQUFZO0FBQ2Q7QUFDQTtFQUNFLGdCQUFnQjtFQUNoQixZQUFZO0VBQ1osb0JBQW9CO0VBQ3BCLGlDQUFpQztBQUNuQztBQUNBO0VBQ0UsV0FBVztFQUNYLGdCQUFnQjtBQUNsQjtBQUNBO0VBQ0UsY0FBYztFQUNkLGtCQUFrQjtFQUNsQixnQkFBZ0I7RUFDaEIsa0JBQWtCO0VBQ2xCLGdCQUFnQjtFQUNoQixrQkFBa0I7QUFDcEI7QUFDQTtFQUNFLGlCQUFpQjtFQUNqQixpQkFBaUI7RUFDakIsa0JBQWtCO0VBQ2xCLE9BQU87RUFDUCxRQUFRO0FBQ1Y7QUFDQTtFQUNFLGNBQWM7QUFDaEI7QUFDQTtFQUNFLGNBQWM7RUFDZCxvQkFBb0I7QUFDdEI7QUFDQTtFQUNFLGNBQWM7RUFDZCxnQkFBZ0I7RUFDaEIsd0JBQXdCO0VBQ3hCLGlDQUFpQztFQUNqQyxrQkFBa0I7QUFDcEI7QUFDQTtFQUNFLFdBQVc7RUFDWCxXQUFXO0VBQ1gsa0JBQWtCO0VBQ2xCLFdBQVc7RUFDWCxrQkFBa0I7RUFDbEIsbUJBQW1CO0VBQ25CLE9BQU87RUFDUCxhQUFhO0FBQ2Y7QUFDQTtFQUNFLGNBQWM7QUFDaEI7QUFDQTtFQUNFLHlCQUF5QjtBQUMzQjtBQUNBLGtDQUFrQztBQUVsQyxvQkFBb0I7QUFDcEI7Ozs7O0VBS0UsWUFBWTtFQUNaLGFBQWE7RUFDYixjQUFjO0VBQ2QsV0FBVztBQUNiO0FBRUE7RUFDRSxZQUFZO0VBQ1oseUJBQXlCO0FBQzNCO0FBRUE7RUFDRSxZQUFZO0VBQ1oseUJBQXlCO0FBQzNCO0FBRUE7RUFDRSxZQUFZO0VBQ1oseUJBQXlCO0FBQzNCO0FBRUE7RUFDRSxZQUFZO0VBQ1oseUJBQXlCO0FBQzNCO0FBRUE7RUFDRSx5QkFBeUI7QUFDM0I7QUFFQTtFQUNFLHlCQUF5QjtBQUMzQjtBQUNBLHdCQUF3QjtBQUd4Qix1Q0FBdUM7QUFDdkM7RUFDRSxxQkFBcUI7RUFDckIsa0JBQWtCO0FBQ3BCO0FBQ0E7RUFDRSxZQUFZO0VBQ1osbUJBQW1CO0VBQ25CLHFCQUFxQjtFQUNyQixrQkFBa0I7RUFDbEIsVUFBVTtFQUNWLFVBQVU7RUFDVixZQUFZO0VBQ1osWUFBWTtBQUNkO0FBQ0E7RUFDRSxjQUFjO0VBQ2Qsa0JBQWtCO0FBQ3BCO0FBQ0E7RUFDRSxZQUFZO0VBQ1osaUJBQWlCO0VBQ2pCLHFCQUFxQjtFQUNyQixrQkFBa0I7RUFDbEIsa0JBQWtCO0VBQ2xCLHlCQUF5QjtFQUN6QixVQUFVO0VBQ1YsV0FBVztFQUNYLFlBQVk7RUFDWixZQUFZO0FBQ2Q7QUFFQTtFQUNFLGVBQWU7RUFDZixxQkFBcUI7RUFDckIseUJBQXlCO0FBQzNCO0FBRUE7RUFDRSxZQUFZO0VBQ1oseUJBQXlCO0FBQzNCO0FBRUE7RUFDRSxZQUFZO0VBQ1oseUJBQXlCO0FBQzNCO0FBRUE7RUFDRSxZQUFZO0VBQ1oseUJBQXlCO0FBQzNCO0FBRUE7RUFDRSxZQUFZO0VBQ1oseUJBQXlCO0FBQzNCO0FBRUE7RUFDRSxhQUFhO0VBQ2IsOEJBQThCO0VBQzlCLG1CQUFtQjtFQUNuQixxQkFBcUI7QUFDdkI7QUFFQTtFQUNFLHFCQUFxQjtFQUNyQixjQUFjO0VBQ2QsMEJBQTBCO0FBQzVCO0FBQ0EsMkNBQTJDIiwiZmlsZSI6InNyYy9hcHAvYWRtaW4vYWRtaW4tc2V0dGluZ3MvYWRtaW4tc2V0dGluZ3MuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIG1haW4gYWNjcm9kaWFuIGNzcyBzdHlsZXMgKi9cclxuLmFjY29yZGlvbiB7XHJcblx0Ym9yZGVyLXJpZ2h0OiAzcHggc29saWQgI2FhYjVjMDtcclxufVxyXG4uYWNjb3JkaW9uIC5jYXJkIHtcclxuICBiYWNrZ3JvdW5kOiBub25lO1xyXG4gIGJvcmRlcjogbm9uZTtcclxufVxyXG4uYWNjb3JkaW9uIC5jYXJkIC5jYXJkLWhlYWRlciB7XHJcbiAgYmFja2dyb3VuZDogbm9uZTtcclxuICBib3JkZXI6IG5vbmU7XHJcbiAgcGFkZGluZzogMC40cmVtIDFyZW07XHJcbiAgZm9udC1mYW1pbHk6IFwiUm9ib3RvXCIsIHNhbnMtc2VyaWY7XHJcbn1cclxuLmFjY29yZGlvbiAuY2FyZC1oZWFkZXIgaDIgc3BhbiB7XHJcbiAgZmxvYXQ6IGxlZnQ7XHJcbiAgbWFyZ2luLXRvcDogMTBweDtcclxufVxyXG4uYWNjb3JkaW9uIC5jYXJkLWhlYWRlciAuYnRuIHtcclxuICBjb2xvcjogI2FhYjVjMDtcclxuICBmb250LXNpemU6IDEuMDRyZW07XHJcbiAgdGV4dC1hbGlnbjogbGVmdDtcclxuICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgZm9udC13ZWlnaHQ6IDUwMDtcclxuICBwYWRkaW5nLWxlZnQ6IDJyZW07XHJcbn1cclxuLmFjY29yZGlvbiAuY2FyZC1oZWFkZXIgaSB7XHJcbiAgZm9udC1zaXplOiAxLjJyZW07XHJcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gIGxlZnQ6IDA7XHJcbiAgdG9wOiA5cHg7XHJcbn1cclxuLmFjY29yZGlvbiAuY2FyZC1oZWFkZXIgLmJ0bjpob3ZlciB7XHJcbiAgY29sb3I6ICNmZjgzMDA7XHJcbn1cclxuLmFjY29yZGlvbiAuY2FyZC1ib2R5IHtcclxuICBjb2xvcjogIzMyNDM1MztcclxuICBwYWRkaW5nOiAwLjVyZW0gM3JlbTtcclxufVxyXG4ucGFnZS10aXRsZSB7XHJcbiAgY29sb3I6ICMzMjQzNTM7XHJcbiAgZm9udC1zaXplOiAxLjJlbTtcclxuICBtYXJnaW46IDNyZW0gMCAzcmVtIDFyZW07XHJcbiAgZm9udC1mYW1pbHk6IFwiUm9ib3RvXCIsIHNhbnMtc2VyaWY7XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG59XHJcbi5wYWdlLXRpdGxlOjphZnRlciB7XHJcbiAgY29udGVudDogXCJcIjtcclxuICB3aWR0aDogODBweDtcclxuICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgaGVpZ2h0OiAzcHg7XHJcbiAgYm9yZGVyLXJhZGl1czogMXB4O1xyXG4gIGJhY2tncm91bmQ6ICM3M2JiMmI7XHJcbiAgbGVmdDogMDtcclxuICBib3R0b206IC0xNXB4O1xyXG59XHJcbi5hY2NvcmRpb24gLmhpZ2hsaWdodCAuYnRuIHtcclxuICBjb2xvcjogIzc0YmQzMDtcclxufVxyXG4uYWNjb3JkaW9uIC5oaWdobGlnaHQgaSB7XHJcbiAgdHJhbnNmb3JtOiByb3RhdGUoMTgwZGVnKTtcclxufVxyXG4vKiBlbmQgbWFpbiBhY2Nyb2RpYW4gY3NzIHN0eWxlcyAqL1xyXG5cclxuLyogZm9ybSBjc3Mgc3R5bGVzICovXHJcbmlucHV0W3R5cGU9XCJ0ZXh0XCJdLFxyXG5pbnB1dFt0eXBlPVwiZW1haWxcIl0sXHJcbmlucHV0W3R5cGU9XCJudW1iZXJcIl0sXHJcbmlucHV0W3R5cGU9XCJmaWxlXCJdLFxyXG5pbnB1dFt0eXBlPVwicGFzc3dvcmRcIl0ge1xyXG4gIGhlaWdodDogNTBweDtcclxuICBwYWRkaW5nOiAxMHB4O1xyXG4gIGZvbnQtc2l6ZTogMWVtO1xyXG4gIGNvbG9yOiBncmF5O1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi11cGxvYWQge1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNjQ5NWVkO1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi11cGxvYWQ6aG92ZXIge1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMTY2N2FmO1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi11cGRhdGUge1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMTY2N2FmO1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi11cGRhdGU6aG92ZXIge1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMTY2OGFmO1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi1jYW5jZWwge1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNiZmNiZDY7XHJcbn1cclxuXHJcbi5idG4tYWN0aW9uLWNhbmNlbDpob3ZlciB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2FhYjVjMDtcclxufVxyXG4vKiBlbmQgZm9ybSBjc3Mgc3R5bGVzICovXHJcblxyXG5cclxuLyogYWxlcnRzICYmIG5vdGlmaWNhdGlvbnMgY3NzIHN0eWxlcyAqL1xyXG51bC50aW1lbGluZSB7XHJcbiAgbGlzdC1zdHlsZS10eXBlOiBub25lO1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxufVxyXG51bC50aW1lbGluZTpiZWZvcmUge1xyXG4gIGNvbnRlbnQ6ICcgJztcclxuICBiYWNrZ3JvdW5kOiAjZDRkOWRmO1xyXG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgbGVmdDogMjlweDtcclxuICB3aWR0aDogMnB4O1xyXG4gIGhlaWdodDogMTAwJTtcclxuICB6LWluZGV4OiA0MDA7XHJcbn1cclxudWwudGltZWxpbmUgPiBsaSB7XHJcbiAgbWFyZ2luOiAyMHB4IDA7XHJcbiAgcGFkZGluZy1sZWZ0OiAyMHB4O1xyXG59XHJcbnVsLnRpbWVsaW5lID4gbGk6YmVmb3JlIHtcclxuICBjb250ZW50OiAnICc7XHJcbiAgYmFja2dyb3VuZDogd2hpdGU7XHJcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgYm9yZGVyOiAzcHggc29saWQgIzY0OTVlZDtcclxuICBsZWZ0OiAyMHB4O1xyXG4gIHdpZHRoOiAyMHB4O1xyXG4gIGhlaWdodDogMjBweDtcclxuICB6LWluZGV4OiA0MDA7XHJcbn1cclxuXHJcbi50aW1lbGluZSBsaSBhIHtcclxuICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG4gIGNvbG9yOiAjNjQ5NWVkICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbi50aW1lbGluZSAuYnRuLWFjdGlvbi1yZWFkIHtcclxuICBjb2xvcjogd2hpdGU7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2FhYjVjMDtcclxufVxyXG5cclxuLnRpbWVsaW5lIC5idG4tYWN0aW9uLXJlYWQ6aG92ZXIge1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNjQ5NWVkO1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi12aWV3IHtcclxuICBjb2xvcjogd2hpdGU7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2FhYjVjMDtcclxufVxyXG5cclxuLmJ0bi1hY3Rpb24tdmlldzpob3ZlciB7XHJcbiAgY29sb3I6IHdoaXRlO1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICM2NDk1ZWQ7XHJcbn1cclxuXHJcbi5kaXYxIHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcclxuICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIG1hcmdpbjogM3JlbSAwIDAgMXJlbTtcclxufVxyXG5cclxuLmRpdjEgcCB7XHJcbiAgY29sb3I6IGxpZ2h0c2xhdGVncmF5O1xyXG4gIGZvbnQtc2l6ZTogMWVtO1xyXG4gIHRleHQtZGVjb3JhdGlvbjogdW5kZXJsaW5lO1xyXG59XHJcbi8qIGVuZCBhbGVydHMgJiYgbm90aWZpY2F0aW9ucyBjc3Mgc3R5bGVzICovIl19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("/* main accrodian css styles */\r\n.accordion {\r\n\tborder-right: 3px solid #aab5c0;\r\n}\r\n.accordion .card {\r\n  background: none;\r\n  border: none;\r\n}\r\n.accordion .card .card-header {\r\n  background: none;\r\n  border: none;\r\n  padding: 0.4rem 1rem;\r\n  /* font-family: \"Roboto\", sans-serif; */\r\n}\r\n.accordion .card-header h2 span {\r\n  float: left;\r\n  margin-top: 10px;\r\n}\r\n.accordion .card-header .btn {\r\n  color: #aab5c0;\r\n  font-size: 1.04rem;\r\n  text-align: left;\r\n  position: relative;\r\n  font-weight: 500;\r\n  padding-left: 2rem;\r\n}\r\n.accordion .card-header i {\r\n  font-size: 1.2rem;\r\n  font-weight: bold;\r\n  position: absolute;\r\n  left: 0;\r\n  top: 9px;\r\n}\r\n.accordion .card-header .btn:hover {\r\n  color: #ff8300;\r\n}\r\n.accordion .card-body {\r\n  color: #324353;\r\n  padding: 0.5rem 3rem;\r\n}\r\n.page-title {\r\n  color: #324353;\r\n  font-size: 1.2em;\r\n  margin: 3rem 0 3rem 1rem;\r\n  /* font-family: \"Roboto\", sans-serif; */\r\n  position: relative;\r\n}\r\n.page-title::after {\r\n  content: \"\";\r\n  width: 80px;\r\n  position: absolute;\r\n  height: 3px;\r\n  border-radius: 1px;\r\n  background: #73bb2b;\r\n  left: 0;\r\n  bottom: -15px;\r\n}\r\n.accordion .highlight .btn {\r\n  color: #74bd30;\r\n}\r\n.accordion .highlight i {\r\n  transform: rotate(180deg);\r\n}\r\n/* end main accrodian css styles */\r\n/* form css styles */\r\ninput[type=\"text\"],\r\ninput[type=\"email\"],\r\ninput[type=\"number\"],\r\ninput[type=\"file\"],\r\ninput[type=\"password\"] {\r\n  height: 50px;\r\n  padding: 10px;\r\n  font-size: 1em;\r\n  color: gray;\r\n}\r\n.btn-action-upload {\r\n  color: white;\r\n  background-color: #6495ed;\r\n}\r\n.btn-action-upload:hover {\r\n  color: white;\r\n  background-color: #1667af;\r\n}\r\n.btn-action-update {\r\n  color: white;\r\n  background-color: #1667af;\r\n}\r\n.btn-action-update:hover {\r\n  color: white;\r\n  background-color: #1668af;\r\n}\r\n.btn-action-cancel {\r\n  background-color: #bfcbd6;\r\n}\r\n.btn-action-cancel:hover {\r\n  background-color: #aab5c0;\r\n}\r\n/* end form css styles */\r\n/* alerts && notifications css styles */\r\nul.timeline {\r\n  list-style-type: none;\r\n  position: relative;\r\n}\r\nul.timeline:before {\r\n  content: ' ';\r\n  background: #d4d9df;\r\n  display: inline-block;\r\n  position: absolute;\r\n  left: 29px;\r\n  width: 2px;\r\n  height: 100%;\r\n  z-index: 400;\r\n}\r\nul.timeline > li {\r\n  margin: 20px 0;\r\n  padding-left: 20px;\r\n}\r\nul.timeline > li:before {\r\n  content: ' ';\r\n  background: white;\r\n  display: inline-block;\r\n  position: absolute;\r\n  border-radius: 50%;\r\n  border: 3px solid #6495ed;\r\n  left: 20px;\r\n  width: 20px;\r\n  height: 20px;\r\n  z-index: 400;\r\n}\r\n.timeline li a {\r\n  cursor: pointer;\r\n  text-decoration: none;\r\n  color: #6495ed !important;\r\n}\r\n.timeline .btn-action-read {\r\n  color: white;\r\n  background-color: #aab5c0;\r\n}\r\n.timeline .btn-action-read:hover {\r\n  color: white;\r\n  background-color: #6495ed;\r\n}\r\n.btn-action-view {\r\n  color: white;\r\n  background-color: #aab5c0;\r\n}\r\n.btn-action-view:hover {\r\n  color: white;\r\n  background-color: #6495ed;\r\n}\r\n.div1 {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  margin: 3rem 0 0 1rem;\r\n}\r\n.div1 p {\r\n  color: lightslategray;\r\n  font-size: 1em;\r\n  text-decoration: underline;\r\n}\r\n/* end alerts && notifications css styles */\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWRtaW4vYWRtaW4tc2V0dGluZ3MvYWRtaW4tc2V0dGluZ3MuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSw4QkFBOEI7QUFDOUI7Q0FDQywrQkFBK0I7QUFDaEM7QUFDQTtFQUNFLGdCQUFnQjtFQUNoQixZQUFZO0FBQ2Q7QUFDQTtFQUNFLGdCQUFnQjtFQUNoQixZQUFZO0VBQ1osb0JBQW9CO0VBQ3BCLHVDQUF1QztBQUN6QztBQUNBO0VBQ0UsV0FBVztFQUNYLGdCQUFnQjtBQUNsQjtBQUNBO0VBQ0UsY0FBYztFQUNkLGtCQUFrQjtFQUNsQixnQkFBZ0I7RUFDaEIsa0JBQWtCO0VBQ2xCLGdCQUFnQjtFQUNoQixrQkFBa0I7QUFDcEI7QUFDQTtFQUNFLGlCQUFpQjtFQUNqQixpQkFBaUI7RUFDakIsa0JBQWtCO0VBQ2xCLE9BQU87RUFDUCxRQUFRO0FBQ1Y7QUFDQTtFQUNFLGNBQWM7QUFDaEI7QUFDQTtFQUNFLGNBQWM7RUFDZCxvQkFBb0I7QUFDdEI7QUFDQTtFQUNFLGNBQWM7RUFDZCxnQkFBZ0I7RUFDaEIsd0JBQXdCO0VBQ3hCLHVDQUF1QztFQUN2QyxrQkFBa0I7QUFDcEI7QUFDQTtFQUNFLFdBQVc7RUFDWCxXQUFXO0VBQ1gsa0JBQWtCO0VBQ2xCLFdBQVc7RUFDWCxrQkFBa0I7RUFDbEIsbUJBQW1CO0VBQ25CLE9BQU87RUFDUCxhQUFhO0FBQ2Y7QUFDQTtFQUNFLGNBQWM7QUFDaEI7QUFDQTtFQUNFLHlCQUF5QjtBQUMzQjtBQUNBLGtDQUFrQztBQUVsQyxvQkFBb0I7QUFDcEI7Ozs7O0VBS0UsWUFBWTtFQUNaLGFBQWE7RUFDYixjQUFjO0VBQ2QsV0FBVztBQUNiO0FBRUE7RUFDRSxZQUFZO0VBQ1oseUJBQXlCO0FBQzNCO0FBRUE7RUFDRSxZQUFZO0VBQ1oseUJBQXlCO0FBQzNCO0FBRUE7RUFDRSxZQUFZO0VBQ1oseUJBQXlCO0FBQzNCO0FBRUE7RUFDRSxZQUFZO0VBQ1oseUJBQXlCO0FBQzNCO0FBRUE7RUFDRSx5QkFBeUI7QUFDM0I7QUFFQTtFQUNFLHlCQUF5QjtBQUMzQjtBQUNBLHdCQUF3QjtBQUd4Qix1Q0FBdUM7QUFDdkM7RUFDRSxxQkFBcUI7RUFDckIsa0JBQWtCO0FBQ3BCO0FBQ0E7RUFDRSxZQUFZO0VBQ1osbUJBQW1CO0VBQ25CLHFCQUFxQjtFQUNyQixrQkFBa0I7RUFDbEIsVUFBVTtFQUNWLFVBQVU7RUFDVixZQUFZO0VBQ1osWUFBWTtBQUNkO0FBQ0E7RUFDRSxjQUFjO0VBQ2Qsa0JBQWtCO0FBQ3BCO0FBQ0E7RUFDRSxZQUFZO0VBQ1osaUJBQWlCO0VBQ2pCLHFCQUFxQjtFQUNyQixrQkFBa0I7RUFDbEIsa0JBQWtCO0VBQ2xCLHlCQUF5QjtFQUN6QixVQUFVO0VBQ1YsV0FBVztFQUNYLFlBQVk7RUFDWixZQUFZO0FBQ2Q7QUFFQTtFQUNFLGVBQWU7RUFDZixxQkFBcUI7RUFDckIseUJBQXlCO0FBQzNCO0FBRUE7RUFDRSxZQUFZO0VBQ1oseUJBQXlCO0FBQzNCO0FBRUE7RUFDRSxZQUFZO0VBQ1oseUJBQXlCO0FBQzNCO0FBRUE7RUFDRSxZQUFZO0VBQ1oseUJBQXlCO0FBQzNCO0FBRUE7RUFDRSxZQUFZO0VBQ1oseUJBQXlCO0FBQzNCO0FBRUE7RUFDRSxhQUFhO0VBQ2IsOEJBQThCO0VBQzlCLG1CQUFtQjtFQUNuQixxQkFBcUI7QUFDdkI7QUFFQTtFQUNFLHFCQUFxQjtFQUNyQixjQUFjO0VBQ2QsMEJBQTBCO0FBQzVCO0FBQ0EsMkNBQTJDIiwiZmlsZSI6InNyYy9hcHAvYWRtaW4vYWRtaW4tc2V0dGluZ3MvYWRtaW4tc2V0dGluZ3MuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIG1haW4gYWNjcm9kaWFuIGNzcyBzdHlsZXMgKi9cclxuLmFjY29yZGlvbiB7XHJcblx0Ym9yZGVyLXJpZ2h0OiAzcHggc29saWQgI2FhYjVjMDtcclxufVxyXG4uYWNjb3JkaW9uIC5jYXJkIHtcclxuICBiYWNrZ3JvdW5kOiBub25lO1xyXG4gIGJvcmRlcjogbm9uZTtcclxufVxyXG4uYWNjb3JkaW9uIC5jYXJkIC5jYXJkLWhlYWRlciB7XHJcbiAgYmFja2dyb3VuZDogbm9uZTtcclxuICBib3JkZXI6IG5vbmU7XHJcbiAgcGFkZGluZzogMC40cmVtIDFyZW07XHJcbiAgLyogZm9udC1mYW1pbHk6IFwiUm9ib3RvXCIsIHNhbnMtc2VyaWY7ICovXHJcbn1cclxuLmFjY29yZGlvbiAuY2FyZC1oZWFkZXIgaDIgc3BhbiB7XHJcbiAgZmxvYXQ6IGxlZnQ7XHJcbiAgbWFyZ2luLXRvcDogMTBweDtcclxufVxyXG4uYWNjb3JkaW9uIC5jYXJkLWhlYWRlciAuYnRuIHtcclxuICBjb2xvcjogI2FhYjVjMDtcclxuICBmb250LXNpemU6IDEuMDRyZW07XHJcbiAgdGV4dC1hbGlnbjogbGVmdDtcclxuICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgZm9udC13ZWlnaHQ6IDUwMDtcclxuICBwYWRkaW5nLWxlZnQ6IDJyZW07XHJcbn1cclxuLmFjY29yZGlvbiAuY2FyZC1oZWFkZXIgaSB7XHJcbiAgZm9udC1zaXplOiAxLjJyZW07XHJcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gIGxlZnQ6IDA7XHJcbiAgdG9wOiA5cHg7XHJcbn1cclxuLmFjY29yZGlvbiAuY2FyZC1oZWFkZXIgLmJ0bjpob3ZlciB7XHJcbiAgY29sb3I6ICNmZjgzMDA7XHJcbn1cclxuLmFjY29yZGlvbiAuY2FyZC1ib2R5IHtcclxuICBjb2xvcjogIzMyNDM1MztcclxuICBwYWRkaW5nOiAwLjVyZW0gM3JlbTtcclxufVxyXG4ucGFnZS10aXRsZSB7XHJcbiAgY29sb3I6ICMzMjQzNTM7XHJcbiAgZm9udC1zaXplOiAxLjJlbTtcclxuICBtYXJnaW46IDNyZW0gMCAzcmVtIDFyZW07XHJcbiAgLyogZm9udC1mYW1pbHk6IFwiUm9ib3RvXCIsIHNhbnMtc2VyaWY7ICovXHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG59XHJcbi5wYWdlLXRpdGxlOjphZnRlciB7XHJcbiAgY29udGVudDogXCJcIjtcclxuICB3aWR0aDogODBweDtcclxuICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgaGVpZ2h0OiAzcHg7XHJcbiAgYm9yZGVyLXJhZGl1czogMXB4O1xyXG4gIGJhY2tncm91bmQ6ICM3M2JiMmI7XHJcbiAgbGVmdDogMDtcclxuICBib3R0b206IC0xNXB4O1xyXG59XHJcbi5hY2NvcmRpb24gLmhpZ2hsaWdodCAuYnRuIHtcclxuICBjb2xvcjogIzc0YmQzMDtcclxufVxyXG4uYWNjb3JkaW9uIC5oaWdobGlnaHQgaSB7XHJcbiAgdHJhbnNmb3JtOiByb3RhdGUoMTgwZGVnKTtcclxufVxyXG4vKiBlbmQgbWFpbiBhY2Nyb2RpYW4gY3NzIHN0eWxlcyAqL1xyXG5cclxuLyogZm9ybSBjc3Mgc3R5bGVzICovXHJcbmlucHV0W3R5cGU9XCJ0ZXh0XCJdLFxyXG5pbnB1dFt0eXBlPVwiZW1haWxcIl0sXHJcbmlucHV0W3R5cGU9XCJudW1iZXJcIl0sXHJcbmlucHV0W3R5cGU9XCJmaWxlXCJdLFxyXG5pbnB1dFt0eXBlPVwicGFzc3dvcmRcIl0ge1xyXG4gIGhlaWdodDogNTBweDtcclxuICBwYWRkaW5nOiAxMHB4O1xyXG4gIGZvbnQtc2l6ZTogMWVtO1xyXG4gIGNvbG9yOiBncmF5O1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi11cGxvYWQge1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNjQ5NWVkO1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi11cGxvYWQ6aG92ZXIge1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMTY2N2FmO1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi11cGRhdGUge1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMTY2N2FmO1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi11cGRhdGU6aG92ZXIge1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMTY2OGFmO1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi1jYW5jZWwge1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNiZmNiZDY7XHJcbn1cclxuXHJcbi5idG4tYWN0aW9uLWNhbmNlbDpob3ZlciB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2FhYjVjMDtcclxufVxyXG4vKiBlbmQgZm9ybSBjc3Mgc3R5bGVzICovXHJcblxyXG5cclxuLyogYWxlcnRzICYmIG5vdGlmaWNhdGlvbnMgY3NzIHN0eWxlcyAqL1xyXG51bC50aW1lbGluZSB7XHJcbiAgbGlzdC1zdHlsZS10eXBlOiBub25lO1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxufVxyXG51bC50aW1lbGluZTpiZWZvcmUge1xyXG4gIGNvbnRlbnQ6ICcgJztcclxuICBiYWNrZ3JvdW5kOiAjZDRkOWRmO1xyXG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgbGVmdDogMjlweDtcclxuICB3aWR0aDogMnB4O1xyXG4gIGhlaWdodDogMTAwJTtcclxuICB6LWluZGV4OiA0MDA7XHJcbn1cclxudWwudGltZWxpbmUgPiBsaSB7XHJcbiAgbWFyZ2luOiAyMHB4IDA7XHJcbiAgcGFkZGluZy1sZWZ0OiAyMHB4O1xyXG59XHJcbnVsLnRpbWVsaW5lID4gbGk6YmVmb3JlIHtcclxuICBjb250ZW50OiAnICc7XHJcbiAgYmFja2dyb3VuZDogd2hpdGU7XHJcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgYm9yZGVyOiAzcHggc29saWQgIzY0OTVlZDtcclxuICBsZWZ0OiAyMHB4O1xyXG4gIHdpZHRoOiAyMHB4O1xyXG4gIGhlaWdodDogMjBweDtcclxuICB6LWluZGV4OiA0MDA7XHJcbn1cclxuXHJcbi50aW1lbGluZSBsaSBhIHtcclxuICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG4gIGNvbG9yOiAjNjQ5NWVkICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbi50aW1lbGluZSAuYnRuLWFjdGlvbi1yZWFkIHtcclxuICBjb2xvcjogd2hpdGU7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2FhYjVjMDtcclxufVxyXG5cclxuLnRpbWVsaW5lIC5idG4tYWN0aW9uLXJlYWQ6aG92ZXIge1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNjQ5NWVkO1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi12aWV3IHtcclxuICBjb2xvcjogd2hpdGU7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2FhYjVjMDtcclxufVxyXG5cclxuLmJ0bi1hY3Rpb24tdmlldzpob3ZlciB7XHJcbiAgY29sb3I6IHdoaXRlO1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICM2NDk1ZWQ7XHJcbn1cclxuXHJcbi5kaXYxIHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcclxuICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIG1hcmdpbjogM3JlbSAwIDAgMXJlbTtcclxufVxyXG5cclxuLmRpdjEgcCB7XHJcbiAgY29sb3I6IGxpZ2h0c2xhdGVncmF5O1xyXG4gIGZvbnQtc2l6ZTogMWVtO1xyXG4gIHRleHQtZGVjb3JhdGlvbjogdW5kZXJsaW5lO1xyXG59XHJcbi8qIGVuZCBhbGVydHMgJiYgbm90aWZpY2F0aW9ucyBjc3Mgc3R5bGVzICovIl19 */");
 
 /***/ }),
 
@@ -2385,6 +2414,7 @@ let AuthGuardService = class AuthGuardService {
     canActivate() {
         if (!this.authUserService.isLoggedIn()) {
             this.toastr.warningToastr('You are not authenticated or authorized user, Please login or signup.');
+            this.authUserService.isLoggedOut();
             this.router.navigate(['/login']);
             return false;
         }
@@ -2482,6 +2512,9 @@ let AuthUserService = class AuthUserService {
     userSignup(data) {
         return this.http.post(_app_connection_service__WEBPACK_IMPORTED_MODULE_3__["APIURL"].USER_SIGNUP, data);
     }
+    userReSignIn(data) {
+        return this.http.post(_app_connection_service__WEBPACK_IMPORTED_MODULE_3__["APIURL"].USER_RESIGNIN, data);
+    }
     getUserToken() {
         return sessionStorage.getItem('token');
     }
@@ -2509,6 +2542,13 @@ let AuthUserService = class AuthUserService {
         else {
             return false;
         }
+    }
+    isLoggedOut() {
+        localStorage.clear();
+        sessionStorage.clear();
+    }
+    addNewUser(data) {
+        return this.http.post(_app_connection_service__WEBPACK_IMPORTED_MODULE_3__["APIURL"].ADD_NEW_USER, data);
     }
 };
 AuthUserService.ctorParameters = () => [
@@ -2626,6 +2666,8 @@ const APIURL = {
     // user authentication & authorization API URL's
     USER_LOGIN: _environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].apiUrl + '/login',
     USER_SIGNUP: _environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].apiUrl + '/signup',
+    USER_RESIGNIN: _environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].apiUrl + '/reSignIn',
+    ADD_NEW_USER: _environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].apiUrl + '/add_new_user',
     // user bookings API URL's
     GET_ALL_USER_BOOKINGS: _environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].apiUrl + '/get_all_user_bookings',
     GET_ALL_USER_APPOINTMENTS: _environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].apiUrl + '/get_all_user_appointments',
@@ -2687,10 +2729,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _beautician_users_beautician_users_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./beautician-users/beautician-users.component */ "./src/app/beautician-users/beautician-users.component.ts");
 /* harmony import */ var _beautician_beautician_profile_beautician_profile_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./beautician/beautician-profile/beautician-profile.component */ "./src/app/beautician/beautician-profile/beautician-profile.component.ts");
 /* harmony import */ var _beauticians_list_beauticians_list_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./beauticians-list/beauticians-list.component */ "./src/app/beauticians-list/beauticians-list.component.ts");
-/* harmony import */ var _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./not-found/not-found.component */ "./src/app/not-found/not-found.component.ts");
-/* harmony import */ var _reports_reports_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./reports/reports.component */ "./src/app/reports/reports.component.ts");
-/* harmony import */ var _user_dashboard_user_dashboard_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./user-dashboard/user-dashboard.component */ "./src/app/user-dashboard/user-dashboard.component.ts");
-/* harmony import */ var _user_user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./user/user-profile/user-profile.component */ "./src/app/user/user-profile/user-profile.component.ts");
+/* harmony import */ var _common_pages_games_list_games_list_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./common-pages/games-list/games-list.component */ "./src/app/common-pages/games-list/games-list.component.ts");
+/* harmony import */ var _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./not-found/not-found.component */ "./src/app/not-found/not-found.component.ts");
+/* harmony import */ var _reports_reports_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./reports/reports.component */ "./src/app/reports/reports.component.ts");
+/* harmony import */ var _user_dashboard_user_dashboard_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./user-dashboard/user-dashboard.component */ "./src/app/user-dashboard/user-dashboard.component.ts");
+/* harmony import */ var _user_form_user_form_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./user-form/user-form.component */ "./src/app/user-form/user-form.component.ts");
+/* harmony import */ var _user_user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./user/user-profile/user-profile.component */ "./src/app/user/user-profile/user-profile.component.ts");
+
+
 
 
 
@@ -2731,12 +2777,12 @@ const routes = [
     {
         path: 'user-profile',
         canActivate: [_api_services_auth_guard_service__WEBPACK_IMPORTED_MODULE_12__["AuthGuardService"]],
-        component: _user_user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_21__["UserProfileComponent"]
+        component: _user_user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_23__["UserProfileComponent"]
     },
     {
         path: 'user-dashboard',
         canActivate: [_api_services_auth_guard_service__WEBPACK_IMPORTED_MODULE_12__["AuthGuardService"]],
-        component: _user_dashboard_user_dashboard_component__WEBPACK_IMPORTED_MODULE_20__["UserDashboardComponent"]
+        component: _user_dashboard_user_dashboard_component__WEBPACK_IMPORTED_MODULE_21__["UserDashboardComponent"]
     },
     {
         path: 'beauticians',
@@ -2746,7 +2792,7 @@ const routes = [
     {
         path: 'reports',
         canActivate: [_api_services_auth_guard_service__WEBPACK_IMPORTED_MODULE_12__["AuthGuardService"]],
-        component: _reports_reports_component__WEBPACK_IMPORTED_MODULE_19__["ReportsComponent"]
+        component: _reports_reports_component__WEBPACK_IMPORTED_MODULE_20__["ReportsComponent"]
     },
     // ADMIN routes
     {
@@ -2806,8 +2852,16 @@ const routes = [
         component: _beautician_reports_beautician_reports_component__WEBPACK_IMPORTED_MODULE_14__["BeauticianReportsComponent"]
     },
     {
+        path: 'user-form',
+        component: _user_form_user_form_component__WEBPACK_IMPORTED_MODULE_22__["UserFormComponent"]
+    },
+    {
+        path: 'pages/games-list',
+        component: _common_pages_games_list_games_list_component__WEBPACK_IMPORTED_MODULE_18__["GamesListComponent"]
+    },
+    {
         path: '**',
-        component: _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_18__["NotFoundComponent"]
+        component: _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_19__["NotFoundComponent"]
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -2914,6 +2968,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _admin_admin_settings_admin_settings_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./admin/admin-settings/admin-settings.component */ "./src/app/admin/admin-settings/admin-settings.component.ts");
 /* harmony import */ var _user_user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./user/user-profile/user-profile.component */ "./src/app/user/user-profile/user-profile.component.ts");
 /* harmony import */ var _beautician_beautician_profile_beautician_profile_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./beautician/beautician-profile/beautician-profile.component */ "./src/app/beautician/beautician-profile/beautician-profile.component.ts");
+/* harmony import */ var _user_form_user_form_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./user-form/user-form.component */ "./src/app/user-form/user-form.component.ts");
+/* harmony import */ var _common_pages_games_list_games_list_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./common-pages/games-list/games-list.component */ "./src/app/common-pages/games-list/games-list.component.ts");
+
+
 
 
 
@@ -2976,7 +3034,9 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _admin_admin_profile_admin_profile_component__WEBPACK_IMPORTED_MODULE_32__["AdminProfileComponent"],
             _admin_admin_settings_admin_settings_component__WEBPACK_IMPORTED_MODULE_33__["AdminSettingsComponent"],
             _user_user_profile_user_profile_component__WEBPACK_IMPORTED_MODULE_34__["UserProfileComponent"],
-            _beautician_beautician_profile_beautician_profile_component__WEBPACK_IMPORTED_MODULE_35__["BeauticianProfileComponent"]
+            _beautician_beautician_profile_beautician_profile_component__WEBPACK_IMPORTED_MODULE_35__["BeauticianProfileComponent"],
+            _user_form_user_form_component__WEBPACK_IMPORTED_MODULE_36__["UserFormComponent"],
+            _common_pages_games_list_games_list_component__WEBPACK_IMPORTED_MODULE_37__["GamesListComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
@@ -3151,9 +3211,9 @@ let BeauticianReportsComponent = class BeauticianReportsComponent {
             status: !this.statusQuery || this.statusQuery === null ? 'all' : Number(this.statusQuery),
             user_id: Number(this.userId)
         };
-        console.log('Post payload to get all users data isss', userBookingsPayload);
+        console.log('Post payload to get all user appointments data isss', userBookingsPayload);
         this.beauticianService.getAllUserAppointments(userBookingsPayload).subscribe((response) => {
-            console.log('Get all users response isss', response);
+            console.log('Get all user appointments response isss', response);
             if (response.success) {
                 this.usersList = underscore__WEBPACK_IMPORTED_MODULE_6__["filter"](response.data, (e) => {
                     return e.booking_status === 0 || e.booking_status === 1;
@@ -3211,9 +3271,9 @@ let BeauticianReportsComponent = class BeauticianReportsComponent {
             issued_by: this.username,
             status: 1
         };
-        console.log('Post payload to add/update report data isss', reportPayload);
+        console.log('Post payload to add/update user report data isss', reportPayload);
         this.beauticianService.addUpdateUserReport(reportPayload).subscribe((response) => {
-            console.log('Get add/update report data response isss', response);
+            console.log('Get add/update user report data response isss', response);
             if (response.success) {
                 this.toastr.successToastr(response.message);
                 this.closeNav();
@@ -3355,9 +3415,9 @@ let BeauticianUsersComponent = class BeauticianUsersComponent {
             status: !this.statusQuery || this.statusQuery === null ? 'all' : Number(this.statusQuery),
             user_id: Number(this.userId)
         };
-        console.log('Post payload to get all users data isss', userBookingsPayload);
+        console.log('Post payload to get all user bookings data isss', userBookingsPayload);
         this.beauticianService.getAllUserBookings(userBookingsPayload).subscribe((response) => {
-            console.log('Get all users response isss', response);
+            console.log('Get all user bookings response isss', response);
             if (response.success) {
                 this.usersList = underscore__WEBPACK_IMPORTED_MODULE_6__["filter"](response.data, (e) => {
                     return e.booking_status === 0 || e.booking_status === 1;
@@ -3423,9 +3483,9 @@ let BeauticianUsersComponent = class BeauticianUsersComponent {
             amounts: this.selectUser.amounts,
             issued_by: this.username
         };
-        console.log('Post payload to update user status isss', statusPayload);
+        console.log('Post payload to update user booking status isss', statusPayload);
         this.beauticianService.updateBookingStatusById(statusPayload).subscribe((response) => {
-            console.log('Get update user status response isss', response);
+            console.log('Get update user booking status response isss', response);
             if (response.success) {
                 this.toastr.successToastr(response.message);
                 $('#confirmModal').modal('hide');
@@ -3856,6 +3916,333 @@ BeauticiansListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/common-pages/games-list/games-list.component.css":
+/*!******************************************************************!*\
+  !*** ./src/app/common-pages/games-list/games-list.component.css ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("/* start table css styles */\r\n.table-titles {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: baseline;\r\n}\r\n.table-titles .table-names {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: baseline;\r\n}\r\n.table-names .span1 {\r\n    color: lightslategray;\r\n    font-size: 1.1em;\r\n    font-weight: 600;\r\n}\r\n.table-names .span3 {\r\n    color: #a3a3a3;\r\n    font-size: 0.9em;\r\n    font-weight: 400;\r\n}\r\ntable thead tr th {\r\n    /* padding: 1.5em; */\r\n    border-top: 1px solid lightslategray;\r\n    border-bottom: 1px solid lightslategray;\r\n    color: white;\r\n    font-weight: 600;\r\n    background-color: steelblue;\r\n}\r\n.main-table thead tr th:nth-child(1) {\r\n    cursor: pointer;\r\n    border-left: 1px solid lightslategray;\r\n    border-right: 1px solid white;\r\n}\r\n.main-table thead tr th:nth-child(10) {\r\n    border-left: 1px solid white;\r\n    border-right: 1px solid lightslategray;\r\n}\r\n.sub-table {\r\n    background-color: white;\r\n}\r\n.sub-table thead tr th:nth-child(1) {\r\n    cursor: pointer;\r\n    border-left: 1px solid lightslategray;\r\n    border-right: 1px solid white;\r\n}\r\n.sub-table thead tr th:nth-child(8) {\r\n    border-left: 1px solid white;\r\n    border-right: 1px solid lightslategray;\r\n}\r\ntable tbody tr td {\r\n    /* padding: 1.5em; */\r\n    color: #a3a3a3;\r\n    font-weight: 400;\r\n}\r\n.table-actions {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: baseline;\r\n}\r\n.btn-action-add {\r\n    cursor: pointer;\r\n    height: 50px;\r\n    padding: 15px;\r\n    color: white;\r\n    background-color: steelblue;\r\n}\r\n.btn-action-add:hover {\r\n    background-color: #1667af;\r\n}\r\n.table-actions .search-input {\r\n    width: 145% !important;\r\n}\r\n.table-actions .search-input input[type=\"text\"] {\r\n    width: 550px;\r\n    height: 50px;\r\n    padding: 15px;\r\n    color: #a3a3a3;\r\n}\r\n.btn-action-filter {\r\n    cursor: pointer;\r\n    height: 50px;\r\n    padding: 15px;\r\n    color: white;\r\n    background-color: lightgray;\r\n    border-top-right-radius: 0%;\r\n    border-bottom-right-radius: 0%;\r\n}\r\n.btn-action-filter:hover {\r\n    background-color: lightslategray;\r\n}\r\n.btn-action-search {\r\n    cursor: pointer;\r\n    height: 50px;\r\n    padding: 15px;\r\n    color: white;\r\n    background-color: steelblue;\r\n    border-top-left-radius: 0%;\r\n    border-bottom-left-radius: 0%;\r\n}\r\n.btn-action-search:hover {\r\n    background-color: #1667af;\r\n}\r\n.btn-action-one,  \r\n.btn-action-two, \r\n.btn-action-three, \r\n.btn-action-four {\r\n    cursor: pointer;\r\n    color: #a3a3a3;\r\n    height: 50px;\r\n    padding: 15px;\r\n    border: 1px solid lightgray;\r\n}\r\n.btn-action-one {\r\n    border-top-right-radius: 0%;\r\n    border-bottom-right-radius: 0%;\r\n}\r\n.btn-action-two, .btn-action-three {\r\n    border-radius: 0%;\r\n}\r\n.btn-action-four {\r\n    border-top-left-radius: 0%;\r\n    border-bottom-left-radius: 0%;\r\n}\r\n.btn-action-one:hover {\r\n    color: white;\r\n    background-color: lightseagreen;\r\n}\r\n.btn-action-two:hover {\r\n    color: white;\r\n    background-color: lightgray;\r\n}\r\n.btn-action-three:hover {\r\n    color: white;\r\n    background-color: lightblue;\r\n}\r\n.btn-action-four:hover {\r\n    color: white;\r\n    background-color: crimson;\r\n}\r\ntable tbody tr td {\r\n    font-size: 0.9em;\r\n}\r\n.action-td {\r\n    display: flex;\r\n    justify-content: space-around;\r\n    align-items: baseline;\r\n}\r\n.action-td .fa {\r\n    cursor: pointer;\r\n    padding: 0.5em;\r\n    border-radius: 5px;\r\n}\r\n.action-td .span1 {\r\n    color: #1667af;\r\n    border: 1px solid #1667af;\r\n}\r\n.action-td .span1:hover {\r\n    color: white;\r\n    background-color: #1667af;\r\n}\r\n.action-td .span2 {\r\n    color: lightslategray;\r\n    border: 1px solid lightslategray;\r\n}\r\n.action-td .span2:hover {\r\n    color: white;\r\n    background-color: lightslategray;\r\n}\r\n.action-td .span3 {\r\n    color: crimson;\r\n    border: 1px solid crimson;\r\n}\r\n.action-td .span3:hover {\r\n    color: white;\r\n    background-color: crimson;\r\n}\r\n.btn-action-open {\r\n    cursor: pointer;\r\n    color: white;\r\n    background-color: lightgray;\r\n}\r\n.btn-action-open:hover {\r\n    background-color: lightslategray;\r\n}\r\n.isActive {\r\n    background-color: lightslategray;\r\n}\r\n.isHighlight {\r\n    /* background-color: #dee2e6; */\r\n    background-color: #f1f1f1;\r\n}\r\n.isAll {\r\n    color: white;\r\n    background-color: lightseagreen;\r\n}\r\n.isPending {\r\n    color: white;\r\n    background-color: lightgray;\r\n}\r\n.isComplete {\r\n    color: white;\r\n    background-color: lightblue;\r\n}\r\n.isNotStart {\r\n    color: white;\r\n    background-color: crimson;\r\n}\r\n/* end table css styles */\r\n/* start form css styles */\r\n.form-titles {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: baseline;\r\n}\r\n.form-titles .form-names {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: baseline;\r\n}\r\n.form-names .span1 {\r\n    color: lightslategray;\r\n    font-size: 1.1em;\r\n    font-weight: 600;\r\n}\r\n.form-titles .span3 {\r\n    color: #a3a3a3;\r\n    font-size: 0.9em;\r\n    font-weight: 400;\r\n}\r\n.btn-action-back {\r\n    cursor: pointer;\r\n    height: 50px;\r\n    padding: 15px;\r\n    color: white;\r\n    background-color: lightgray;\r\n}\r\n.btn-action-back:hover {\r\n    background-color: lightslategray;\r\n}\r\n.form-actions label {\r\n    color: lightgray;\r\n    font-size: 1em;\r\n    font-weight: 200;\r\n    border-left: 5px solid #1667af;\r\n    padding: 10px;\r\n}\r\n.form-actions .config-box {\r\n    display: flex;\r\n    justify-content: space-around;\r\n    align-items: baseline;\r\n}\r\n.form-actions .config-box .p1 {\r\n    cursor: pointer;\r\n    color: #a3a3a3;\r\n    padding: 15px;\r\n    border: 1px solid #a3a3a3;\r\n    background-color: lightgray;\r\n    border-radius: 5px;\r\n}\r\n.form-actions .config-box .p1:hover {\r\n    color: white;\r\n    background-color: #1667af;\r\n}\r\n.form-actions .config-box .p2 {\r\n    cursor: pointer;\r\n    color: #a3a3a3;\r\n    padding: 15px;\r\n    border: 1px solid #a3a3a3;\r\n    background-color: lightgray;\r\n    border-radius: 5px;\r\n}\r\n.form-actions .config-box .p2:hover {\r\n    color: white;\r\n    background-color: #1667af;\r\n}\r\n.form-actions input[type=\"text\"],\r\ninput[type=\"email\"],\r\ninput[type=\"number\"],\r\ninput[type=\"password\"],\r\ninput[type=\"file\"],\r\ninput[type=\"range\"],\r\nselect,\r\ntextarea {\r\n    height: 50px;\r\n    padding: 10px;\r\n    color: #a3a3a3;\r\n    font-weight: 200;\r\n}\r\n.btn-action-cancel {\r\n    cursor: pointer;\r\n    height: 50px;\r\n    padding: 15px;\r\n    color: white;\r\n    background-color: lightgray;\r\n}\r\n.btn-action-cancel:hover {\r\n    background-color: lightslategray;\r\n}\r\n.btn-action-save {\r\n    cursor: pointer;\r\n    height: 50px;\r\n    padding: 15px;\r\n    color: white;\r\n    background-color: steelblue;\r\n}\r\n.btn-action-addnew {\r\n    cursor: pointer;\r\n    height: 50px;\r\n    padding: 15px;\r\n    color: white;\r\n    background-color: steelblue;\r\n}\r\n.btn-action-addnew:hover {\r\n    background-color: #1667af;\r\n}\r\n.btn-action-delete {\r\n    cursor: pointer;\r\n    height: 50px;\r\n    padding: 15px;\r\n    color: white;\r\n    background-color: lightcoral;\r\n}\r\n.btn-action-delete:hover {\r\n    background-color: crimson;\r\n}\r\n.isConfig {\r\n    color: white;\r\n    background-color: #1667af;\r\n}\r\n/* end form css styles */\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tbW9uLXBhZ2VzL2dhbWVzLWxpc3QvZ2FtZXMtbGlzdC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLDJCQUEyQjtBQUMzQjtJQUNJLGFBQWE7SUFDYiw4QkFBOEI7SUFDOUIscUJBQXFCO0FBQ3pCO0FBRUE7SUFDSSxhQUFhO0lBQ2IsOEJBQThCO0lBQzlCLHFCQUFxQjtBQUN6QjtBQUVBO0lBQ0kscUJBQXFCO0lBQ3JCLGdCQUFnQjtJQUNoQixnQkFBZ0I7QUFDcEI7QUFFQTtJQUNJLGNBQWM7SUFDZCxnQkFBZ0I7SUFDaEIsZ0JBQWdCO0FBQ3BCO0FBRUE7SUFDSSxvQkFBb0I7SUFDcEIsb0NBQW9DO0lBQ3BDLHVDQUF1QztJQUN2QyxZQUFZO0lBQ1osZ0JBQWdCO0lBQ2hCLDJCQUEyQjtBQUMvQjtBQUVBO0lBQ0ksZUFBZTtJQUNmLHFDQUFxQztJQUNyQyw2QkFBNkI7QUFDakM7QUFFQTtJQUNJLDRCQUE0QjtJQUM1QixzQ0FBc0M7QUFDMUM7QUFFQTtJQUNJLHVCQUF1QjtBQUMzQjtBQUVBO0lBQ0ksZUFBZTtJQUNmLHFDQUFxQztJQUNyQyw2QkFBNkI7QUFDakM7QUFFQTtJQUNJLDRCQUE0QjtJQUM1QixzQ0FBc0M7QUFDMUM7QUFFQTtJQUNJLG9CQUFvQjtJQUNwQixjQUFjO0lBQ2QsZ0JBQWdCO0FBQ3BCO0FBRUE7SUFDSSxhQUFhO0lBQ2IsOEJBQThCO0lBQzlCLHFCQUFxQjtBQUN6QjtBQUVBO0lBQ0ksZUFBZTtJQUNmLFlBQVk7SUFDWixhQUFhO0lBQ2IsWUFBWTtJQUNaLDJCQUEyQjtBQUMvQjtBQUVBO0lBQ0kseUJBQXlCO0FBQzdCO0FBRUE7SUFDSSxzQkFBc0I7QUFDMUI7QUFFQTtJQUNJLFlBQVk7SUFDWixZQUFZO0lBQ1osYUFBYTtJQUNiLGNBQWM7QUFDbEI7QUFFQTtJQUNJLGVBQWU7SUFDZixZQUFZO0lBQ1osYUFBYTtJQUNiLFlBQVk7SUFDWiwyQkFBMkI7SUFDM0IsMkJBQTJCO0lBQzNCLDhCQUE4QjtBQUNsQztBQUVBO0lBQ0ksZ0NBQWdDO0FBQ3BDO0FBRUE7SUFDSSxlQUFlO0lBQ2YsWUFBWTtJQUNaLGFBQWE7SUFDYixZQUFZO0lBQ1osMkJBQTJCO0lBQzNCLDBCQUEwQjtJQUMxQiw2QkFBNkI7QUFDakM7QUFFQTtJQUNJLHlCQUF5QjtBQUM3QjtBQUVBOzs7O0lBSUksZUFBZTtJQUNmLGNBQWM7SUFDZCxZQUFZO0lBQ1osYUFBYTtJQUNiLDJCQUEyQjtBQUMvQjtBQUVBO0lBQ0ksMkJBQTJCO0lBQzNCLDhCQUE4QjtBQUNsQztBQUVBO0lBQ0ksaUJBQWlCO0FBQ3JCO0FBRUE7SUFDSSwwQkFBMEI7SUFDMUIsNkJBQTZCO0FBQ2pDO0FBRUE7SUFDSSxZQUFZO0lBQ1osK0JBQStCO0FBQ25DO0FBRUE7SUFDSSxZQUFZO0lBQ1osMkJBQTJCO0FBQy9CO0FBRUE7SUFDSSxZQUFZO0lBQ1osMkJBQTJCO0FBQy9CO0FBRUE7SUFDSSxZQUFZO0lBQ1oseUJBQXlCO0FBQzdCO0FBRUE7SUFDSSxnQkFBZ0I7QUFDcEI7QUFFQTtJQUNJLGFBQWE7SUFDYiw2QkFBNkI7SUFDN0IscUJBQXFCO0FBQ3pCO0FBRUE7SUFDSSxlQUFlO0lBQ2YsY0FBYztJQUNkLGtCQUFrQjtBQUN0QjtBQUVBO0lBQ0ksY0FBYztJQUNkLHlCQUF5QjtBQUM3QjtBQUVBO0lBQ0ksWUFBWTtJQUNaLHlCQUF5QjtBQUM3QjtBQUVBO0lBQ0kscUJBQXFCO0lBQ3JCLGdDQUFnQztBQUNwQztBQUVBO0lBQ0ksWUFBWTtJQUNaLGdDQUFnQztBQUNwQztBQUVBO0lBQ0ksY0FBYztJQUNkLHlCQUF5QjtBQUM3QjtBQUVBO0lBQ0ksWUFBWTtJQUNaLHlCQUF5QjtBQUM3QjtBQUVBO0lBQ0ksZUFBZTtJQUNmLFlBQVk7SUFDWiwyQkFBMkI7QUFDL0I7QUFFQTtJQUNJLGdDQUFnQztBQUNwQztBQUVBO0lBQ0ksZ0NBQWdDO0FBQ3BDO0FBRUE7SUFDSSwrQkFBK0I7SUFDL0IseUJBQXlCO0FBQzdCO0FBRUE7SUFDSSxZQUFZO0lBQ1osK0JBQStCO0FBQ25DO0FBRUE7SUFDSSxZQUFZO0lBQ1osMkJBQTJCO0FBQy9CO0FBRUE7SUFDSSxZQUFZO0lBQ1osMkJBQTJCO0FBQy9CO0FBRUE7SUFDSSxZQUFZO0lBQ1oseUJBQXlCO0FBQzdCO0FBQ0EseUJBQXlCO0FBRXpCLDBCQUEwQjtBQUMxQjtJQUNJLGFBQWE7SUFDYiw4QkFBOEI7SUFDOUIscUJBQXFCO0FBQ3pCO0FBRUE7SUFDSSxhQUFhO0lBQ2IsOEJBQThCO0lBQzlCLHFCQUFxQjtBQUN6QjtBQUVBO0lBQ0kscUJBQXFCO0lBQ3JCLGdCQUFnQjtJQUNoQixnQkFBZ0I7QUFDcEI7QUFFQTtJQUNJLGNBQWM7SUFDZCxnQkFBZ0I7SUFDaEIsZ0JBQWdCO0FBQ3BCO0FBRUE7SUFDSSxlQUFlO0lBQ2YsWUFBWTtJQUNaLGFBQWE7SUFDYixZQUFZO0lBQ1osMkJBQTJCO0FBQy9CO0FBRUE7SUFDSSxnQ0FBZ0M7QUFDcEM7QUFFQTtJQUNJLGdCQUFnQjtJQUNoQixjQUFjO0lBQ2QsZ0JBQWdCO0lBQ2hCLDhCQUE4QjtJQUM5QixhQUFhO0FBQ2pCO0FBRUE7SUFDSSxhQUFhO0lBQ2IsNkJBQTZCO0lBQzdCLHFCQUFxQjtBQUN6QjtBQUVBO0lBQ0ksZUFBZTtJQUNmLGNBQWM7SUFDZCxhQUFhO0lBQ2IseUJBQXlCO0lBQ3pCLDJCQUEyQjtJQUMzQixrQkFBa0I7QUFDdEI7QUFFQTtJQUNJLFlBQVk7SUFDWix5QkFBeUI7QUFDN0I7QUFFQTtJQUNJLGVBQWU7SUFDZixjQUFjO0lBQ2QsYUFBYTtJQUNiLHlCQUF5QjtJQUN6QiwyQkFBMkI7SUFDM0Isa0JBQWtCO0FBQ3RCO0FBRUE7SUFDSSxZQUFZO0lBQ1oseUJBQXlCO0FBQzdCO0FBRUE7Ozs7Ozs7O0lBUUksWUFBWTtJQUNaLGFBQWE7SUFDYixjQUFjO0lBQ2QsZ0JBQWdCO0FBQ3BCO0FBRUE7SUFDSSxlQUFlO0lBQ2YsWUFBWTtJQUNaLGFBQWE7SUFDYixZQUFZO0lBQ1osMkJBQTJCO0FBQy9CO0FBRUE7SUFDSSxnQ0FBZ0M7QUFDcEM7QUFFQTtJQUNJLGVBQWU7SUFDZixZQUFZO0lBQ1osYUFBYTtJQUNiLFlBQVk7SUFDWiwyQkFBMkI7QUFDL0I7QUFFQTtJQUNJLGVBQWU7SUFDZixZQUFZO0lBQ1osYUFBYTtJQUNiLFlBQVk7SUFDWiwyQkFBMkI7QUFDL0I7QUFFQTtJQUNJLHlCQUF5QjtBQUM3QjtBQUVBO0lBQ0ksZUFBZTtJQUNmLFlBQVk7SUFDWixhQUFhO0lBQ2IsWUFBWTtJQUNaLDRCQUE0QjtBQUNoQztBQUVBO0lBQ0kseUJBQXlCO0FBQzdCO0FBRUE7SUFDSSxZQUFZO0lBQ1oseUJBQXlCO0FBQzdCO0FBQ0Esd0JBQXdCIiwiZmlsZSI6InNyYy9hcHAvY29tbW9uLXBhZ2VzL2dhbWVzLWxpc3QvZ2FtZXMtbGlzdC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyogc3RhcnQgdGFibGUgY3NzIHN0eWxlcyAqL1xyXG4udGFibGUtdGl0bGVzIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XHJcbiAgICBhbGlnbi1pdGVtczogYmFzZWxpbmU7XHJcbn1cclxuXHJcbi50YWJsZS10aXRsZXMgLnRhYmxlLW5hbWVzIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XHJcbiAgICBhbGlnbi1pdGVtczogYmFzZWxpbmU7XHJcbn1cclxuXHJcbi50YWJsZS1uYW1lcyAuc3BhbjEge1xyXG4gICAgY29sb3I6IGxpZ2h0c2xhdGVncmF5O1xyXG4gICAgZm9udC1zaXplOiAxLjFlbTtcclxuICAgIGZvbnQtd2VpZ2h0OiA2MDA7XHJcbn1cclxuXHJcbi50YWJsZS1uYW1lcyAuc3BhbjMge1xyXG4gICAgY29sb3I6ICNhM2EzYTM7XHJcbiAgICBmb250LXNpemU6IDAuOWVtO1xyXG4gICAgZm9udC13ZWlnaHQ6IDQwMDtcclxufVxyXG5cclxudGFibGUgdGhlYWQgdHIgdGgge1xyXG4gICAgLyogcGFkZGluZzogMS41ZW07ICovXHJcbiAgICBib3JkZXItdG9wOiAxcHggc29saWQgbGlnaHRzbGF0ZWdyYXk7XHJcbiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgbGlnaHRzbGF0ZWdyYXk7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBmb250LXdlaWdodDogNjAwO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogc3RlZWxibHVlO1xyXG59XHJcblxyXG4ubWFpbi10YWJsZSB0aGVhZCB0ciB0aDpudGgtY2hpbGQoMSkge1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG4gICAgYm9yZGVyLWxlZnQ6IDFweCBzb2xpZCBsaWdodHNsYXRlZ3JheTtcclxuICAgIGJvcmRlci1yaWdodDogMXB4IHNvbGlkIHdoaXRlO1xyXG59XHJcblxyXG4ubWFpbi10YWJsZSB0aGVhZCB0ciB0aDpudGgtY2hpbGQoMTApIHtcclxuICAgIGJvcmRlci1sZWZ0OiAxcHggc29saWQgd2hpdGU7XHJcbiAgICBib3JkZXItcmlnaHQ6IDFweCBzb2xpZCBsaWdodHNsYXRlZ3JheTtcclxufVxyXG5cclxuLnN1Yi10YWJsZSB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxufVxyXG5cclxuLnN1Yi10YWJsZSB0aGVhZCB0ciB0aDpudGgtY2hpbGQoMSkge1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG4gICAgYm9yZGVyLWxlZnQ6IDFweCBzb2xpZCBsaWdodHNsYXRlZ3JheTtcclxuICAgIGJvcmRlci1yaWdodDogMXB4IHNvbGlkIHdoaXRlO1xyXG59XHJcblxyXG4uc3ViLXRhYmxlIHRoZWFkIHRyIHRoOm50aC1jaGlsZCg4KSB7XHJcbiAgICBib3JkZXItbGVmdDogMXB4IHNvbGlkIHdoaXRlO1xyXG4gICAgYm9yZGVyLXJpZ2h0OiAxcHggc29saWQgbGlnaHRzbGF0ZWdyYXk7XHJcbn1cclxuXHJcbnRhYmxlIHRib2R5IHRyIHRkIHtcclxuICAgIC8qIHBhZGRpbmc6IDEuNWVtOyAqL1xyXG4gICAgY29sb3I6ICNhM2EzYTM7XHJcbiAgICBmb250LXdlaWdodDogNDAwO1xyXG59XHJcblxyXG4udGFibGUtYWN0aW9ucyB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gICAgYWxpZ24taXRlbXM6IGJhc2VsaW5lO1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi1hZGQge1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG4gICAgaGVpZ2h0OiA1MHB4O1xyXG4gICAgcGFkZGluZzogMTVweDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHN0ZWVsYmx1ZTtcclxufVxyXG5cclxuLmJ0bi1hY3Rpb24tYWRkOmhvdmVyIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICMxNjY3YWY7XHJcbn1cclxuXHJcbi50YWJsZS1hY3Rpb25zIC5zZWFyY2gtaW5wdXQge1xyXG4gICAgd2lkdGg6IDE0NSUgIWltcG9ydGFudDtcclxufVxyXG5cclxuLnRhYmxlLWFjdGlvbnMgLnNlYXJjaC1pbnB1dCBpbnB1dFt0eXBlPVwidGV4dFwiXSB7XHJcbiAgICB3aWR0aDogNTUwcHg7XHJcbiAgICBoZWlnaHQ6IDUwcHg7XHJcbiAgICBwYWRkaW5nOiAxNXB4O1xyXG4gICAgY29sb3I6ICNhM2EzYTM7XHJcbn1cclxuXHJcbi5idG4tYWN0aW9uLWZpbHRlciB7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICBoZWlnaHQ6IDUwcHg7XHJcbiAgICBwYWRkaW5nOiAxNXB4O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogbGlnaHRncmF5O1xyXG4gICAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDAlO1xyXG4gICAgYm9yZGVyLWJvdHRvbS1yaWdodC1yYWRpdXM6IDAlO1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi1maWx0ZXI6aG92ZXIge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogbGlnaHRzbGF0ZWdyYXk7XHJcbn1cclxuXHJcbi5idG4tYWN0aW9uLXNlYXJjaCB7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICBoZWlnaHQ6IDUwcHg7XHJcbiAgICBwYWRkaW5nOiAxNXB4O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogc3RlZWxibHVlO1xyXG4gICAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMCU7XHJcbiAgICBib3JkZXItYm90dG9tLWxlZnQtcmFkaXVzOiAwJTtcclxufVxyXG5cclxuLmJ0bi1hY3Rpb24tc2VhcmNoOmhvdmVyIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICMxNjY3YWY7XHJcbn1cclxuXHJcbi5idG4tYWN0aW9uLW9uZSwgIFxyXG4uYnRuLWFjdGlvbi10d28sIFxyXG4uYnRuLWFjdGlvbi10aHJlZSwgXHJcbi5idG4tYWN0aW9uLWZvdXIge1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG4gICAgY29sb3I6ICNhM2EzYTM7XHJcbiAgICBoZWlnaHQ6IDUwcHg7XHJcbiAgICBwYWRkaW5nOiAxNXB4O1xyXG4gICAgYm9yZGVyOiAxcHggc29saWQgbGlnaHRncmF5O1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi1vbmUge1xyXG4gICAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDAlO1xyXG4gICAgYm9yZGVyLWJvdHRvbS1yaWdodC1yYWRpdXM6IDAlO1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi10d28sIC5idG4tYWN0aW9uLXRocmVlIHtcclxuICAgIGJvcmRlci1yYWRpdXM6IDAlO1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi1mb3VyIHtcclxuICAgIGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDAlO1xyXG4gICAgYm9yZGVyLWJvdHRvbS1sZWZ0LXJhZGl1czogMCU7XHJcbn1cclxuXHJcbi5idG4tYWN0aW9uLW9uZTpob3ZlciB7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBsaWdodHNlYWdyZWVuO1xyXG59XHJcbiBcclxuLmJ0bi1hY3Rpb24tdHdvOmhvdmVyIHtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGxpZ2h0Z3JheTtcclxufVxyXG4gXHJcbi5idG4tYWN0aW9uLXRocmVlOmhvdmVyIHtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGxpZ2h0Ymx1ZTtcclxufVxyXG4gXHJcbi5idG4tYWN0aW9uLWZvdXI6aG92ZXIge1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogY3JpbXNvbjtcclxufVxyXG5cclxudGFibGUgdGJvZHkgdHIgdGQge1xyXG4gICAgZm9udC1zaXplOiAwLjllbTtcclxufVxyXG5cclxuLmFjdGlvbi10ZCB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XHJcbiAgICBhbGlnbi1pdGVtczogYmFzZWxpbmU7XHJcbn1cclxuXHJcbi5hY3Rpb24tdGQgLmZhIHtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgIHBhZGRpbmc6IDAuNWVtO1xyXG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xyXG59XHJcblxyXG4uYWN0aW9uLXRkIC5zcGFuMSB7XHJcbiAgICBjb2xvcjogIzE2NjdhZjtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkICMxNjY3YWY7XHJcbn1cclxuXHJcbi5hY3Rpb24tdGQgLnNwYW4xOmhvdmVyIHtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICMxNjY3YWY7XHJcbn1cclxuXHJcbi5hY3Rpb24tdGQgLnNwYW4yIHtcclxuICAgIGNvbG9yOiBsaWdodHNsYXRlZ3JheTtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkIGxpZ2h0c2xhdGVncmF5O1xyXG59XHJcblxyXG4uYWN0aW9uLXRkIC5zcGFuMjpob3ZlciB7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBsaWdodHNsYXRlZ3JheTtcclxufVxyXG5cclxuLmFjdGlvbi10ZCAuc3BhbjMge1xyXG4gICAgY29sb3I6IGNyaW1zb247XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCBjcmltc29uO1xyXG59XHJcblxyXG4uYWN0aW9uLXRkIC5zcGFuMzpob3ZlciB7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBjcmltc29uO1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi1vcGVuIHtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGxpZ2h0Z3JheTtcclxufVxyXG5cclxuLmJ0bi1hY3Rpb24tb3Blbjpob3ZlciB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBsaWdodHNsYXRlZ3JheTtcclxufVxyXG5cclxuLmlzQWN0aXZlIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGxpZ2h0c2xhdGVncmF5O1xyXG59XHJcblxyXG4uaXNIaWdobGlnaHQge1xyXG4gICAgLyogYmFja2dyb3VuZC1jb2xvcjogI2RlZTJlNjsgKi9cclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNmMWYxZjE7XHJcbn1cclxuXHJcbi5pc0FsbCB7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBsaWdodHNlYWdyZWVuO1xyXG59XHJcblxyXG4uaXNQZW5kaW5nIHtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGxpZ2h0Z3JheTtcclxufVxyXG5cclxuLmlzQ29tcGxldGUge1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogbGlnaHRibHVlO1xyXG59XHJcblxyXG4uaXNOb3RTdGFydCB7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBjcmltc29uO1xyXG59XHJcbi8qIGVuZCB0YWJsZSBjc3Mgc3R5bGVzICovXHJcblxyXG4vKiBzdGFydCBmb3JtIGNzcyBzdHlsZXMgKi9cclxuLmZvcm0tdGl0bGVzIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XHJcbiAgICBhbGlnbi1pdGVtczogYmFzZWxpbmU7XHJcbn1cclxuXHJcbi5mb3JtLXRpdGxlcyAuZm9ybS1uYW1lcyB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gICAgYWxpZ24taXRlbXM6IGJhc2VsaW5lO1xyXG59XHJcblxyXG4uZm9ybS1uYW1lcyAuc3BhbjEge1xyXG4gICAgY29sb3I6IGxpZ2h0c2xhdGVncmF5O1xyXG4gICAgZm9udC1zaXplOiAxLjFlbTtcclxuICAgIGZvbnQtd2VpZ2h0OiA2MDA7XHJcbn1cclxuXHJcbi5mb3JtLXRpdGxlcyAuc3BhbjMge1xyXG4gICAgY29sb3I6ICNhM2EzYTM7XHJcbiAgICBmb250LXNpemU6IDAuOWVtO1xyXG4gICAgZm9udC13ZWlnaHQ6IDQwMDtcclxufVxyXG5cclxuLmJ0bi1hY3Rpb24tYmFjayB7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICBoZWlnaHQ6IDUwcHg7XHJcbiAgICBwYWRkaW5nOiAxNXB4O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogbGlnaHRncmF5O1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi1iYWNrOmhvdmVyIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGxpZ2h0c2xhdGVncmF5O1xyXG59XHJcblxyXG4uZm9ybS1hY3Rpb25zIGxhYmVsIHtcclxuICAgIGNvbG9yOiBsaWdodGdyYXk7XHJcbiAgICBmb250LXNpemU6IDFlbTtcclxuICAgIGZvbnQtd2VpZ2h0OiAyMDA7XHJcbiAgICBib3JkZXItbGVmdDogNXB4IHNvbGlkICMxNjY3YWY7XHJcbiAgICBwYWRkaW5nOiAxMHB4O1xyXG59XHJcblxyXG4uZm9ybS1hY3Rpb25zIC5jb25maWctYm94IHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcclxuICAgIGFsaWduLWl0ZW1zOiBiYXNlbGluZTtcclxufVxyXG5cclxuLmZvcm0tYWN0aW9ucyAuY29uZmlnLWJveCAucDEge1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG4gICAgY29sb3I6ICNhM2EzYTM7XHJcbiAgICBwYWRkaW5nOiAxNXB4O1xyXG4gICAgYm9yZGVyOiAxcHggc29saWQgI2EzYTNhMztcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGxpZ2h0Z3JheTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcclxufVxyXG5cclxuLmZvcm0tYWN0aW9ucyAuY29uZmlnLWJveCAucDE6aG92ZXIge1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzE2NjdhZjtcclxufVxyXG5cclxuLmZvcm0tYWN0aW9ucyAuY29uZmlnLWJveCAucDIge1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG4gICAgY29sb3I6ICNhM2EzYTM7XHJcbiAgICBwYWRkaW5nOiAxNXB4O1xyXG4gICAgYm9yZGVyOiAxcHggc29saWQgI2EzYTNhMztcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGxpZ2h0Z3JheTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcclxufVxyXG5cclxuLmZvcm0tYWN0aW9ucyAuY29uZmlnLWJveCAucDI6aG92ZXIge1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzE2NjdhZjtcclxufVxyXG5cclxuLmZvcm0tYWN0aW9ucyBpbnB1dFt0eXBlPVwidGV4dFwiXSxcclxuaW5wdXRbdHlwZT1cImVtYWlsXCJdLFxyXG5pbnB1dFt0eXBlPVwibnVtYmVyXCJdLFxyXG5pbnB1dFt0eXBlPVwicGFzc3dvcmRcIl0sXHJcbmlucHV0W3R5cGU9XCJmaWxlXCJdLFxyXG5pbnB1dFt0eXBlPVwicmFuZ2VcIl0sXHJcbnNlbGVjdCxcclxudGV4dGFyZWEge1xyXG4gICAgaGVpZ2h0OiA1MHB4O1xyXG4gICAgcGFkZGluZzogMTBweDtcclxuICAgIGNvbG9yOiAjYTNhM2EzO1xyXG4gICAgZm9udC13ZWlnaHQ6IDIwMDtcclxufVxyXG5cclxuLmJ0bi1hY3Rpb24tY2FuY2VsIHtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgIGhlaWdodDogNTBweDtcclxuICAgIHBhZGRpbmc6IDE1cHg7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBsaWdodGdyYXk7XHJcbn1cclxuXHJcbi5idG4tYWN0aW9uLWNhbmNlbDpob3ZlciB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBsaWdodHNsYXRlZ3JheTtcclxufVxyXG5cclxuLmJ0bi1hY3Rpb24tc2F2ZSB7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICBoZWlnaHQ6IDUwcHg7XHJcbiAgICBwYWRkaW5nOiAxNXB4O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogc3RlZWxibHVlO1xyXG59XHJcblxyXG4uYnRuLWFjdGlvbi1hZGRuZXcge1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG4gICAgaGVpZ2h0OiA1MHB4O1xyXG4gICAgcGFkZGluZzogMTVweDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHN0ZWVsYmx1ZTtcclxufVxyXG5cclxuLmJ0bi1hY3Rpb24tYWRkbmV3OmhvdmVyIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICMxNjY3YWY7XHJcbn1cclxuXHJcbi5idG4tYWN0aW9uLWRlbGV0ZSB7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICBoZWlnaHQ6IDUwcHg7XHJcbiAgICBwYWRkaW5nOiAxNXB4O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogbGlnaHRjb3JhbDtcclxufVxyXG5cclxuLmJ0bi1hY3Rpb24tZGVsZXRlOmhvdmVyIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGNyaW1zb247XHJcbn1cclxuXHJcbi5pc0NvbmZpZyB7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMTY2N2FmO1xyXG59XHJcbi8qIGVuZCBmb3JtIGNzcyBzdHlsZXMgKi8iXX0= */");
+
+/***/ }),
+
+/***/ "./src/app/common-pages/games-list/games-list.component.ts":
+/*!*****************************************************************!*\
+  !*** ./src/app/common-pages/games-list/games-list.component.ts ***!
+  \*****************************************************************/
+/*! exports provided: GamesListComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GamesListComponent", function() { return GamesListComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+
+
+
+let GamesListComponent = class GamesListComponent {
+    constructor(formBuilder) {
+        this.formBuilder = formBuilder;
+        this.limit = 10;
+        this.rowsOnPage = 10;
+        this.page = 1;
+        this.pager = {};
+        this.totalPages = 0;
+        this.searchQuery = '';
+        this.viewPage = 'table';
+        this.gamesList = [
+            {
+                title: 'GTA Series',
+                sub_title: [
+                    {
+                        name: 'GTA I',
+                        actual_size: '5 GB',
+                        website: 'www.thepcgames.net',
+                        url_download: 'https://www.thepcgames.net/gta/download',
+                        download_progress: 97,
+                        status: 1,
+                    },
+                    {
+                        name: 'GTA I',
+                        actual_size: '3.7 GB',
+                        website: 'www.oceanofgames.org',
+                        url_download: 'https://www.oceanofgames.org/gta/download',
+                        download_progress: 0,
+                        status: 0,
+                    },
+                    {
+                        name: 'GTA SanAndReas',
+                        actual_size: '8 GB',
+                        website: 'www.thepcgames.net',
+                        url_download: 'https://www.thepcgames.net/gta_sandandreas/download',
+                        download_progress: 0,
+                        status: 0,
+                    },
+                    {
+                        name: 'GTA SanAndReas',
+                        actual_size: '4.5 GB',
+                        website: 'www.oceanofgames.org',
+                        url_download: 'https://www.oceanofgames.org/gta_sandandreas/download',
+                        download_progress: 35,
+                        status: 1,
+                    },
+                    {
+                        name: 'GTA V',
+                        actual_size: '65 GB',
+                        website: 'www.thepcgames.net',
+                        url_download: 'https://www.thepcgames.net/gta5/download',
+                        download_progress: 86,
+                        status: 1,
+                    },
+                    {
+                        name: 'GTA V',
+                        actual_size: '53 GB',
+                        website: 'www.oceanofgames.org',
+                        url_download: 'https://www.oceanofgames.org/gta5/download',
+                        download_progress: 0,
+                        status: 0,
+                    },
+                ],
+                total_size: '139.2 GB',
+                websites: [
+                    'www.thepcgames.net',
+                    'www.oceanofgames.org',
+                    'www.crackedgames.org',
+                ],
+                download_urls: [
+                    'https://www.thepcgames.net/gta5/download',
+                    'https://www.oceanofgames.org/gta5/download',
+                    'https://www.crackedgames.org/gta5/download',
+                ],
+                total_progress: 36,
+                status: 1,
+                selected: false,
+            },
+            {
+                title: 'Forza Horizon Series',
+                sub_title: [
+                    {
+                        name: 'Forza Horizon 3',
+                        actual_size: '35 GB',
+                        website: 'www.thepcgames.net',
+                        url_download: 'https://www.thepcgames.net/forza_horizon3/download',
+                        download_progress: 65,
+                        status: 1,
+                    },
+                    {
+                        name: 'Forza Horizon 3',
+                        actual_size: '23 GB',
+                        website: 'www.oceanofgames.org',
+                        url_download: 'https://www.oceanofgames.org/forza_horizon3/download',
+                        download_progress: 0,
+                        status: 0,
+                    },
+                    {
+                        name: 'Forza Horizon 4',
+                        actual_size: '65 GB',
+                        website: 'www.thepcgames.net',
+                        url_download: 'https://www.thepcgames.net/forza_horizon4/download',
+                        download_progress: 45,
+                        status: 1,
+                    },
+                    {
+                        name: 'Forza Horizon 4',
+                        actual_size: '55 GB',
+                        website: 'www.oceanofgames.org',
+                        url_download: 'https://www.oceanofgames.org/forza_horizon4/download',
+                        download_progress: 0,
+                        status: 0,
+                    },
+                ],
+                total_size: '178 GB',
+                websites: [
+                    'www.thepcgames.net',
+                    'www.oceanofgames.org',
+                    'www.crackedgames.org',
+                ],
+                download_urls: [
+                    'https://www.thepcgames.net/gta5/download',
+                    'https://www.oceanofgames.org/gta5/download',
+                    'https://www.crackedgames.org/gta5/download',
+                ],
+                total_progress: 27,
+                status: 1,
+                selected: false,
+            },
+        ];
+        this.viewGame = {};
+        this.currentIndex = null;
+        this.filterList = 'all';
+        this.viewForm = '';
+        this.gameName = null;
+        this.sizeConfigName = null;
+        this.gameSize = null;
+        this.gameProgress = null;
+        this.subGameName = null;
+        this.formIndex = null;
+    }
+    ngOnInit() {
+        this.siteUrlForm = this.formBuilder.group({
+            siteUrlArr: this.formBuilder.array([this.initForm('single')]),
+        });
+        this.seriesGameForm = this.formBuilder.group({
+            seriesGameArr: this.formBuilder.array([this.initForm('multiple')]),
+        });
+    }
+    onSelectPageView(view) {
+        console.log('Selected page view isss', view);
+        this.viewPage = view;
+        this.viewForm = '';
+        this.resetForm();
+    }
+    onSelectItem(item) {
+        console.log('Selected item isss', item);
+        this.viewGame = item;
+    }
+    myFunction(id, index) {
+        const tableId = id + `-${index}`;
+        const x = document.getElementById(tableId);
+        if (x.className.indexOf('w3-show') === -1) {
+            x.className += ' w3-show';
+            this.currentIndex = index;
+            for (let i = 0; i < this.gamesList.length; i++) {
+                if (i !== index) {
+                    const tableId1 = id + `-${i}`;
+                    const y = document.getElementById(tableId1);
+                    y.className = y.className.replace(' w3-show', '');
+                }
+            }
+        }
+        else {
+            x.className = x.className.replace(' w3-show', '');
+            this.currentIndex = null;
+        }
+    }
+    onSelectFilterList(list) {
+        console.log('Select list isss', list);
+        this.filterList = list;
+    }
+    onSelectConfig(form) {
+        console.log('Select form config isss', form);
+        this.viewForm = form;
+        this.resetForm();
+    }
+    initForm(form) {
+        if (form === 'single') {
+            return this.formBuilder.group({
+                siteName: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+                downloadUrl: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required])
+            });
+        }
+        else if (form === 'multiple') {
+            return this.formBuilder.group({
+                subSeriesName: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+                subGameSizeConfig: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+                subGameSize: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+                webSiteName: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+                urlDownload: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+                subGameProgress: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required])
+            });
+        }
+    }
+    addForm(id, form) {
+        this.formIndex = id;
+        if (form === 'single') {
+            const control = this.siteUrlForm.controls.siteUrlArr;
+            control.push(this.initForm('single'));
+        }
+        else if (form === 'multiple') {
+            const control = this.seriesGameForm.controls.seriesGameArr;
+            control.push(this.initForm('multiple'));
+        }
+    }
+    removeForm(id, form) {
+        this.formIndex = id;
+        if (form === 'single') {
+            const control = this.siteUrlForm.controls.siteUrlArr;
+            control.removeAt(id);
+        }
+        else if (form === 'multiple') {
+            const control = this.seriesGameForm.controls.seriesGameArr;
+            control.removeAt(id);
+        }
+    }
+    // ******* Save Single Game Form Details ******* //
+    saveGameDetails(form) {
+        let gamePayload = {};
+        if (form === 'single') {
+            gamePayload = {
+                gameName: this.gameName,
+                sizeConfigName: this.sizeConfigName,
+                gameSize: this.gameSize,
+                gameProgress: this.gameProgress,
+                gameSiteUrls: this.siteUrlForm.controls.siteUrlArr.value
+            };
+        }
+        else if (form === 'multiple') {
+            gamePayload = {
+                gameName: this.gameName,
+                subGameSeries: this.seriesGameForm.controls.seriesGameArr.value
+            };
+        }
+        console.log('Post payload to add game data', gamePayload);
+    }
+    resetForm() {
+        if (this.singleGameFormRef) {
+            this.singleGameFormRef.reset();
+        }
+        if (this.multipleGameFormRef) {
+            this.multipleGameFormRef.reset();
+        }
+        if (this.siteUrlForm) {
+            this.siteUrlForm.reset();
+        }
+        if (this.seriesGameForm) {
+            this.seriesGameForm.reset();
+        }
+        this.viewGame = {};
+        this.currentIndex = null;
+        this.filterList = 'all';
+        this.gameName = null;
+        this.sizeConfigName = null;
+        this.gameSize = null;
+        this.gameProgress = null;
+        this.subGameName = null;
+        this.formIndex = null;
+        if (this.viewForm === 'single') {
+            this.initForm('single');
+        }
+        else if (this.viewForm === 'multiple') {
+            this.initForm('multiple');
+        }
+    }
+};
+GamesListComponent.ctorParameters = () => [
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('singleGameForm', { static: false })
+], GamesListComponent.prototype, "singleGameFormRef", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('multipleGameForm', { static: false })
+], GamesListComponent.prototype, "multipleGameFormRef", void 0);
+GamesListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-games-list',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./games-list.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/common-pages/games-list/games-list.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./games-list.component.css */ "./src/app/common-pages/games-list/games-list.component.css")).default]
+    })
+], GamesListComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/footer/footer.component.css":
 /*!*********************************************!*\
   !*** ./src/app/footer/footer.component.css ***!
@@ -3909,7 +4296,7 @@ FooterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".navbar-brand {\r\n    color: white !important;\r\n}\r\n\r\n.navbar-light {\r\n    background-color: #6495ED !important;\r\n}\r\n\r\n.nav-item .nav-link {\r\n    /* border-left: 2px white solid; */\r\n}\r\n\r\n.is-active a {\r\n    color: #ccc !important;\r\n    /* border-left: 2px #ccc solid !important; */\r\n}\r\n\r\n.nav-link {\r\n    color: white !important;\r\n}\r\n\r\n.logout-link {\r\n    cursor: pointer;\r\n    border: 2px white solid !important;\r\n}\r\n\r\n.dropdown-menu {\r\n    min-width: 15em;\r\n}\r\n\r\n.dropdown-menu a {\r\n    cursor: pointer;\r\n}\r\n\r\n.dropdown-menu .link {\r\n    border-top: 1px solid #ccc;\r\n}\r\n\r\n.dropdown-menu .div1 {\r\n  display: flex;\r\n  justify-content: space-evenly;\r\n  align-items: center;\r\n}\r\n\r\n.dropdown-menu .div2 {\r\n    display: grid;\r\n    justify-content: space-around;\r\n    align-items: center;\r\n}\r\n\r\n.dropdown-menu .p1 {\r\n\r\n}\r\n\r\n.dropdown-menu .p2 {\r\n    font-size: 0.8em;\r\n    color: #6495ED;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksdUJBQXVCO0FBQzNCOztBQUVBO0lBQ0ksb0NBQW9DO0FBQ3hDOztBQUVBO0lBQ0ksa0NBQWtDO0FBQ3RDOztBQUVBO0lBQ0ksc0JBQXNCO0lBQ3RCLDRDQUE0QztBQUNoRDs7QUFFQTtJQUNJLHVCQUF1QjtBQUMzQjs7QUFFQTtJQUNJLGVBQWU7SUFDZixrQ0FBa0M7QUFDdEM7O0FBRUE7SUFDSSxlQUFlO0FBQ25COztBQUVBO0lBQ0ksZUFBZTtBQUNuQjs7QUFFQTtJQUNJLDBCQUEwQjtBQUM5Qjs7QUFFQTtFQUNFLGFBQWE7RUFDYiw2QkFBNkI7RUFDN0IsbUJBQW1CO0FBQ3JCOztBQUVBO0lBQ0ksYUFBYTtJQUNiLDZCQUE2QjtJQUM3QixtQkFBbUI7QUFDdkI7O0FBRUE7O0FBRUE7O0FBRUE7SUFDSSxnQkFBZ0I7SUFDaEIsY0FBYztBQUNsQiIsImZpbGUiOiJzcmMvYXBwL2hlYWRlci9oZWFkZXIuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5uYXZiYXItYnJhbmQge1xyXG4gICAgY29sb3I6IHdoaXRlICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbi5uYXZiYXItbGlnaHQge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzY0OTVFRCAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4ubmF2LWl0ZW0gLm5hdi1saW5rIHtcclxuICAgIC8qIGJvcmRlci1sZWZ0OiAycHggd2hpdGUgc29saWQ7ICovXHJcbn1cclxuXHJcbi5pcy1hY3RpdmUgYSB7XHJcbiAgICBjb2xvcjogI2NjYyAhaW1wb3J0YW50O1xyXG4gICAgLyogYm9yZGVyLWxlZnQ6IDJweCAjY2NjIHNvbGlkICFpbXBvcnRhbnQ7ICovXHJcbn1cclxuXHJcbi5uYXYtbGluayB7XHJcbiAgICBjb2xvcjogd2hpdGUgIWltcG9ydGFudDtcclxufVxyXG5cclxuLmxvZ291dC1saW5rIHtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgIGJvcmRlcjogMnB4IHdoaXRlIHNvbGlkICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbi5kcm9wZG93bi1tZW51IHtcclxuICAgIG1pbi13aWR0aDogMTVlbTtcclxufVxyXG5cclxuLmRyb3Bkb3duLW1lbnUgYSB7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbn1cclxuXHJcbi5kcm9wZG93bi1tZW51IC5saW5rIHtcclxuICAgIGJvcmRlci10b3A6IDFweCBzb2xpZCAjY2NjO1xyXG59XHJcblxyXG4uZHJvcGRvd24tbWVudSAuZGl2MSB7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWV2ZW5seTtcclxuICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG59XHJcblxyXG4uZHJvcGRvd24tbWVudSAuZGl2MiB7XHJcbiAgICBkaXNwbGF5OiBncmlkO1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG59XHJcblxyXG4uZHJvcGRvd24tbWVudSAucDEge1xyXG5cclxufVxyXG5cclxuLmRyb3Bkb3duLW1lbnUgLnAyIHtcclxuICAgIGZvbnQtc2l6ZTogMC44ZW07XHJcbiAgICBjb2xvcjogIzY0OTVFRDtcclxufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".navbar-brand {\r\n  color: white !important;\r\n}\r\n\r\n.navbar-nav {\r\n  align-items: baseline;\r\n}\r\n\r\n.navbar-light {\r\n  background-color: #6495ed !important;\r\n}\r\n\r\n.nav-item .nav-link {\r\n  /* border-left: 2px white solid; */\r\n}\r\n\r\n.is-active a {\r\n  color: #ccc !important;\r\n  /* border-left: 2px #ccc solid !important; */\r\n}\r\n\r\n.is-active1 {\r\n  background-color: #ccc !important;\r\n}\r\n\r\n.nav-link {\r\n  color: white !important;\r\n}\r\n\r\n.logout-link {\r\n  cursor: pointer;\r\n  border: 2px white solid !important;\r\n}\r\n\r\n.dropdown-menu {\r\n  min-width: 15em;\r\n}\r\n\r\n.dropdown-menu a {\r\n  cursor: pointer;\r\n}\r\n\r\n.dropdown-menu .link {\r\n  border-top: 1px solid #ccc;\r\n}\r\n\r\n.dropdown-menu .div1 {\r\n  display: flex;\r\n  justify-content: space-evenly;\r\n  align-items: center;\r\n}\r\n\r\n.dropdown-menu .div2 {\r\n  display: grid;\r\n  justify-content: space-around;\r\n  align-items: center;\r\n}\r\n\r\n.dropdown-menu .p1 {\r\n}\r\n\r\n.dropdown-menu .p2 {\r\n  font-size: 0.8em;\r\n  color: #6495ed;\r\n}\r\n\r\n/* css logout modal styles */\r\n\r\n.logout-modal {\r\n  border: none;\r\n}\r\n\r\n.btn-action-out {\r\n  color: white;\r\n  background-color: #6495ed;\r\n}\r\n\r\n.btn-action-out:hover {\r\n  color: white;\r\n  background-color: #1668af;\r\n}\r\n\r\n.btn-action-in {\r\n  background-color: lightgray;\r\n}\r\n\r\n.btn-action-in:hover {\r\n  background-color: #aab5c0;\r\n}\r\n\r\n.isSuccess {\r\n  color: forestgreen !important;\r\n}\r\n\r\n.isPrimary {\r\n  color: #1667af !important;\r\n}\r\n\r\n.isDanger {\r\n  color: crimson !important;\r\n  animation: blink-animation 1s steps(5, start) infinite;\r\n  -webkit-animation: blink-animation 1s steps(5, start) infinite;\r\n}\r\n\r\n@keyframes blink-animation {\r\n  to {\r\n    visibility: hidden;\r\n  }\r\n}\r\n\r\n@-webkit-keyframes blink-animation {\r\n  to {\r\n    visibility: hidden;\r\n  }\r\n}\r\n\r\n/* endd css logout modal styles */\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsdUJBQXVCO0FBQ3pCOztBQUVBO0VBQ0UscUJBQXFCO0FBQ3ZCOztBQUVBO0VBQ0Usb0NBQW9DO0FBQ3RDOztBQUVBO0VBQ0Usa0NBQWtDO0FBQ3BDOztBQUVBO0VBQ0Usc0JBQXNCO0VBQ3RCLDRDQUE0QztBQUM5Qzs7QUFFQTtFQUNFLGlDQUFpQztBQUNuQzs7QUFFQTtFQUNFLHVCQUF1QjtBQUN6Qjs7QUFFQTtFQUNFLGVBQWU7RUFDZixrQ0FBa0M7QUFDcEM7O0FBRUE7RUFDRSxlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsZUFBZTtBQUNqQjs7QUFFQTtFQUNFLDBCQUEwQjtBQUM1Qjs7QUFFQTtFQUNFLGFBQWE7RUFDYiw2QkFBNkI7RUFDN0IsbUJBQW1CO0FBQ3JCOztBQUVBO0VBQ0UsYUFBYTtFQUNiLDZCQUE2QjtFQUM3QixtQkFBbUI7QUFDckI7O0FBRUE7QUFDQTs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixjQUFjO0FBQ2hCOztBQUVBLDRCQUE0Qjs7QUFDNUI7RUFDRSxZQUFZO0FBQ2Q7O0FBRUE7RUFDRSxZQUFZO0VBQ1oseUJBQXlCO0FBQzNCOztBQUVBO0VBQ0UsWUFBWTtFQUNaLHlCQUF5QjtBQUMzQjs7QUFFQTtFQUNFLDJCQUEyQjtBQUM3Qjs7QUFFQTtFQUNFLHlCQUF5QjtBQUMzQjs7QUFFQTtFQUNFLDZCQUE2QjtBQUMvQjs7QUFFQTtFQUNFLHlCQUF5QjtBQUMzQjs7QUFFQTtFQUNFLHlCQUF5QjtFQUN6QixzREFBc0Q7RUFDdEQsOERBQThEO0FBQ2hFOztBQUVBO0VBQ0U7SUFDRSxrQkFBa0I7RUFDcEI7QUFDRjs7QUFDQTtFQUNFO0lBQ0Usa0JBQWtCO0VBQ3BCO0FBQ0Y7O0FBQ0EsaUNBQWlDIiwiZmlsZSI6InNyYy9hcHAvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5hdmJhci1icmFuZCB7XHJcbiAgY29sb3I6IHdoaXRlICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbi5uYXZiYXItbmF2IHtcclxuICBhbGlnbi1pdGVtczogYmFzZWxpbmU7XHJcbn1cclxuXHJcbi5uYXZiYXItbGlnaHQge1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICM2NDk1ZWQgIWltcG9ydGFudDtcclxufVxyXG5cclxuLm5hdi1pdGVtIC5uYXYtbGluayB7XHJcbiAgLyogYm9yZGVyLWxlZnQ6IDJweCB3aGl0ZSBzb2xpZDsgKi9cclxufVxyXG5cclxuLmlzLWFjdGl2ZSBhIHtcclxuICBjb2xvcjogI2NjYyAhaW1wb3J0YW50O1xyXG4gIC8qIGJvcmRlci1sZWZ0OiAycHggI2NjYyBzb2xpZCAhaW1wb3J0YW50OyAqL1xyXG59XHJcblxyXG4uaXMtYWN0aXZlMSB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2NjYyAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4ubmF2LWxpbmsge1xyXG4gIGNvbG9yOiB3aGl0ZSAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4ubG9nb3V0LWxpbmsge1xyXG4gIGN1cnNvcjogcG9pbnRlcjtcclxuICBib3JkZXI6IDJweCB3aGl0ZSBzb2xpZCAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4uZHJvcGRvd24tbWVudSB7XHJcbiAgbWluLXdpZHRoOiAxNWVtO1xyXG59XHJcblxyXG4uZHJvcGRvd24tbWVudSBhIHtcclxuICBjdXJzb3I6IHBvaW50ZXI7XHJcbn1cclxuXHJcbi5kcm9wZG93bi1tZW51IC5saW5rIHtcclxuICBib3JkZXItdG9wOiAxcHggc29saWQgI2NjYztcclxufVxyXG5cclxuLmRyb3Bkb3duLW1lbnUgLmRpdjEge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1ldmVubHk7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxufVxyXG5cclxuLmRyb3Bkb3duLW1lbnUgLmRpdjIge1xyXG4gIGRpc3BsYXk6IGdyaWQ7XHJcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxufVxyXG5cclxuLmRyb3Bkb3duLW1lbnUgLnAxIHtcclxufVxyXG5cclxuLmRyb3Bkb3duLW1lbnUgLnAyIHtcclxuICBmb250LXNpemU6IDAuOGVtO1xyXG4gIGNvbG9yOiAjNjQ5NWVkO1xyXG59XHJcblxyXG4vKiBjc3MgbG9nb3V0IG1vZGFsIHN0eWxlcyAqL1xyXG4ubG9nb3V0LW1vZGFsIHtcclxuICBib3JkZXI6IG5vbmU7XHJcbn1cclxuXHJcbi5idG4tYWN0aW9uLW91dCB7XHJcbiAgY29sb3I6IHdoaXRlO1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICM2NDk1ZWQ7XHJcbn1cclxuXHJcbi5idG4tYWN0aW9uLW91dDpob3ZlciB7XHJcbiAgY29sb3I6IHdoaXRlO1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICMxNjY4YWY7XHJcbn1cclxuXHJcbi5idG4tYWN0aW9uLWluIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiBsaWdodGdyYXk7XHJcbn1cclxuXHJcbi5idG4tYWN0aW9uLWluOmhvdmVyIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYWFiNWMwO1xyXG59XHJcblxyXG4uaXNTdWNjZXNzIHtcclxuICBjb2xvcjogZm9yZXN0Z3JlZW4gIWltcG9ydGFudDtcclxufVxyXG5cclxuLmlzUHJpbWFyeSB7XHJcbiAgY29sb3I6ICMxNjY3YWYgIWltcG9ydGFudDtcclxufVxyXG5cclxuLmlzRGFuZ2VyIHtcclxuICBjb2xvcjogY3JpbXNvbiAhaW1wb3J0YW50O1xyXG4gIGFuaW1hdGlvbjogYmxpbmstYW5pbWF0aW9uIDFzIHN0ZXBzKDUsIHN0YXJ0KSBpbmZpbml0ZTtcclxuICAtd2Via2l0LWFuaW1hdGlvbjogYmxpbmstYW5pbWF0aW9uIDFzIHN0ZXBzKDUsIHN0YXJ0KSBpbmZpbml0ZTtcclxufVxyXG5cclxuQGtleWZyYW1lcyBibGluay1hbmltYXRpb24ge1xyXG4gIHRvIHtcclxuICAgIHZpc2liaWxpdHk6IGhpZGRlbjtcclxuICB9XHJcbn1cclxuQC13ZWJraXQta2V5ZnJhbWVzIGJsaW5rLWFuaW1hdGlvbiB7XHJcbiAgdG8ge1xyXG4gICAgdmlzaWJpbGl0eTogaGlkZGVuO1xyXG4gIH1cclxufVxyXG4vKiBlbmRkIGNzcyBsb2dvdXQgbW9kYWwgc3R5bGVzICovIl19 */");
 
 /***/ }),
 
@@ -3927,15 +4314,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _api_services_auth_user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api-services/auth-user.service */ "./src/app/api-services/auth-user.service.ts");
+/* harmony import */ var ng6_toastr_notifications__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ng6-toastr-notifications */ "./node_modules/ng6-toastr-notifications/fesm2015/ng6-toastr-notifications.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
+
+
 
 
 
 
 let HeaderComponent = class HeaderComponent {
-    constructor(authUserService, router, route) {
+    constructor(authUserService, router, route, toastr) {
         this.authUserService = authUserService;
         this.router = router;
         this.route = route;
+        this.toastr = toastr;
         this.navItems = [
             { name: 'Home', path: '/user-dashboard' },
             { name: 'Beauticians', path: '/beauticians' },
@@ -3954,15 +4347,18 @@ let HeaderComponent = class HeaderComponent {
         this.fullName = sessionStorage.getItem('fullname');
         this.userName = sessionStorage.getItem('username');
         this.role = sessionStorage.getItem('role');
+        this.showTime = moment__WEBPACK_IMPORTED_MODULE_5__(moment__WEBPACK_IMPORTED_MODULE_5__().format('YYYY-MM-DD') + ' 00:01:00').format('mm:ss');
+        this.seconds = moment__WEBPACK_IMPORTED_MODULE_5__(moment__WEBPACK_IMPORTED_MODULE_5__().format('YYYY-MM-DD') + ' 00:00:59').format('ss');
+        this.openModal = null;
+        this.showPopup = null;
     }
     ngOnInit() {
         this.href = this.route.snapshot.routeConfig.path;
         console.log('current page type issss ==>', this.href);
-    }
-    userLogout() {
-        localStorage.clear();
-        sessionStorage.clear();
-        this.router.navigate(['/login']);
+        if (this.authUserService.isLoggedIn()) {
+            console.log('session start time:', moment__WEBPACK_IMPORTED_MODULE_5__().format('hh:mm:ss'));
+            this.openLogoutModal();
+        }
     }
     onClickView(view) {
         console.log('Selected view isss', view);
@@ -3973,11 +4369,64 @@ let HeaderComponent = class HeaderComponent {
             this.router.navigate([`/${this.role}-settings`]);
         }
     }
+    openLogoutModal() {
+        console.log('seconds isss', this.seconds);
+        if (this.authUserService.isLoggedIn()) {
+            this.openModal = setTimeout(() => {
+                $('#autoLogoutModal').modal('show');
+                console.log('session end time:', moment__WEBPACK_IMPORTED_MODULE_5__().format('hh:mm:ss'));
+                this.showPopup = setInterval(() => {
+                    this.seconds -= 1;
+                    this.showTime = moment__WEBPACK_IMPORTED_MODULE_5__(moment__WEBPACK_IMPORTED_MODULE_5__().format('YYYY-MM-DD') + ` 00:00:${this.seconds.toString().padStart(2, 0)}`).format('mm:ss');
+                    if (this.showTime === '00:00') {
+                        this.userLogout();
+                    }
+                }, 1000);
+            }, 1740000);
+        }
+    }
+    userReLogIn() {
+        const token = sessionStorage.getItem('token');
+        const userTokenPayload = JSON.parse(atob(token.split('.')[1]));
+        delete userTokenPayload.exp;
+        delete userTokenPayload.iat;
+        console.log('Post payload to user re-signin isss', userTokenPayload);
+        this.authUserService.userReSignIn(userTokenPayload).subscribe((response) => {
+            console.log('User login response isss', response);
+            if (response.success) {
+                sessionStorage.setItem('token', response.data.token);
+                $('#autoLogoutModal').modal('hide');
+                this.seconds = moment__WEBPACK_IMPORTED_MODULE_5__(moment__WEBPACK_IMPORTED_MODULE_5__().format('YYYY-MM-DD') + ' 00:00:59').format('ss');
+                this.openLogoutModal();
+            }
+            else {
+                this.toastr.errorToastr(response.message);
+                $('#autoLogoutModal').modal('show');
+            }
+        }, (error) => {
+            this.toastr.errorToastr('Network failed, Please try again.');
+            $('#autoLogoutModal').modal('show');
+        });
+    }
+    userLogout() {
+        clearInterval(this.showPopup);
+        clearTimeout(this.openModal);
+        $('#autoLogoutModal').modal('hide');
+        localStorage.clear();
+        sessionStorage.clear();
+        this.router.navigate(['/login']);
+    }
+    ngOnDestroy() {
+        console.log('Header component is destroyed');
+        clearInterval(this.showPopup);
+        clearTimeout(this.openModal);
+    }
 };
 HeaderComponent.ctorParameters = () => [
     { type: _api_services_auth_user_service__WEBPACK_IMPORTED_MODULE_3__["AuthUserService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
+    { type: ng6_toastr_notifications__WEBPACK_IMPORTED_MODULE_4__["ToastrManager"] }
 ];
 HeaderComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -4044,7 +4493,7 @@ HomeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL25vdC1mb3VuZC9ub3QtZm91bmQuY29tcG9uZW50LmNzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("input[type=\"number\"] {\r\n  height: 50px;\r\n  padding: 1em;\r\n  border-top: none;\r\n  border-left: none;\r\n  border-right: none;\r\n  border-bottom: 1px solid lightslategray;\r\n}\r\n\r\ninput:focus {\r\n  outline: none;\r\n  box-shadow: none;\r\n}\r\n\r\n.btn-action-search {\r\n  cursor: pointer;\r\n  color: white;\r\n  background-color: #6495ed;\r\n}\r\n\r\n.btn-action-search:hover {\r\n  background-color: #1667af;\r\n}\r\n\r\n.title {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: baseline;\r\n  border-top: 2px solid lightgray;\r\n  border-bottom: 2px solid lightgray;\r\n}\r\n\r\n.title .fa {\r\n  cursor: pointer;\r\n  font-size: 2em;\r\n}\r\n\r\n.title .span1 {\r\n  cursor: pointer;\r\n  color: white;\r\n  background-color: #aab5c0;\r\n  padding: 20px;\r\n}\r\n\r\n.title .span1:hover {\r\n  background-color: lightslategray;\r\n}\r\n\r\n.title .span3 {\r\n  cursor: pointer;\r\n  color: white;\r\n  background-color: #aab5c0;\r\n  padding: 20px;\r\n}\r\n\r\n.title .span3:hover {\r\n  background-color: lightslategray;\r\n}\r\n\r\n.title .span2 {\r\n  font-size: 2em;\r\n  display: flex;\r\n  justify-content: space-around;\r\n  align-items: baseline;\r\n}\r\n\r\n.title .span2 .p1 {\r\n  color: #6495ed;\r\n}\r\n\r\n.title .span2 .p1:hover {\r\n  color: #1667af;\r\n}\r\n\r\n.title .span2 .p2 {\r\n  color: #aab5c0;\r\n}\r\n\r\n.title .span2 .p2:hover {\r\n  color: lightslategray;\r\n}\r\n\r\n.title .span2 .p3 {\r\n  color: lightcoral;\r\n}\r\n\r\n.title .span2 .p3:hover {\r\n  color: crimson;\r\n}\r\n\r\n.week-col {\r\n  display: flex;\r\n}\r\n\r\n.days {\r\n  flex: 1;\r\n  padding: 30px;\r\n  border: 1px solid lightgray;\r\n  font-size: 1em;\r\n  /* color: lightgray; */\r\n  background-color: lightsteelblue;\r\n}\r\n\r\n.dates-col {\r\n  display: flex;\r\n}\r\n\r\n.nums {\r\n  flex: 1;\r\n  padding: 30px;\r\n  /* border: 1px solid lightgray; */\r\n  font-size: 1em;\r\n  color: lightsteelblue;\r\n  background-color: white;\r\n}\r\n\r\n.nums:hover {\r\n  border: 1px solid lightgray;\r\n}\r\n\r\n.isSunday {\r\n  color: crimson !important;\r\n}\r\n\r\n.isDisable {\r\n  cursor: default !important;\r\n  pointer-events: none !important;\r\n  color: white !important;\r\n  background-color: lightgray !important;\r\n  opacity: 0.5 !important;\r\n  /* border: none !important; */\r\n  border: 1px solid lightslategray !important;\r\n}\r\n\r\n.isCurrent {\r\n  background-color: lightcoral !important;\r\n  color: white !important;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbm90LWZvdW5kL25vdC1mb3VuZC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsWUFBWTtFQUNaLFlBQVk7RUFDWixnQkFBZ0I7RUFDaEIsaUJBQWlCO0VBQ2pCLGtCQUFrQjtFQUNsQix1Q0FBdUM7QUFDekM7O0FBRUE7RUFDRSxhQUFhO0VBQ2IsZ0JBQWdCO0FBQ2xCOztBQUVBO0VBQ0UsZUFBZTtFQUNmLFlBQVk7RUFDWix5QkFBeUI7QUFDM0I7O0FBRUE7RUFDRSx5QkFBeUI7QUFDM0I7O0FBRUE7RUFDRSxhQUFhO0VBQ2IsOEJBQThCO0VBQzlCLHFCQUFxQjtFQUNyQiwrQkFBK0I7RUFDL0Isa0NBQWtDO0FBQ3BDOztBQUVBO0VBQ0UsZUFBZTtFQUNmLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxlQUFlO0VBQ2YsWUFBWTtFQUNaLHlCQUF5QjtFQUN6QixhQUFhO0FBQ2Y7O0FBRUE7RUFDRSxnQ0FBZ0M7QUFDbEM7O0FBRUE7RUFDRSxlQUFlO0VBQ2YsWUFBWTtFQUNaLHlCQUF5QjtFQUN6QixhQUFhO0FBQ2Y7O0FBRUE7RUFDRSxnQ0FBZ0M7QUFDbEM7O0FBRUE7RUFDRSxjQUFjO0VBQ2QsYUFBYTtFQUNiLDZCQUE2QjtFQUM3QixxQkFBcUI7QUFDdkI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxxQkFBcUI7QUFDdkI7O0FBRUE7RUFDRSxpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsYUFBYTtBQUNmOztBQUVBO0VBQ0UsT0FBTztFQUNQLGFBQWE7RUFDYiwyQkFBMkI7RUFDM0IsY0FBYztFQUNkLHNCQUFzQjtFQUN0QixnQ0FBZ0M7QUFDbEM7O0FBRUE7RUFDRSxhQUFhO0FBQ2Y7O0FBRUE7RUFDRSxPQUFPO0VBQ1AsYUFBYTtFQUNiLGlDQUFpQztFQUNqQyxjQUFjO0VBQ2QscUJBQXFCO0VBQ3JCLHVCQUF1QjtBQUN6Qjs7QUFFQTtFQUNFLDJCQUEyQjtBQUM3Qjs7QUFFQTtFQUNFLHlCQUF5QjtBQUMzQjs7QUFFQTtFQUNFLDBCQUEwQjtFQUMxQiwrQkFBK0I7RUFDL0IsdUJBQXVCO0VBQ3ZCLHNDQUFzQztFQUN0Qyx1QkFBdUI7RUFDdkIsNkJBQTZCO0VBQzdCLDJDQUEyQztBQUM3Qzs7QUFFQTtFQUNFLHVDQUF1QztFQUN2Qyx1QkFBdUI7QUFDekIiLCJmaWxlIjoic3JjL2FwcC9ub3QtZm91bmQvbm90LWZvdW5kLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpbnB1dFt0eXBlPVwibnVtYmVyXCJdIHtcclxuICBoZWlnaHQ6IDUwcHg7XHJcbiAgcGFkZGluZzogMWVtO1xyXG4gIGJvcmRlci10b3A6IG5vbmU7XHJcbiAgYm9yZGVyLWxlZnQ6IG5vbmU7XHJcbiAgYm9yZGVyLXJpZ2h0OiBub25lO1xyXG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCBsaWdodHNsYXRlZ3JheTtcclxufVxyXG5cclxuaW5wdXQ6Zm9jdXMge1xyXG4gIG91dGxpbmU6IG5vbmU7XHJcbiAgYm94LXNoYWRvdzogbm9uZTtcclxufVxyXG5cclxuLmJ0bi1hY3Rpb24tc2VhcmNoIHtcclxuICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgY29sb3I6IHdoaXRlO1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICM2NDk1ZWQ7XHJcbn1cclxuXHJcbi5idG4tYWN0aW9uLXNlYXJjaDpob3ZlciB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogIzE2NjdhZjtcclxufVxyXG5cclxuLnRpdGxlIHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcclxuICBhbGlnbi1pdGVtczogYmFzZWxpbmU7XHJcbiAgYm9yZGVyLXRvcDogMnB4IHNvbGlkIGxpZ2h0Z3JheTtcclxuICBib3JkZXItYm90dG9tOiAycHggc29saWQgbGlnaHRncmF5O1xyXG59XHJcblxyXG4udGl0bGUgLmZhIHtcclxuICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgZm9udC1zaXplOiAyZW07XHJcbn1cclxuXHJcbi50aXRsZSAuc3BhbjEge1xyXG4gIGN1cnNvcjogcG9pbnRlcjtcclxuICBjb2xvcjogd2hpdGU7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2FhYjVjMDtcclxuICBwYWRkaW5nOiAyMHB4O1xyXG59XHJcblxyXG4udGl0bGUgLnNwYW4xOmhvdmVyIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiBsaWdodHNsYXRlZ3JheTtcclxufVxyXG5cclxuLnRpdGxlIC5zcGFuMyB7XHJcbiAgY3Vyc29yOiBwb2ludGVyO1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYWFiNWMwO1xyXG4gIHBhZGRpbmc6IDIwcHg7XHJcbn1cclxuXHJcbi50aXRsZSAuc3BhbjM6aG92ZXIge1xyXG4gIGJhY2tncm91bmQtY29sb3I6IGxpZ2h0c2xhdGVncmF5O1xyXG59XHJcblxyXG4udGl0bGUgLnNwYW4yIHtcclxuICBmb250LXNpemU6IDJlbTtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYXJvdW5kO1xyXG4gIGFsaWduLWl0ZW1zOiBiYXNlbGluZTtcclxufVxyXG5cclxuLnRpdGxlIC5zcGFuMiAucDEge1xyXG4gIGNvbG9yOiAjNjQ5NWVkO1xyXG59XHJcblxyXG4udGl0bGUgLnNwYW4yIC5wMTpob3ZlciB7XHJcbiAgY29sb3I6ICMxNjY3YWY7XHJcbn1cclxuXHJcbi50aXRsZSAuc3BhbjIgLnAyIHtcclxuICBjb2xvcjogI2FhYjVjMDtcclxufVxyXG5cclxuLnRpdGxlIC5zcGFuMiAucDI6aG92ZXIge1xyXG4gIGNvbG9yOiBsaWdodHNsYXRlZ3JheTtcclxufVxyXG5cclxuLnRpdGxlIC5zcGFuMiAucDMge1xyXG4gIGNvbG9yOiBsaWdodGNvcmFsO1xyXG59XHJcblxyXG4udGl0bGUgLnNwYW4yIC5wMzpob3ZlciB7XHJcbiAgY29sb3I6IGNyaW1zb247XHJcbn1cclxuXHJcbi53ZWVrLWNvbCB7XHJcbiAgZGlzcGxheTogZmxleDtcclxufVxyXG5cclxuLmRheXMge1xyXG4gIGZsZXg6IDE7XHJcbiAgcGFkZGluZzogMzBweDtcclxuICBib3JkZXI6IDFweCBzb2xpZCBsaWdodGdyYXk7XHJcbiAgZm9udC1zaXplOiAxZW07XHJcbiAgLyogY29sb3I6IGxpZ2h0Z3JheTsgKi9cclxuICBiYWNrZ3JvdW5kLWNvbG9yOiBsaWdodHN0ZWVsYmx1ZTtcclxufVxyXG5cclxuLmRhdGVzLWNvbCB7XHJcbiAgZGlzcGxheTogZmxleDtcclxufVxyXG5cclxuLm51bXMge1xyXG4gIGZsZXg6IDE7XHJcbiAgcGFkZGluZzogMzBweDtcclxuICAvKiBib3JkZXI6IDFweCBzb2xpZCBsaWdodGdyYXk7ICovXHJcbiAgZm9udC1zaXplOiAxZW07XHJcbiAgY29sb3I6IGxpZ2h0c3RlZWxibHVlO1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG4ubnVtczpob3ZlciB7XHJcbiAgYm9yZGVyOiAxcHggc29saWQgbGlnaHRncmF5O1xyXG59XHJcblxyXG4uaXNTdW5kYXkge1xyXG4gIGNvbG9yOiBjcmltc29uICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbi5pc0Rpc2FibGUge1xyXG4gIGN1cnNvcjogZGVmYXVsdCAhaW1wb3J0YW50O1xyXG4gIHBvaW50ZXItZXZlbnRzOiBub25lICFpbXBvcnRhbnQ7XHJcbiAgY29sb3I6IHdoaXRlICFpbXBvcnRhbnQ7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogbGlnaHRncmF5ICFpbXBvcnRhbnQ7XHJcbiAgb3BhY2l0eTogMC41ICFpbXBvcnRhbnQ7XHJcbiAgLyogYm9yZGVyOiBub25lICFpbXBvcnRhbnQ7ICovXHJcbiAgYm9yZGVyOiAxcHggc29saWQgbGlnaHRzbGF0ZWdyYXkgIWltcG9ydGFudDtcclxufVxyXG5cclxuLmlzQ3VycmVudCB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogbGlnaHRjb3JhbCAhaW1wb3J0YW50O1xyXG4gIGNvbG9yOiB3aGl0ZSAhaW1wb3J0YW50O1xyXG59XHJcbiJdfQ== */");
 
 /***/ }),
 
@@ -4060,11 +4509,156 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotFoundComponent", function() { return NotFoundComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 let NotFoundComponent = class NotFoundComponent {
-    constructor() { }
+    constructor() {
+        this.weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        this.days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+        this.weekNames = [
+            { id: 1, name: 'Sunday' }, { id: 2, name: 'Monday' }, { id: 1, name: 'Tuesday' }, { id: 1, name: 'Wednesday' },
+            { id: 1, name: 'Thursday' }, { id: 1, name: 'Friday' }, { id: 1, name: 'Saturday' }
+        ];
+        this.dates = [
+        // ['00','00','00','00','00','01','02'],
+        // ['03','04','05','06','07','08','09'],
+        // ['10','11','12','13','14','15','16'],
+        // ['17','18','19','20','21','22','23'],
+        // ['24','25','26','27','28','29','30'],
+        // ['31','00','00','00','00','00','00']
+        ];
+        this.currentDate = moment__WEBPACK_IMPORTED_MODULE_2__().format('DD').toString();
+        this.currentFullMonth = moment__WEBPACK_IMPORTED_MODULE_2__().format('MMMM').toString();
+        this.currentMonth = moment__WEBPACK_IMPORTED_MODULE_2__().format('MM').toString();
+        this.currentYear = moment__WEBPACK_IMPORTED_MODULE_2__().format('YYYY').toString();
+        this.tempCurrentDate = moment__WEBPACK_IMPORTED_MODULE_2__().format('DD').toString();
+        this.tempCurrentFullMonth = moment__WEBPACK_IMPORTED_MODULE_2__().format('MMMM').toString();
+        this.tempCurrentMonth = moment__WEBPACK_IMPORTED_MODULE_2__().format('MM').toString();
+        this.tempCurrentYear = moment__WEBPACK_IMPORTED_MODULE_2__().format('YYYY').toString();
+        this.selectYear = null;
+        this.selectMonth = null;
+        this.selectDate = null;
+    }
     ngOnInit() {
+        this.getAllDates('');
+    }
+    setSundayColour(item, id) {
+        if (Number(id) / 7 === 0 || Number(id) / 6 === 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    setDisableDates(item, id) {
+        const firstArr = [25, 26, 27, 28, 29, 30, 31];
+        const lastArr = [1, 2, 3, 4, 5, 6, 7];
+        if (Number(id) === 0 && firstArr.includes(Number(item))) {
+            return true;
+        }
+        else if (Number(id) === this.dates.length - 1 && lastArr.includes(Number(item))) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    setCurrentDateColour(item, id) {
+        if (Number(item) === Number(this.currentDate)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    onSearchFullDate() {
+        this.currentYear = this.selectYear.toString().padStart(2, 0);
+        this.currentMonth = this.selectMonth.toString().padStart(2, 0);
+        this.currentFullMonth = moment__WEBPACK_IMPORTED_MODULE_2__(`${this.currentYear.toString()}-${this.currentMonth.toString().padStart(2, 0)}-01`).format('MMMM');
+        this.currentDate = this.selectDate.toString().padStart(2, 0);
+        this.getAllDates('search');
+    }
+    getAllDates(view) {
+        console.log('selected view isss', view);
+        let currentMonth = null;
+        if (view !== 'search') {
+            if (view === 'prev') {
+                currentMonth = (Number(this.currentMonth) - 1).toString();
+            }
+            else if (view === 'next') {
+                currentMonth = (Number(this.currentMonth) + 1).toString();
+            }
+            else {
+                currentMonth = this.tempCurrentMonth.toString();
+            }
+        }
+        else {
+            currentMonth = this.currentMonth.toString().padStart(2, 0);
+            ;
+        }
+        console.log('current month isss', currentMonth);
+        this.currentFullMonth = moment__WEBPACK_IMPORTED_MODULE_2__(`${this.currentYear.toString()}-${currentMonth.toString().padStart(2, 0)}-01`).format('MMMM');
+        this.currentMonth = currentMonth.toString().padStart(2, 0);
+        const weekDays = {
+            'Sunday': 0, 'Monday': 1, 'Tuesday': 2, 'Wednesday': 3, 'Thursday': 4, 'Friday': 5, 'Saturday': 6
+        };
+        let startDay = 1;
+        const selectedDate = moment__WEBPACK_IMPORTED_MODULE_2__(`${this.currentYear.toString()}-${currentMonth.toString().padStart(2, 0)}-01`).format('dddd');
+        console.log('selected date isss', selectedDate);
+        const lastIndex = weekDays[selectedDate];
+        const days = moment__WEBPACK_IMPORTED_MODULE_2__(`${this.currentYear.toString()}-${currentMonth.toString().padStart(2, 0)}-01`).daysInMonth();
+        this.dates = [];
+        let weekDates = [];
+        let firstIndex = 0;
+        while (firstIndex < lastIndex) {
+            weekDates.push('00');
+            firstIndex += 1;
+        }
+        while (startDay <= days) {
+            if (weekDates.length === 7) {
+                this.dates.push(weekDates);
+                weekDates = [];
+            }
+            weekDates.push(startDay.toString().padStart(2, 0));
+            startDay += 1;
+        }
+        while (weekDates.length !== 7) {
+            weekDates.push('00');
+        }
+        this.dates.push(weekDates);
+        console.log('dates isss', this.dates);
+        const firstDates = [];
+        let prevMonth = (Number(currentMonth) - 1).toString();
+        const previousMonthFullDate = moment__WEBPACK_IMPORTED_MODULE_2__(`${this.currentYear.toString()}-${prevMonth.padStart(2, 0)}-01`).daysInMonth();
+        console.log('previous month full date isss', previousMonthFullDate);
+        let previousDays = previousMonthFullDate + 1;
+        for (let i = 0; i < this.dates[0].length; i++) {
+            if (this.dates[0][i] === '00') {
+                previousDays -= 1;
+                firstDates.push(previousDays.toString().padStart(2, 0));
+            }
+        }
+        console.log('previousDays isss', firstDates);
+        const tempFirstDays = firstDates.reverse();
+        for (let i = 0; i < this.dates[0].length; i++) {
+            if (this.dates[0][i] === '00') {
+                this.dates[0][i] = tempFirstDays[i];
+            }
+        }
+        const lastDates = [];
+        let nextDays = 0;
+        for (let i = 0; i < this.dates[this.dates.length - 1].length; i++) {
+            if (this.dates[this.dates.length - 1][i] === '00') {
+                nextDays += 1;
+                lastDates.push(nextDays.toString().padStart(2, 0));
+                this.dates[this.dates.length - 1][i] = nextDays.toString().padStart(2, 0);
+            }
+        }
+        console.log('nextDays isss', lastDates);
+        console.log('final days isss', this.dates);
     }
 };
 NotFoundComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -4306,6 +4900,146 @@ UserDashboardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/user-form/user-form.component.css":
+/*!***************************************************!*\
+  !*** ./src/app/user-form/user-form.component.css ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("p {\r\n    font-size: 1em;\r\n    color: lightslategray;\r\n}\r\n\r\ninput,\r\ntextarea,\r\nselect {\r\n    height: 50px;\r\n    padding: 1em;\r\n    font-size: 0.8em;\r\n    border-top: none;\r\n    border-left: none;\r\n    border-right: none;\r\n    border-bottom: 1px solid crimson;\r\n}\r\n\r\ninput:focus, \r\nselect:focus, \r\ntextarea:focus {\r\n    outline: none;\r\n    box-shadow: none;\r\n}\r\n\r\n.radio-1 {\r\n    display: flex;\r\n    justify-content: space-around;\r\n    align-items: center;\r\n}\r\n\r\n.radio-1 input {\r\n    height: 25px !important;\r\n}\r\n\r\n.radio-2 {\r\n    display: flex;\r\n    justify-content: space-around;\r\n    align-items: center;\r\n}\r\n\r\n.radio-2 input {\r\n    height: 25px !important;\r\n}\r\n\r\n.btn-action-save {\r\n    width: 100px;\r\n    cursor: pointer;\r\n    color: white;\r\n    background-color: coral;\r\n}\r\n\r\n.btn-action-save:hover {\r\n    background-color: chocolate;\r\n}\r\n\r\n.btn-action-cancel {\r\n    width: 100px;\r\n    cursor: pointer;\r\n    color: white;\r\n    background-color: lightgray;\r\n}\r\n\r\n.btn-action-cancel:hover {\r\n    background-color: lightslategray;\r\n}\r\n\r\n.error-note {\r\n    color: crimson;\r\n    font-size: 0.7em;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdXNlci1mb3JtL3VzZXItZm9ybS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksY0FBYztJQUNkLHFCQUFxQjtBQUN6Qjs7QUFFQTs7O0lBR0ksWUFBWTtJQUNaLFlBQVk7SUFDWixnQkFBZ0I7SUFDaEIsZ0JBQWdCO0lBQ2hCLGlCQUFpQjtJQUNqQixrQkFBa0I7SUFDbEIsZ0NBQWdDO0FBQ3BDOztBQUVBOzs7SUFHSSxhQUFhO0lBQ2IsZ0JBQWdCO0FBQ3BCOztBQUVBO0lBQ0ksYUFBYTtJQUNiLDZCQUE2QjtJQUM3QixtQkFBbUI7QUFDdkI7O0FBRUE7SUFDSSx1QkFBdUI7QUFDM0I7O0FBRUE7SUFDSSxhQUFhO0lBQ2IsNkJBQTZCO0lBQzdCLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLHVCQUF1QjtBQUMzQjs7QUFFQTtJQUNJLFlBQVk7SUFDWixlQUFlO0lBQ2YsWUFBWTtJQUNaLHVCQUF1QjtBQUMzQjs7QUFFQTtJQUNJLDJCQUEyQjtBQUMvQjs7QUFFQTtJQUNJLFlBQVk7SUFDWixlQUFlO0lBQ2YsWUFBWTtJQUNaLDJCQUEyQjtBQUMvQjs7QUFFQTtJQUNJLGdDQUFnQztBQUNwQzs7QUFFQTtJQUNJLGNBQWM7SUFDZCxnQkFBZ0I7QUFDcEIiLCJmaWxlIjoic3JjL2FwcC91c2VyLWZvcm0vdXNlci1mb3JtLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJwIHtcclxuICAgIGZvbnQtc2l6ZTogMWVtO1xyXG4gICAgY29sb3I6IGxpZ2h0c2xhdGVncmF5O1xyXG59XHJcblxyXG5pbnB1dCxcclxudGV4dGFyZWEsXHJcbnNlbGVjdCB7XHJcbiAgICBoZWlnaHQ6IDUwcHg7XHJcbiAgICBwYWRkaW5nOiAxZW07XHJcbiAgICBmb250LXNpemU6IDAuOGVtO1xyXG4gICAgYm9yZGVyLXRvcDogbm9uZTtcclxuICAgIGJvcmRlci1sZWZ0OiBub25lO1xyXG4gICAgYm9yZGVyLXJpZ2h0OiBub25lO1xyXG4gICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkIGNyaW1zb247XHJcbn1cclxuXHJcbmlucHV0OmZvY3VzLCBcclxuc2VsZWN0OmZvY3VzLCBcclxudGV4dGFyZWE6Zm9jdXMge1xyXG4gICAgb3V0bGluZTogbm9uZTtcclxuICAgIGJveC1zaGFkb3c6IG5vbmU7XHJcbn1cclxuXHJcbi5yYWRpby0xIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5yYWRpby0xIGlucHV0IHtcclxuICAgIGhlaWdodDogMjVweCAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4ucmFkaW8tMiB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG59XHJcblxyXG4ucmFkaW8tMiBpbnB1dCB7XHJcbiAgICBoZWlnaHQ6IDI1cHggIWltcG9ydGFudDtcclxufVxyXG5cclxuLmJ0bi1hY3Rpb24tc2F2ZSB7XHJcbiAgICB3aWR0aDogMTAwcHg7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBjb3JhbDtcclxufVxyXG5cclxuLmJ0bi1hY3Rpb24tc2F2ZTpob3ZlciB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBjaG9jb2xhdGU7XHJcbn1cclxuXHJcbi5idG4tYWN0aW9uLWNhbmNlbCB7XHJcbiAgICB3aWR0aDogMTAwcHg7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBsaWdodGdyYXk7XHJcbn1cclxuXHJcbi5idG4tYWN0aW9uLWNhbmNlbDpob3ZlciB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBsaWdodHNsYXRlZ3JheTtcclxufVxyXG5cclxuLmVycm9yLW5vdGUge1xyXG4gICAgY29sb3I6IGNyaW1zb247XHJcbiAgICBmb250LXNpemU6IDAuN2VtO1xyXG59Il19 */");
+
+/***/ }),
+
+/***/ "./src/app/user-form/user-form.component.ts":
+/*!**************************************************!*\
+  !*** ./src/app/user-form/user-form.component.ts ***!
+  \**************************************************/
+/*! exports provided: UserFormComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserFormComponent", function() { return UserFormComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _api_services_auth_user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api-services/auth-user.service */ "./src/app/api-services/auth-user.service.ts");
+/* harmony import */ var ng6_toastr_notifications__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ng6-toastr-notifications */ "./node_modules/ng6-toastr-notifications/fesm2015/ng6-toastr-notifications.js");
+
+
+
+
+
+let UserFormComponent = class UserFormComponent {
+    constructor(router, authUserService, toastr) {
+        this.router = router;
+        this.authUserService = authUserService;
+        this.toastr = toastr;
+        // Name
+        // Last name
+        // Roll number
+        // Branch -  selection
+        // Section - selection
+        // Student or teacher - radio
+        // Phone number
+        // Address
+        // Pic - validate name and entered roll number are same or not
+        this.firstName = null;
+        this.lastName = null;
+        this.rollNumber = null;
+        this.branchName = null;
+        this.sectionName = null;
+        this.personType = null;
+        this.mobile = null;
+        this.address = null;
+        this.profile = null;
+    }
+    ngOnInit() {
+    }
+    onSelectFile(event) {
+        console.log('selected file event isss', event);
+        this.profile = event.target.files[0];
+    }
+    saveUserDetails() {
+        if (this.setDisableForm()) {
+            return this.toastr.errorToastr('Profile is invalid.');
+        }
+        const formData = new FormData();
+        formData.append('firstName', this.firstName);
+        formData.append('lastName', this.lastName);
+        formData.append('rollNumber', this.rollNumber);
+        formData.append('branchName', this.branchName);
+        formData.append('sectionName', this.sectionName);
+        formData.append('personType', this.personType);
+        formData.append('mobile', this.mobile);
+        formData.append('address', this.address);
+        formData.append('file', this.profile, this.profile.name);
+        console.log('Post payload to user registration isss', formData.get('file'));
+        this.authUserService.addNewUser(formData).subscribe((response) => {
+            console.log('Get user registration response isss', response);
+            if (response.success) {
+                this.toastr.successToastr(response.message);
+                this.resetForm();
+            }
+            else {
+                this.toastr.errorToastr(response.message);
+            }
+        }, (error) => {
+            this.toastr.errorToastr('Network failed, Please try again.');
+        });
+    }
+    setDisableForm() {
+        if (this.profile && this.profile !== null) {
+            if (Number(this.profile.name.split('.')[0]) !== Number(this.rollNumber)) {
+                return true;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+    resetForm() {
+        if (this.userFormRef) {
+            this.userFormRef.reset();
+        }
+        this.firstName = null;
+        this.lastName = null;
+        this.rollNumber = null;
+        this.branchName = null;
+        this.sectionName = null;
+        this.personType = null;
+        this.mobile = null;
+        this.address = null;
+        this.profile = null;
+        this.fileInputRef.nativeElement.value = null;
+    }
+};
+UserFormComponent.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+    { type: _api_services_auth_user_service__WEBPACK_IMPORTED_MODULE_3__["AuthUserService"] },
+    { type: ng6_toastr_notifications__WEBPACK_IMPORTED_MODULE_4__["ToastrManager"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('userForm', { static: false })
+], UserFormComponent.prototype, "userFormRef", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('fileInput', { static: false })
+], UserFormComponent.prototype, "fileInputRef", void 0);
+UserFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-user-form',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./user-form.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/user-form/user-form.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./user-form.component.css */ "./src/app/user-form/user-form.component.css")).default]
+    })
+], UserFormComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/user/user-profile/user-profile.component.css":
 /*!**************************************************************!*\
   !*** ./src/app/user/user-profile/user-profile.component.css ***!
@@ -4363,7 +5097,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 
 const serverIP = {
-    apiUrl: 'api',
+    apiUrl: 'http://localhost:3003/api',
     imgUrl: ''
 };
 
@@ -4438,7 +5172,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\AKRIVIA\meanui\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! G:\AKRIVIA\meanui\src\main.ts */"./src/main.ts");
 
 
 /***/ })

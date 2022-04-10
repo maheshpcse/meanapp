@@ -1,4 +1,4 @@
 export const serverIP: any = {
-    apiUrl: 'api',
+    apiUrl: 'http://localhost:3003/api',
     imgUrl: ''
-}
+};
