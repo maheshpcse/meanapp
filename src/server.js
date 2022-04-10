@@ -29,9 +29,9 @@ app.use(function (req, res, next) {
     next();
 });
 
-// app.get('*', (req, res, next) => {
-//     res.sendFile(path.join(__dirname, '../public/index.html'));
-// });
+app.get('*', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '../public/index.html'));
+});
 
 app.get('/connect', (req, res) => {
     var connection = mysql.createConnection({
