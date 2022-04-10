@@ -33,7 +33,8 @@ const getAllUserReportsById = async (request, response, next) => {
             user_id
         } = request.body;
         page = (Number(page) - 1) * Number(limit);
-        let whereRaw = `(bk.booking_id LIKE '%${query}%' OR bk.date LIKE '%${query}%' OR bk.time LIKE '%${query}%' OR bk.services LIKE '%${query}%' OR bp.beautician_name LIKE '%${query}%' OR bp.experience LIKE '%${query}%' OR bp.parlour_name LIKE '%${query}%' OR bp.law_firm_name LIKE '%${query}%' OR bp.place LIKE '%${query}%')`;
+        // let whereRaw = `(bk.booking_id LIKE '%${query}%' OR bk.date LIKE '%${query}%' OR bk.time LIKE '%${query}%' OR bk.services LIKE '%${query}%' OR bp.beautician_name LIKE '%${query}%' OR bp.experience LIKE '%${query}%' OR bp.parlour_name LIKE '%${query}%' OR bp.law_firm_name LIKE '%${query}%' OR bp.place LIKE '%${query}%')`;
+        let whereRaw = `(bk.booking_id LIKE '%${query}%' OR bk.time LIKE '%${query}%' OR bk.services LIKE '%${query}%' OR bp.beautician_name LIKE '%${query}%' OR bp.experience LIKE '%${query}%' OR bp.parlour_name LIKE '%${query}%' OR bp.law_firm_name LIKE '%${query}%' OR bp.place LIKE '%${query}%')`;
         if (status === 1 || status === 0) {
             whereRaw += ` AND (bk.booking_status=${Number(status)})`;
         }

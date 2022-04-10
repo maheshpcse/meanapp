@@ -45,7 +45,7 @@ const userLogin = async (request, response, next) => {
                 password: data[0].password
             }, CONFIG.database.securitykey, {
                 algorithm: 'HS256',
-                expiresIn: '2m'
+                expiresIn: '30m'
             });
             data[0].token = token;
             result = {

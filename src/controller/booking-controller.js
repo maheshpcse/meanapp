@@ -29,7 +29,8 @@ const getAllUserBookings = async (request, response, next) => {
             user_id
         } = request.body;
         page = (Number(page) - 1) * Number(limit);
-        let whereRaw = `(bk.booking_id LIKE '%${query}%' OR bk.law_firm_name LIKE '%${query}%' OR bk.date LIKE '%${query}%' OR bk.time LIKE '%${query}%' OR bt.beautician_name LIKE '%${query}%' OR u.fullname LIKE '%${query}%' OR u.username LIKE '%${query}%')`;
+        // let whereRaw = `(bk.booking_id LIKE '%${query}%' OR bk.law_firm_name LIKE '%${query}%' OR bk.date LIKE '%${query}%' OR bk.time LIKE '%${query}%' OR bt.beautician_name LIKE '%${query}%' OR u.fullname LIKE '%${query}%' OR u.username LIKE '%${query}%')`;
+        let whereRaw = `(bk.booking_id LIKE '%${query}%' OR bk.law_firm_name LIKE '%${query}%' OR bk.time LIKE '%${query}%' OR bt.beautician_name LIKE '%${query}%' OR u.fullname LIKE '%${query}%' OR u.username LIKE '%${query}%')`;
         if (status === 0 || status === 1) {
             whereRaw += ` AND (bk.booking_status=${status})`;
         }
@@ -100,7 +101,8 @@ const getAllUserAppointments = async (request, response, next) => {
             user_id
         } = request.body;
         page = (Number(page) - 1) * Number(limit);
-        let whereRaw = `(bk.booking_id LIKE '%${query}%' OR bk.law_firm_name LIKE '%${query}%' OR bk.date LIKE '%${query}%' OR bk.time LIKE '%${query}%' OR bt.beautician_name LIKE '%${query}%' OR u.fullname LIKE '%${query}%' OR u.username LIKE '%${query}%')`;
+        // let whereRaw = `(bk.booking_id LIKE '%${query}%' OR bk.law_firm_name LIKE '%${query}%' OR bk.date LIKE '%${query}%' OR bk.time LIKE '%${query}%' OR bt.beautician_name LIKE '%${query}%' OR u.fullname LIKE '%${query}%' OR u.username LIKE '%${query}%')`;
+        let whereRaw = `(bk.booking_id LIKE '%${query}%' OR bk.law_firm_name LIKE '%${query}%' OR bk.time LIKE '%${query}%' OR bt.beautician_name LIKE '%${query}%' OR u.fullname LIKE '%${query}%' OR u.username LIKE '%${query}%')`;
         if (status === 0 || status === 1) {
             whereRaw += ` AND (bk.booking_status=${status})`;
         }
@@ -117,7 +119,7 @@ const getAllUserAppointments = async (request, response, next) => {
             .limit(limit)
             .offset(page)
             .then(async data => {
-                console.log('Get all user bookings data isss', data);
+                console.log('Get all user appointments data isss', data);
                 list = data;
             }).catch(listError => {
                 throw listError;
@@ -131,7 +133,7 @@ const getAllUserAppointments = async (request, response, next) => {
             .innerJoin(`${USERS.tableName} AS u`, 'u.user_id', 'ap.user_id')
             .whereRaw(whereRaw + ` AND (bt.owner_id=${user_id}) AND (bk.booking_status!=2)` + dateTimeWhere)
             .then(async data => {
-                console.log('Get all user bookings data count isss', data);
+                console.log('Get all user appointments data count isss', data);
                 count = data.length ? data[0].totalBookings : 0;
             }).catch(countError => {
                 throw countError;
@@ -140,7 +142,7 @@ const getAllUserAppointments = async (request, response, next) => {
             success: true,
             error: false,
             statusCode: 200,
-            message: 'Get all user bookings successful',
+            message: 'Get all user appointments successful',
             data: list,
             count: count
         }
