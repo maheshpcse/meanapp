@@ -6,15 +6,16 @@ class Report extends Model {
     }
 
     static get idColumn() {
-        return 'report_id  ';
+        return 'report_id';
     }
 
     static get jsonSchema() {
         return {
             type: 'object',
             properties: {
-                report_id  : { type: ['integer', null] },
-                appointment_id: { type: ['string', null] },
+                report_id: { type: ['integer', null] },
+                appointment_id: { type: ['integer', 'number', null] },
+                user_id: { type: ['integer', 'number', null] },
                 date: { type: ['string', 'date', null] },
                 amount: { type: ['string', null] },
                 report: { type: ['string', null] },
